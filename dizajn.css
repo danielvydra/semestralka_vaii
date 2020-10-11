@@ -1,0 +1,126 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.pozadie {
+    height: 100%;
+    background-image: url(https://www.uniza.sk/images/fotogaleria/tlacove-spravy/2019/18092019_TS-UNIZA-DJI-0010.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+}
+
+.kontent {
+    min-width: 550px;
+    min-height: 450px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    background-color: #b8dbffd1;
+    box-shadow: 5px 5px 15px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+}
+
+.kontent:hover {
+    box-shadow: 10px 10px 16px 8px rgba(0, 0, 0, 0.2);
+}
+
+.formular-registracia {
+    padding: 20px;
+    display: grid;
+}
+
+.stred {
+    text-align: center;
+}
+
+input {
+    width: 65%;
+    border: none;
+    display: inline-block;
+    background: transparent;
+    font-size: 16px;
+    padding: 12px;
+}
+
+::placeholder {
+    color: rgba(0,0,0,0.8);
+}
+
+input:focus {
+    outline: none;
+}
+
+.ikona {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.input-riadok {
+    height: 40px;
+    border-width: 2px;
+    border-style: solid;
+    width: 65%;
+    left: 50%;
+    margin: 5px 0px 30px;
+    transform: translate(-50%);
+    position: relative;
+}
+
+button {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    outline: none;
+}
+
+.tlacidlo-formular {
+    width: 50%;
+    float: left;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+}
+
+.tlacidlo-registrovat {
+    background-color: yellowgreen;
+    border-right-width: 1px;
+}
+
+.tlacidlo-prihlasit {
+    background-color: orange;
+    border-left-width: 1px;
+}
+
+.nadpis {
+    position: absolute;
+    font-size: 50px;
+    top: 5%;
+    border-style: solid;
+    padding: 20px 30px 20px 30px;
+    left: 50%;
+    transform: translate(-50%);
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.tlacidlo-prihlasit:hover, .tlacidlo-registrovat:hover {
+    color: black;
+    background-color: transparent;
+}

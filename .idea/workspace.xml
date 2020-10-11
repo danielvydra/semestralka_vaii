@@ -24,7 +24,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="" />
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/dizajn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/prihlasenie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registracia.php" beforeDir="false" afterPath="$PROJECT_DIR$/registracia.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -69,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602407075733</updated>
       <workItem from="1602407076874" duration="1137000" />
-      <workItem from="1602409857776" duration="12000" />
+      <workItem from="1602409857776" duration="18787000" />
     </task>
     <servers />
   </component>
@@ -102,10 +108,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="163" key="#PHP/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602407281630" />
-    <state x="682" y="418" width="764" height="311" key="Github.ShareDialog" timestamp="1602409750662">
+    <state x="682" y="418" width="764" height="311" key="Github.ShareDialog" timestamp="1602409878059">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="682" y="418" width="764" height="311" key="Github.ShareDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409750662" />
+    <state x="682" y="418" width="764" height="311" key="Github.ShareDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409878059" />
+    <state x="800" y="225" width="509" height="590" key="Github.UntrackedFilesDialog" timestamp="1602409928390">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="800" y="225" width="509" height="590" key="Github.UntrackedFilesDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409928390" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1602407497144">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
