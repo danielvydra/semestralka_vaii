@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
 <body>
-    <div id="pozadie" class="pozadie"></div>
-    <div class="nadpis">Systém záverečných prác</div>
+    <div class="nadpis-ramcek">Systém záverečných prác</div>
     <div id="kontent" class="kontent">
         <form class="formular-registracia">
             <h1 class="stred">Prihlásenie</h1>
@@ -18,13 +17,13 @@
             <label for="os_cislo" class="stred"><b>Osobné číslo</b></label>
             <div class="input-riadok">
                 <div class="fas fa-user ikona"></div>
-                <input type="text" placeholder="Vložte osobné čislo" name="os_cislo" required>
+                <input id="os_cislo" type="text" placeholder="Vložte osobné čislo" name="os_cislo" required>
             </div>
 
-            <label for="password" class="stred"><b>Heslo</b></label>
+            <label for="heslo" class="stred"><b>Heslo</b></label>
             <div class="input-riadok">
                 <div class="fas fa-key ikona"></div>
-                <input type="password" placeholder="Vložte heslo" name="password" required>
+                <input id="heslo" type="password" placeholder="Vložte heslo" name="password" required>
             </div>
 
             <div>

@@ -24,11 +24,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="">
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/dizajn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/prihlasenie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registracia.php" beforeDir="false" afterPath="$PROJECT_DIR$/registracia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoznam_prac.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +63,26 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web projects\semestralka_vaii\assets" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="javascript.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/javascript.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.javascript.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,8 +93,17 @@
       <option name="presentableId" value="Default" />
       <updated>1602407075733</updated>
       <workItem from="1602407076874" duration="1137000" />
-      <workItem from="1602409857776" duration="18787000" />
+      <workItem from="1602409857776" duration="30841000" />
+      <workItem from="1602504453895" duration="18581000" />
     </task>
+    <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
+      <created>1602429124251</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602429124251</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +125,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -124,5 +153,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1602429130224">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602429130224" />
+    <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602428969289">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602428969289" />
   </component>
 </project>

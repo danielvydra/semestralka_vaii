@@ -1,25 +1,26 @@
-body, html {
-    margin: 0;
-    height: 100%;
+* {
     font-family: 'Roboto', 'sans-serif';
 }
 
-.pozadie {
-    height: 100%;
-    background-image: url(https://www.uniza.sk/images/fotogaleria/tlacove-spravy/2019/18092019_TS-UNIZA-DJI-0010.jpg);
+body, html {
+    margin: 0;
+    background-image: url("media/uniza-background-blured.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
-    filter: blur(10px);
+    scroll-behavior: smooth;
 }
+
 
 .kontent {
     min-width: 550px;
     min-height: 450px;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    position: fixed;
+    margin-bottom: 100px;
+    margin-top: 200px;
+    transform: translate(-50%);
+    position: absolute;
     background-color: #b8dbffd1;
     box-shadow: 5px 5px 15px 4px rgba(0, 0, 0, 0.4);
     transition: 0.3s;
@@ -66,20 +67,9 @@ input:focus {
     border-style: solid;
     width: 65%;
     left: 50%;
-    margin: 5px 0px 30px;
+    margin: 10px 0px 30px;
     transform: translate(-50%);
     position: relative;
-}
-
-button {
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-    outline: none;
 }
 
 .tlacidlo-formular {
@@ -89,8 +79,13 @@ button {
     border-style: solid;
     border-color: black;
     font-size: 17px;
+    cursor: pointer;
     font-weight: bold;
+    margin: 8px 0;
+    padding: 14px 20px;
+    opacity: 0.9;
     color: black;
+    outline: none;
 }
 
 .tlacidlo-registrovat {
@@ -103,7 +98,7 @@ button {
     border-left-width: 1px;
 }
 
-.nadpis {
+.nadpis-ramcek {
     position: absolute;
     font-size: 50px;
     top: 5%;
@@ -115,12 +110,176 @@ button {
     white-space: nowrap;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-}
-
 .tlacidlo-prihlasit:hover, .tlacidlo-registrovat:hover {
     color: black;
     background-color: transparent;
+}
+
+.dropdown {
+    position: relative;
+    margin: 10px 0px 30px;
+    text-align: center;
+}
+
+.dropdown select {
+    background-color: #0563af;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    outline: none;
+}
+
+.dropdown::before {
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.dropdown:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown select option {
+    padding: 30px;
+}
+
+
+
+.horne-menu {
+    padding: 25px 30px;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    background-color: #2b3a64;
+    z-index: 20;
+}
+.horne-menu a:hover {
+    color: #2b3a64;
+    background-color: #ddd;
+}
+.horne-menu-vpravo {
+    float: right;
+}
+.horne-menu a.aktivne {
+    background-color: #1e90ffed;
+    color: white;
+}
+.horne-menu a {
+    border-radius: 40px;
+    text-align: center;
+    margin: 0px 2px;
+    float: left;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+.horne-menu-vlavo {
+    float: left;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.skrol-kontajner {
+    width: 100%;
+    position: fixed;
+    height: 8px;
+    z-index: 20;
+    background: #ccc;
+}
+.skrol-indikator {
+    height: 8px;
+    background: orange;
+    width: 0%;
+}
+
+.tlacidlo-ist-hore {
+    position: fixed;
+    right: 30px;
+    bottom: 35px;
+    border-radius: 40px;
+    display: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: black;
+    background-color: orange;
+    padding: 10px 20px;
+    z-index: 10;
+}
+.tlacidlo-ist-hore:hover {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.ikona-tlacidlo {
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+.kontajner-zoznam-tem {
+    background-color: blueviolet;
+    width: 50%;
+    left: 50%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 20px;
+    position: relative;
+    transform: translate(-50%);
+    border-radius: 15px;
+}
+
+.zaver-praca {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #dddddd;
+}
+
+.oddelovac {
+    border-top: 2px dashed black;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.zaver-praca div {
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+#nazov-prace {
+    font-size: 22px;
+    text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+    .horne-menu a {
+        display: block;
+        float: none;
+    }
+    .horne-menu * {
+        display: block;
+        float: none;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 6vw;
+    }
+    .horne-menu div a {
+        font-size: 5vw;
+    }
 }
