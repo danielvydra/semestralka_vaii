@@ -12,6 +12,17 @@ body, html {
     scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: orange;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 .kontent {
     min-width: 550px;
@@ -115,48 +126,6 @@ input:focus {
     background-color: transparent;
 }
 
-.dropdown {
-    position: relative;
-    margin: 10px 0px 30px;
-    text-align: center;
-}
-
-.dropdown select {
-    background-color: #0563af;
-    color: white;
-    padding: 12px;
-    width: 250px;
-    border: none;
-    font-size: 20px;
-    outline: none;
-}
-
-.dropdown::before {
-    font-family: FontAwesome;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20%;
-    height: 100%;
-    text-align: center;
-    font-size: 28px;
-    line-height: 45px;
-    color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-}
-
-.dropdown:hover::before {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.dropdown select option {
-    padding: 30px;
-}
-
-
-
 .horne-menu {
     padding: 25px 30px;
     overflow: hidden;
@@ -184,6 +153,7 @@ input:focus {
     color: white;
     font-size: 18px;
     padding: 10px 15px;
+    text-decoration: none;
 }
 .horne-menu-vlavo {
     float: left;
@@ -191,7 +161,6 @@ input:focus {
     font-size: 25px;
     font-weight: bold;
 }
-
 
 .skrol-kontajner {
     width: 100%;
@@ -233,7 +202,6 @@ input:focus {
 }
 
 .kontajner-zoznam-tem {
-    background-color: blueviolet;
     width: 50%;
     left: 50%;
     margin-top: 60px;
@@ -246,7 +214,8 @@ input:focus {
 
 .zaver-praca {
     margin: 20px;
-    padding: 20px;
+    margin-bottom: 40px;
+    padding: 20px 30px;
     border-radius: 30px;
     background-color: #dddddd;
 }
@@ -267,7 +236,13 @@ input:focus {
     text-align: center;
 }
 
-@media screen and (max-width: 700px) {
+.popis-prace {
+    border: 2px solid black;
+    background-color: transparent;
+    outline: none;
+}
+
+@media (max-width: 700px) {
     .horne-menu a {
         display: block;
         float: none;
@@ -277,9 +252,11 @@ input:focus {
         float: none;
         text-align: center;
         white-space: nowrap;
-        font-size: 6vw;
     }
-    .horne-menu div a {
-        font-size: 5vw;
+    .kontajner-zoznam-tem {
+        width: 95%;
+    }
+    .kontajner-zoznam-tem {
+        margin-top: 0px;
     }
 }

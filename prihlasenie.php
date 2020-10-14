@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="dizajn.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <div class="nadpis-ramcek">Systém záverečných prác</div>
     <div id="kontent" class="kontent">
-        <form class="formular-registracia">
+        <form class="formular-registracia" action="authentication.php" method="post">
             <h1 class="stred">Prihlásenie</h1>
             <p class="stred">Vyplňte prosím nasledujúce údaje pre prihlásenie</p>
             <label for="os_cislo" class="stred"><b>Osobné číslo</b></label>
@@ -23,7 +24,7 @@
             <label for="heslo" class="stred"><b>Heslo</b></label>
             <div class="input-riadok">
                 <div class="fas fa-key ikona"></div>
-                <input id="heslo" type="password" placeholder="Vložte heslo" name="password" required>
+                <input id="heslo" type="password" placeholder="Vložte heslo" name="heslo" required>
             </div>
 
             <div>
