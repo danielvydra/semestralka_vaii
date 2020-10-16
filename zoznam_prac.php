@@ -16,6 +16,7 @@ include 'database.php';
     <link rel="stylesheet" href="dizajn.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body onscroll="skrolovanie()">
@@ -38,7 +39,7 @@ include 'database.php';
 
     <div class="kontajner-zoznam-tem">
         <div id="id-prace" class="zaver-praca modal">
-            <div id="nazov-prace"><b>Názov témy Názov témy Názov témy Názov témy </b></div>
+            <div id="nazov-prace" class="nazov-prace"><b>Názov témy Názov témy Názov témy Názov témy </b></div>
             <hr class="oddelovac">
             <div><b>Anglický názov témy:</b> aslkdjfasjdfasjdfjasldfj</div>
             <div><b>Predmet práce:</b> asdofsdofijasidjfoaisjdfoiaj</div>
@@ -56,14 +57,13 @@ include 'database.php';
             $veduci = getVeduci($praca["id_veduci"]);
 
             echo '<div id="'. $praca["id_tema"] .'" class="zaver-praca">';
-            echo '<div id="nazov-prace"><b>'. $praca["nazov_sk"] .'</b></div>';
+            echo '<div id="nazov-prace" class="nazov-prace"><b>'. $praca["nazov_sk"] .'</b></div>';
             echo '<hr class="oddelovac">';
             echo '<div><b>Anglický názov témy: '. $praca["nazov_en"] .'</b></div>';
             echo '<div><b>Predmet práce: </b>'. $praca["popis"] .'</div>';
             echo '<div><b>Typ práce: </b>'. $typ_prace .'</div>';
             echo '<div><b>Vedúci: </b>'. $veduci["titul_pred"] . " " . $veduci["meno"] . " " .  $veduci["titul_za"] .'</div>';
-            echo '<div><b>Mentor: </b>'. $praca["id_mentor"] .'</div>';
-            echo password_verify("hehslo", "$2y$10$8e5px1vlJPgMiZd02IZwOOvZD9bmRlhkyFsxSkhIw2Bpx3GZ5NoaG");
+//            echo '<div><b>Mentor: </b>'. $praca["id_mentor"] .'</div>';
             if ($student != null) {
                 echo '<div><b>Študent: </b>'. $student["titul_pred"] . " " . $student["meno"] . " " .  $student["titul_za"] .'</div>';
             } else {

@@ -44,16 +44,32 @@ function getStudent($id_student) {
 
 function getVeduci($id_veduci) {
     if ($id_veduci != null) {
-        $sql = "select t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, k.nazov as katedra, ou.vytvorenie, ou.upravenie from os_udaje ou
+        $sql = "select t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, k.nazov as katedra, ou.vytvorenie, ou.upravenie, u.miestnost, u.volna_kapacita, f.nazov as nazov_fakulty from os_udaje ou
         join ucitelia u on ou.id_osoba = u.id_osoba
         join tituly t on t.id_titul = ou.id_titul_pred
-        join tituly t2 on t2.id_titul = ou.id_titul_za
         join katedry k on k.id_katedra = u.id_katedra
+        join fakulty f on f.id_fakulta = k.id_fakulta
+        join tituly t2 on t2.id_titul = ou.id_titul_za
         where ou.id_osoba = ". $id_veduci ." ;";
         $result_veduci = $GLOBALS['conn']->query($sql);
         $veduci = $result_veduci->fetch_array();
         return $veduci;
     }
+}
+
+function getTypyPrac() {
+    $sql = "select * from typy_prac;";
+    $result_typy_prac = $GLOBALS['conn']->query($sql);
+    return $result_typy_prac;
+}
+
+function getPouzivatelov() {
+    $sql = "select ou.id_osoba, t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, ou.vytvorenie, ou.upravenie, r.nazov as nazov_role from os_udaje ou
+    join tituly t on t.id_titul = ou.id_titul_pred
+    join role r on r.id_rola = ou.id_rola
+    join tituly t2 on t2.id_titul = ou.id_titul_za;";
+    $result_uzivatelia = $GLOBALS['conn']->query($sql);
+    return $result_uzivatelia;
 }
 
 ?>

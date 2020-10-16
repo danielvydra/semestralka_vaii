@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="dizajn.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

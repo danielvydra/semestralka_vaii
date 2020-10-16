@@ -13,6 +13,7 @@ include 'database.php';
 <!--        <link rel="stylesheet" href="bootstrap/css/bootstrap.css">-->
         <link rel="stylesheet" href="dizajn.css">
         <link rel="stylesheet" href="fontawesome/css/all.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -34,30 +35,40 @@ include 'database.php';
         <div id="skrol-indikator" class="skrol-indikator"></div>
     </div>
 
-    <div class="kontajner-zoznam-tem">
-        <div id="id-prace" class="zaver-praca">
+    <div class="kontajner-zoznam-tem kont-nova-tema">
+        <div id="id-prace" class="zaver-praca nova-tema">
 
             <form id="nova-tema" class="formular-registracia">
                 <h1 class="stred">Pridávanie tém</h1>
                 <p class="stred">Vyplňte prosím nasledujúce údaje pre pridanie témy</p>
 
-                <label for="nazov-prace-input" class="stred"><b>Názov práce</b></label>
+                <label for="nazov-prace-input" class="stred stitok"><b>Názov práce</b></label>
                 <div class="input-riadok">
-                    <div class="fas fa-user ikona"></div>
+                    <div class="fas fa-heading ikona"></div>
                     <input id="nazov-prace-input" type="text" placeholder="Vložte názov práce" name="nazov-prace" required>
                 </div>
 
-                <label for="popis-prace" class="stred"><b>Popis práce</b></label>
-                <textarea id="popis-prace" class="popis-prace" rows="4" cols="50" name="popis-prace" form="nova-tema"></textarea>
-
-                <label for="ang-nazov-prace" class="stred"><b>Anglický názov práce</b></label>
+                <label for="ang-nazov-prace" class="stred stitok"><b>Anglický názov práce</b></label>
                 <div class="input-riadok">
-                    <div class="fas fa-user ikona"></div>
+                    <div class="fas fa-language ikona"></div>
                     <input id="ang-nazov-prace" type="text" placeholder="Vložte anglický názov práce" name="ang-nazov-prace" required>
                 </div>
 
+                <label for="popis-prace" class="stred stitok"><b>Popis práce</b></label>
+                <textarea id="popis-prace" class="popis-prace" placeholder="Zadajte cieľ práce" rows="4" cols="50" name="popis-prace" form="nova-tema"></textarea>
+
+                <label for="typ-prace" class="stred stitok"><b>Typ práce</b></label>
+                <select name="typ-prace" class="popis-prace dropdown" id="typ-prace" form="nova-tema">
+                    <?php
+                    $result_typy_prac = getTypyPrac();
+                    while ($typ_prace = $result_typy_prac->fetch_array()) {
+                        echo '<option value="'. $typ_prace["id_typ"] .'">'. $typ_prace["nazov"] .'</option>';
+                    }
+                    ?>
+                </select>
+
                 <div>
-                    <button type="submit" class="tlacidlo-prihlasit tlacidlo-formular">Prihlásiť</button>
+                    <button type="submit" class="tlacidlo-potvrdit tlacidlo-formular">Pridať</button>
                 </div>
             </form>
 

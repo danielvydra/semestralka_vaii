@@ -24,18 +24,15 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Vytvorenie prvotnej štruktúry stránky zoznamu prác, pridanie vizuálnych prvkov + test prepojenia s databázou a ďalšie menšie úpravy">
-      <change afterPath="$PROJECT_DIR$/authentication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jquery-3.5.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/uniza-background-blured.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oblubene_temy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/odhlasenie.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pouzivatelia.php" afterDir="false" />
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/authentication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/dizajn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/pouzivatelia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pridavanie_tem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/prihlasenie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registracia.php" beforeDir="false" afterPath="$PROJECT_DIR$/registracia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoznam_prac.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +98,9 @@
       <workItem from="1602407076874" duration="1137000" />
       <workItem from="1602409857776" duration="30841000" />
       <workItem from="1602504453895" duration="18858000" />
-      <workItem from="1602663368867" duration="26738000" />
+      <workItem from="1602663368867" duration="26958000" />
+      <workItem from="1602749387445" duration="20339000" />
+      <workItem from="1602847618236" duration="611000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -117,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602539912331</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu">
+      <created>1602714345307</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1602714345307</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +147,8 @@
     </ignored-roots>
     <MESSAGE value="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia" />
     <MESSAGE value="Vytvorenie prvotnej štruktúry stránky zoznamu prác, pridanie vizuálnych prvkov + test prepojenia s databázou a ďalšie menšie úpravy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vytvorenie prvotnej štruktúry stránky zoznamu prác, pridanie vizuálnych prvkov + test prepojenia s databázou a ďalšie menšie úpravy" />
+    <MESSAGE value="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -169,10 +176,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1602539921552">
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1602714353538">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602539921552" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602714353538" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602714242654">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
