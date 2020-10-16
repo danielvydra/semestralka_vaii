@@ -24,15 +24,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu">
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Vytvorenie štruktúry stránky používateľov + ďalšie menšie zmeny na ostatných stránkach">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/authentication.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/dizajn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/pouzivatelia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pridavanie_tem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/prihlasenie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registracia.php" beforeDir="false" afterPath="$PROJECT_DIR$/registracia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoznam_prac.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +99,7 @@
       <workItem from="1602504453895" duration="18858000" />
       <workItem from="1602663368867" duration="26958000" />
       <workItem from="1602749387445" duration="20339000" />
-      <workItem from="1602847618236" duration="611000" />
+      <workItem from="1602847618236" duration="25589000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -123,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602714345307</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Vytvorenie štruktúry stránky používateľov + ďalšie menšie zmeny na ostatných stránkach">
+      <created>1602848601840</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1602848601840</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +154,8 @@
     <MESSAGE value="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia" />
     <MESSAGE value="Vytvorenie prvotnej štruktúry stránky zoznamu prác, pridanie vizuálnych prvkov + test prepojenia s databázou a ďalšie menšie úpravy" />
     <MESSAGE value="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu" />
+    <MESSAGE value="Vytvorenie štruktúry stránky používateľov + ďalšie menšie zmeny na ostatných stránkach" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vytvorenie štruktúry stránky používateľov + ďalšie menšie zmeny na ostatných stránkach" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">

@@ -1,5 +1,5 @@
 * {
-    font-family: 'Poppins', 'Roboto', 'sans-serif';
+    font-family: 'Poppins', 'Roboto', sans-serif;
 }
 
 body, html {
@@ -205,7 +205,7 @@ input:focus {
 .kontajner-zoznam-tem {
     width: 50%;
     left: 50%;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
     margin-bottom: 60px;
     padding: 20px;
     position: relative;
@@ -268,6 +268,7 @@ input:focus {
 
 .kont-nova-tema {
     width: 40%;
+    margin-top: 2vw;
 }
 
 .nova-tema {
@@ -292,6 +293,9 @@ input:focus {
     width: 15vw;
     position: relative;
     cursor: pointer;
+}
+
+.transform-stred {
     left: 50%;
     transform: translate(-50%);
 }
@@ -307,6 +311,61 @@ input:focus {
 
 .not-ok {
     color: #ff382e;
+}
+
+#filter-prac input {
+    width: auto;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+#filter-prac h1 {
+    margin: 5px;
+    color: #2b3a64;
+    cursor: pointer;
+}
+
+.filter {
+    width: 55%;
+    /*margin-top: 100px;*/
+    position: relative;
+    background-color: #c0d3fbed;
+    margin: 50px auto 30px auto;
+    padding: 0px;
+}
+
+.tlacidlo-filter {
+    margin-top: auto;
+    width: 25%;
+    padding: 8px;
+}
+
+#meno-pouzivatela {
+    cursor: pointer;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #2b3a64;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 15px;
+    font-size: 15px;
+    position: absolute;
+    z-index: 1;
+    top: -85%;
+    transform: translate(-50%);
+    left: 50%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 @media (max-width: 700px) {

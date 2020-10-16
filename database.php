@@ -72,4 +72,22 @@ function getPouzivatelov() {
     return $result_uzivatelia;
 }
 
+function getKatedry() {
+    $sql = "select id_katedra, nazov from katedry;";
+    $result_katedry = $GLOBALS['conn']->query($sql);
+    return $result_katedry;
+}
+
+function getStavyPrace() {
+    $sql = "select id_stav, stav from stavy_prace;";
+    $result_stavy_prace = $GLOBALS['conn']->query($sql);
+    return $result_stavy_prace;
+}
+
+function getTypyOsob() {
+    $sql = "select id_rola, nazov as nazov_role from role;";
+    $result_typy_osob = $GLOBALS['conn']->query($sql);
+    return $result_typy_osob;
+}
+
 ?>

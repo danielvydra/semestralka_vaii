@@ -1,7 +1,7 @@
 function test() {
     var dropdown = document.getElementById("role-dropdown");
     var value = dropdown.options[dropdown.selectedIndex].value;
-    if (value == 1) {
+    if (value === 1) {
         var formular = document.getElementById("formular-registracia");
         var input = document.createElement("input");
         input.type = "text";
@@ -33,4 +33,13 @@ function skrolovanie() {
 function istHore() {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+}
+
+function zobrazViacInfo(element) {
+    var sibling = element.nextSibling;
+    if (sibling.style.display === "none") {
+        sibling.style.display = "block";
+    } else {
+        sibling.style.display = "none";
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 include 'database.php';
+session_start();
 ?>
 
     <!DOCTYPE html>
@@ -23,10 +24,16 @@ include 'database.php';
         <div class="horne-menu-vlavo">Systém záverečných prác</div>
         <div class="horne-menu-vpravo">
             <a href="zoznam_prac.php"><div class="fa fa-stream ikona-tlacidlo"></div>Zoznam prác</a>
-            <a href="oblubene_temy.php"><div class="fa fa-star ikona-tlacidlo"></div>Obľúbené témy</a>
             <a href="pouzivatelia.php"><div class="fa fa-users ikona-tlacidlo"></div>Používatelia</a>
             <a href="osobne_udaje.php"><div class="fa fa-address-card ikona-tlacidlo"></div>Osobné údaje</a>
-            <a class="aktivne" href="pridavanie_tem.php"><div class="fa fa-plus ikona-tlacidlo"></div>Pridávanie tém</a>
+            <?php
+            if ($_SESSION["rola"] == "ucitel") {
+                echo '<a class="aktivne" href="pridavanie_tem.php"><div class="fa fa-plus ikona-tlacidlo"></div>Pridávanie tém</a>';
+
+            } else if ($_SESSION["rola"] == "student") {
+                echo '<a href="oblubene_temy.php"><div class="fa fa-star ikona-tlacidlo"></div>Obľúbené témy</a>';
+            }
+            ?>
             <a href="odhlasenie.php"><div class="fa fa-power-off ikona-tlacidlo"></div>Odhlásiť</a>
         </div>
 
@@ -58,7 +65,7 @@ include 'database.php';
                 <textarea id="popis-prace" class="popis-prace" placeholder="Zadajte cieľ práce" rows="4" cols="50" name="popis-prace" form="nova-tema"></textarea>
 
                 <label for="typ-prace" class="stred stitok"><b>Typ práce</b></label>
-                <select name="typ-prace" class="popis-prace dropdown" id="typ-prace" form="nova-tema">
+                <select name="typ-prace" class="popis-prace dropdown transform-stred" id="typ-prace" form="nova-tema">
                     <?php
                     $result_typy_prac = getTypyPrac();
                     while ($typ_prace = $result_typy_prac->fetch_array()) {
@@ -75,7 +82,7 @@ include 'database.php';
         </div>
     </div>
 
-    <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()"><div class="fa fa-arrow-up ikona-tlacidlo"></div>Hore</button>
+    <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()"><i class="fa fa-arrow-up ikona-tlacidlo"></i>Hore</button>
 
     </body>
     </html>
