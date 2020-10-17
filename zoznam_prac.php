@@ -23,8 +23,10 @@ session_start();
 <body onscroll="skrolovanie()">
 
     <div class="horne-menu">
-        <div class="horne-menu-vlavo">Systém záverečných prác</div>
-        <div class="horne-menu-vpravo">
+        <div>
+            <div class="horne-menu-vlavo">Systém záverečných prác<div onclick="zobrazMenu()" class="fa fa-bars ikona menu-ikona"></div></div>
+        </div>
+        <div id="horne-menu-vpravo" class="horne-menu-vpravo">
             <a class="aktivne"><div class="fa fa-stream ikona-tlacidlo"></div>Zoznam prác</a>
             <a href="pouzivatelia.php"><div class="fa fa-users ikona-tlacidlo"></div>Používatelia</a>
             <a href="osobne_udaje.php"><div class="fa fa-address-card ikona-tlacidlo"></div>Osobné údaje</a>
@@ -53,7 +55,7 @@ session_start();
                 </div>
 
                 <div class="stred">
-                    <select name="typ-prace" class="popis-prace dropdown" form="filter-prac" >
+                    <select name="typ-prace" class="popis-prace dropdown" form="filter-prac">
                         <option value="0">Typ práce</option>
                         <?php
                         $result_typy_prac = getTypyPrac();
@@ -96,14 +98,14 @@ session_start();
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter">Filtruj</button>
+                    <button id="filtrovat" type="submit" onclick="ajaxTest()" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter">Filtruj</button>
                 </div>
             </div>
 
         </form>
     </div>
 
-    <div class="kontajner-zoznam-tem">
+    <div id="zoznam-prac" class="kontajner-zoznam-tem">
         <?php
         $prace = getZaverecnePrace();
         if ($prace != null && mysqli_num_rows($prace) > 0) {
@@ -119,12 +121,12 @@ session_start();
                 echo '<div><b>Predmet práce: </b>'. $praca["popis"] .'</div>';
                 echo '<div><b>Typ práce: </b>'. $typ_prace .'</div>';
                 echo '<div><b>Vedúci: </b>'. $veduci["titul_pred"] . " " . $veduci["meno"] . " " .  $veduci["titul_za"] .'</div>';
-//            echo '<div><b>Mentor: </b>'. $praca["id_mentor"] .'</div>';
                 if ($student != null) {
                     echo '<div><b>Študent: </b>'. $student["titul_pred"] . " " . $student["meno"] . " " .  $student["titul_za"] .'</div>';
                 } else {
                     echo '<div><b>Študent: </b></div>';
                 }
+                echo '<button class="tlacidlo-prihlasit transform-stred tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i>Pridať medzi obľúbené</button>';
                 echo '</div>';
             }
         } else {
@@ -132,9 +134,7 @@ session_start();
             echo '<div class="stred">Neboli nájdené žiadne práce.</div>';
             echo '</div>';
         }
-
         ?>
-
     </div>
 
     <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()"><i class="fa fa-arrow-up ikona-tlacidlo"></i>Hore</button>

@@ -23,8 +23,8 @@ session_start();
 <body onscroll="skrolovanie()">
 
     <div class="horne-menu">
-        <div class="horne-menu-vlavo">Systém záverečných prác</div>
-        <div class="horne-menu-vpravo">
+        <div class="horne-menu-vlavo">Systém záverečných prác<div onclick="zobrazMenu()" class="fa fa-bars ikona menu-ikona"></div></div>
+        <div id="horne-menu-vpravo"  class="horne-menu-vpravo">
             <a href="zoznam_prac.php">
                 <div class="fa fa-stream ikona-tlacidlo"></div>
                 Zoznam prác</a>

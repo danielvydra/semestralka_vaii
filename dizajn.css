@@ -298,6 +298,7 @@ input:focus {
 .transform-stred {
     left: 50%;
     transform: translate(-50%);
+    position: relative;
 }
 
 .info-ikona {
@@ -364,11 +365,35 @@ input:focus {
     left: 50%;
 }
 
+.tlacidlo-oblubene {
+    padding: 5px 30px;
+    outline: none;
+    background-color: #9acb43;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
 
-@media (max-width: 700px) {
+.horne-menu-vlavo .menu-ikona {
+    display: none;
+}
+
+@media screen and (min-width: 1280px) {
+    .horne-menu .horne-menu-vpravo {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .horne-menu .horne-menu-vlavo {
+        font-size: x-large;
+    }
+}
+
+@media screen and (max-width: 1280px) {
     .horne-menu a {
         display: block;
         float: none;
@@ -384,5 +409,28 @@ input:focus {
     }
     .kontajner-zoznam-tem {
         margin-top: 0px;
+    }
+    .horne-menu-vlavo {
+        font-size: 5vw;
+    }
+    .horne-menu-vlavo div {
+        cursor: pointer;
+    }
+    .horne-menu-vpravo, .tooltiptext {
+        display: none;
+        margin-top: 20px;
+    }
+    .horne-menu-vlavo .menu-ikona {
+        display: inline;
+    }
+    .filter {
+        width: 90%;
+    }
+    .dropdown {
+        width: 90%;
+    }
+    #filter-prac input {
+        width: 80%;
+        margin: 10px 0px;
     }
 }

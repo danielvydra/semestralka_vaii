@@ -1,21 +1,3 @@
-function test() {
-    var dropdown = document.getElementById("role-dropdown");
-    var value = dropdown.options[dropdown.selectedIndex].value;
-    if (value === 1) {
-        var formular = document.getElementById("formular-registracia");
-        var input = document.createElement("input");
-        input.type = "text";
-        input.name = "miestnost"
-        input.id = "miestnost";
-        input.required = true;
-        input.placeholder = "Vložte miestnosť";
-        if (document.getElementById("miestnost") == null)
-            formular.appendChild(input);
-    } else  {
-        document.getElementById("miestnost").remove();
-    }
-}
-
 function skrolovanie() {
     var vyska = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     var skrol = document.body.scrollTop || document.documentElement.scrollTop;
@@ -42,4 +24,21 @@ function zobrazViacInfo(element) {
     } else {
         sibling.style.display = "none";
     }
+}
+
+function zobrazMenu() {
+    var element = document.getElementById("horne-menu-vpravo");
+    if (element.style.display === "none" || element.style.display == "") {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
+    $(window).resize(function(){
+        if($(this).width() >= 1280){
+            $('.horne-menu-vpravo').show();
+        }
+        else{
+            $('.horne-menu-vpravo').hide();
+        }
+    });
 }

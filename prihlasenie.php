@@ -13,7 +13,7 @@
 <body>
     <div class="nadpis-ramcek">Systém záverečných prác</div>
     <div id="kontent" class="kontent">
-        <form class="formular-registracia" action="authentication.php" method="post">
+        <form class="formular-registracia" action="autentifikacia.php" method="post">
             <h1 class="stred">Prihlásenie</h1>
             <p class="stred">Vyplňte prosím nasledujúce údaje pre prihlásenie</p>
             <label for="os_cislo" class="stred"><b>Osobné číslo</b></label>
