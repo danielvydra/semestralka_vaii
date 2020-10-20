@@ -25,24 +25,22 @@ body, html {
     width: 9px;
 }
 
-.kontent {
+.prihl-okno {
     min-width: 550px;
-    min-height: 450px;
     left: 50%;
-    margin-bottom: 100px;
-    margin-top: 200px;
-    transform: translate(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     position: absolute;
     background-color: #b8dbffd1;
     box-shadow: 5px 5px 15px 4px rgba(0, 0, 0, 0.4);
     transition: 0.3s;
 }
 
-.kontent:hover {
+.prihl-okno:hover {
     box-shadow: 10px 10px 16px 8px rgba(0, 0, 0, 0.2);
 }
 
-.formular-registracia {
+.formular {
     padding: 20px;
     display: grid;
 }
@@ -79,14 +77,13 @@ input:focus {
     border-style: solid;
     width: 65%;
     left: 50%;
-    margin: 10px 0px 30px;
+    margin: 10px 0 30px;
     transform: translate(-50%);
     position: relative;
 }
 
 .tlacidlo-formular {
     width: 50%;
-    float: left;
     border-width: 3px;
     border-style: solid;
     border-color: black;
@@ -100,31 +97,16 @@ input:focus {
     outline: none;
 }
 
-.tlacidlo-registrovat {
-    background-color: yellowgreen;
-    border-right-width: 1px;
-}
-
-.tlacidlo-prihlasit {
-    background-color: orange;
-    border-left-width: 1px;
-}
-
 .nadpis-ramcek {
     position: absolute;
     font-size: 50px;
     top: 5%;
     border-style: solid;
     padding: 20px 30px 20px 30px;
-    left: 50%;
-    transform: translate(-50%);
     font-weight: bold;
     white-space: nowrap;
-}
-
-.tlacidlo-prihlasit:hover, .tlacidlo-registrovat:hover {
-    color: black;
-    background-color: transparent;
+    transform: translate(-50%);
+    left: 50%;
 }
 
 .horne-menu {
@@ -149,7 +131,7 @@ input:focus {
 .horne-menu a {
     border-radius: 40px;
     text-align: center;
-    margin: 0px 2px;
+    margin: 0 2px;
     float: left;
     color: white;
     font-size: 18px;
@@ -173,7 +155,7 @@ input:focus {
 .skrol-indikator {
     height: 8px;
     background: orange;
-    width: 0%;
+    width: 0;
 }
 
 .tlacidlo-ist-hore {
@@ -204,18 +186,14 @@ input:focus {
 
 .kontajner-zoznam-tem {
     width: 50%;
-    left: 50%;
     /*margin-top: 60px;*/
     margin-bottom: 60px;
     padding: 20px;
-    position: relative;
-    transform: translate(-50%);
     border-radius: 15px;
 }
 
 .zaver-praca {
-    margin: 20px;
-    margin-bottom: 40px;
+    margin: 20px 20px 40px;
     padding: 20px 30px;
     border-radius: 30px;
     font-size: 17px;
@@ -226,6 +204,11 @@ input:focus {
 
 .zaver-praca:hover {
     box-shadow: 10px 10px 16px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pouzivatelia {
+    margin-bottom: auto;
+    cursor: pointer;
 }
 
 .oddelovac {
@@ -239,7 +222,7 @@ input:focus {
     margin-top: 8px;
 }
 
-.popis-prace {
+.medzery {
     margin-bottom: 5px;
     margin-top: 8px;
 }
@@ -255,7 +238,7 @@ input:focus {
     text-align: center;
 }
 
-.popis-prace {
+.medzery {
     border: 2px solid black;
     background-color: transparent;
     outline: none;
@@ -276,9 +259,6 @@ input:focus {
 }
 
 .tlacidlo-potvrdit {
-    transform: translate(-50%);
-    position: relative;
-    left: 50%;
     width: 40%;
     background-color: orange;
     margin-top: 30px;
@@ -332,17 +312,13 @@ input:focus {
     position: relative;
     background-color: #c0d3fbed;
     margin: 50px auto 30px auto;
-    padding: 0px;
+    padding: 0;
 }
 
 .tlacidlo-filter {
     margin-top: auto;
     width: 25%;
     padding: 8px;
-}
-
-#meno-pouzivatela {
-    cursor: pointer;
 }
 
 .tooltip {
@@ -354,6 +330,8 @@ input:focus {
     visibility: hidden;
     background-color: #2b3a64;
     color: white;
+    transform: translate(-50%);
+    left: 50%;
     text-align: center;
     border-radius: 6px;
     padding: 5px 15px;
@@ -361,8 +339,6 @@ input:focus {
     position: absolute;
     z-index: 1;
     top: -85%;
-    transform: translate(-50%);
-    left: 50%;
 }
 
 .tlacidlo-oblubene {
@@ -371,6 +347,10 @@ input:focus {
     background-color: #9acb43;
     border: 2px solid black;
     cursor: pointer;
+}
+
+.tlacidlo-oblubene:hover {
+    background-color: transparent;
 }
 
 .tooltip:hover .tooltiptext {
@@ -393,6 +373,26 @@ input:focus {
     }
 }
 
+@media screen and (max-width: 760px) {
+    .prihl-okno {
+        width: 90vw;
+        min-width: auto;
+    }
+    .nadpis-ramcek {
+        font-size: 5vw;
+        padding: 5px;
+    }
+    .prihl-okno input {
+        font-size: 3vw;
+        width: 80%;
+        padding: 2px;
+    }
+    .input-riadok {
+        width: 95%;
+        padding-top: 7px;
+    }
+}
+
 @media screen and (max-width: 1280px) {
     .horne-menu a {
         display: block;
@@ -408,7 +408,7 @@ input:focus {
         width: 95%;
     }
     .kontajner-zoznam-tem {
-        margin-top: 0px;
+        margin-top: 0;
     }
     .horne-menu-vlavo {
         font-size: 5vw;
@@ -430,7 +430,7 @@ input:focus {
         width: 90%;
     }
     #filter-prac input {
-        width: 80%;
+        width: 87%;
         margin: 10px 0px;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include 'databaza.php';
 session_start();
 ?>
 
@@ -46,8 +46,8 @@ session_start();
     </div>
 
     <div class="zaver-praca filter">
-        <form id="filter-prac" class="formular-registracia">
-            <h1 class="stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1
+        <form id="filter-prac" class="formular">
+            <h1 class="stred transform-stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1
             ><div style="display: none;">
                 <div class="stred">
                     <input name="nazov-prace" type="text" placeholder="Vložte názov práce">
@@ -55,7 +55,7 @@ session_start();
                 </div>
 
                 <div class="stred">
-                    <select name="typ-prace" class="popis-prace dropdown" form="filter-prac">
+                    <select name="typ-prace" class="medzery dropdown" form="filter-prac">
                         <option value="0">Typ práce</option>
                         <?php
                         $result_typy_prac = getTypyPrac();
@@ -64,7 +64,7 @@ session_start();
                         }
                         ?>
                     </select>
-                    <select name="katedra" class="popis-prace dropdown" form="filter-prac" >
+                    <select name="katedra" class="medzery dropdown" form="filter-prac" >
                         <option value="0">Katedra</option>
                         <?php
                         $result_katedry = getKatedry();
@@ -73,7 +73,7 @@ session_start();
                         }
                         ?>
                     </select>
-                    <select name="stav-prace" class="popis-prace dropdown" form="filter-prac" >
+                    <select name="stav-prace" class="medzery dropdown" form="filter-prac" >
                     <option value="0">Stav práce</option>
                     <?php
                     $result_stavy_prace = getStavyPrace();
@@ -85,27 +85,27 @@ session_start();
                 </div>
 
                 <div class="stred">
-                    <select name="triedit-podla" class="popis-prace dropdown" form="filter-prac" >
+                    <select name="triedit-podla" class="medzery dropdown" form="filter-prac" >
                         <option value="0">Triediť podľa</option>
                         <option value="nazov">Názov témy</option>
                         <option value="ucitel">Meno vedúceho</option>
                         <option value="typ-prace">Typ práce</option>
                         <option value="katedra">Katedra</option>
                     </select>
-                    <select name="triedit-ako" class="popis-prace dropdown" form="filter-prac" >
+                    <select name="triedit-ako" class="medzery dropdown" form="filter-prac" >
                         <option value="vzostupne">Vzostupne</option>
                         <option value="zostupne">Zostupne</option>
                     </select>
                 </div>
                 <div>
-                    <button id="filtrovat" type="submit" onclick="ajaxTest()" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter">Filtruj</button>
+                    <button id="filtrovat" type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter">Filtruj</button>
                 </div>
             </div>
 
         </form>
     </div>
 
-    <div id="zoznam-prac" class="kontajner-zoznam-tem">
+    <div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">
         <?php
         $prace = getZaverecnePrace();
         if ($prace != null && mysqli_num_rows($prace) > 0) {
@@ -126,7 +126,7 @@ session_start();
                 } else {
                     echo '<div><b>Študent: </b></div>';
                 }
-                echo '<button class="tlacidlo-prihlasit transform-stred tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i>Pridať medzi obľúbené</button>';
+                echo '<button class="transform-stred tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i>Pridať medzi obľúbené</button>';
                 echo '</div>';
             }
         } else {

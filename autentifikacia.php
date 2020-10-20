@@ -1,6 +1,6 @@
 <?php
 
-include 'database.php';
+include 'databaza.php';
 session_start();
 
 if (!isset($_POST['os_cislo'], $_POST['heslo'])) {

@@ -24,13 +24,15 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Vytvorenie filtrov v podobe formulárov pre používateľov a záverečné práce, pridanie tooltipov, toggle kariet (skrývanie + odkrývanie), doplnenie databázy test dátami + menšie zmeny v dizajne">
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Zlepšenie responzivity + pridanie tlačidiel pre obľúbené témy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/autentifikacia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autentifikacia.php" beforeDir="false" afterPath="$PROJECT_DIR$/autentifikacia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/databaza.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/dizajn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/pouzivatelia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pridavanie_tem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/prihlasenie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registracia.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoznam_prac.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +101,8 @@
       <workItem from="1602663368867" duration="26958000" />
       <workItem from="1602749387445" duration="20339000" />
       <workItem from="1602847618236" duration="26569000" />
-      <workItem from="1602936819307" duration="15871000" />
+      <workItem from="1602936819307" duration="15959000" />
+      <workItem from="1603179965848" duration="12098000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -136,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602890240333</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Zlepšenie responzivity + pridanie tlačidiel pre obľúbené témy">
+      <created>1602970357796</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1602970357796</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +173,8 @@
     <MESSAGE value="Pridané prihlasovanie a odhlasovanie, import jQuery + menšie zmeny kódu" />
     <MESSAGE value="Vytvorenie štruktúry stránky používateľov + ďalšie menšie zmeny na ostatných stránkach" />
     <MESSAGE value="Vytvorenie filtrov v podobe formulárov pre používateľov a záverečné práce, pridanie tooltipov, toggle kariet (skrývanie + odkrývanie), doplnenie databázy test dátami + menšie zmeny v dizajne" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vytvorenie filtrov v podobe formulárov pre používateľov a záverečné práce, pridanie tooltipov, toggle kariet (skrývanie + odkrývanie), doplnenie databázy test dátami + menšie zmeny v dizajne" />
+    <MESSAGE value="Zlepšenie responzivity + pridanie tlačidiel pre obľúbené témy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Zlepšenie responzivity + pridanie tlačidiel pre obľúbené témy" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -191,14 +202,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1602890265362">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1602970359608">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602890265362" />
-    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602714353538" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602970359608" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602714242654">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602714242654" />
+    <state x="2587" y="139" width="585" height="801" key="find.popup" timestamp="1603216448749">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603216448749" />
   </component>
 </project>

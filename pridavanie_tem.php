@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include 'databaza.php';
 session_start();
 ?>
 
@@ -21,8 +21,8 @@ session_start();
     <body onscroll="skrolovanie()">
 
     <div class="horne-menu">
-        <div class="horne-menu-vlavo">Systém záverečných prác</div>
-        <div class="horne-menu-vpravo">
+        <div class="horne-menu-vlavo">Systém záverečných prác<div onclick="zobrazMenu()" class="fa fa-bars ikona menu-ikona"></div></div>
+        <div id="horne-menu-vpravo" class="horne-menu-vpravo">
             <a href="zoznam_prac.php"><div class="fa fa-stream ikona-tlacidlo"></div>Zoznam prác</a>
             <a href="pouzivatelia.php"><div class="fa fa-users ikona-tlacidlo"></div>Používatelia</a>
             <a href="osobne_udaje.php"><div class="fa fa-address-card ikona-tlacidlo"></div>Osobné údaje</a>
@@ -42,10 +42,10 @@ session_start();
         <div id="skrol-indikator" class="skrol-indikator"></div>
     </div>
 
-    <div class="kontajner-zoznam-tem kont-nova-tema">
+    <div class="kontajner-zoznam-tem kont-nova-tema transform-stred">
         <div id="id-prace" class="zaver-praca nova-tema">
 
-            <form id="nova-tema" class="formular-registracia">
+            <form id="nova-tema" class="formular">
                 <h1 class="stred">Pridávanie tém</h1>
                 <p class="stred">Vyplňte prosím nasledujúce údaje pre pridanie témy</p>
 
@@ -62,10 +62,10 @@ session_start();
                 </div>
 
                 <label for="popis-prace" class="stred stitok"><b>Popis práce</b></label>
-                <textarea id="popis-prace" class="popis-prace" placeholder="Zadajte cieľ práce" rows="4" cols="50" name="popis-prace" form="nova-tema"></textarea>
+                <textarea id="popis-prace" class="medzery" placeholder="Zadajte cieľ práce" rows="4" cols="50" name="popis-prace" form="nova-tema"></textarea>
 
                 <label for="typ-prace" class="stred stitok"><b>Typ práce</b></label>
-                <select name="typ-prace" class="popis-prace dropdown transform-stred" id="typ-prace" form="nova-tema">
+                <select name="typ-prace" class="medzery dropdown transform-stred" id="typ-prace" form="nova-tema">
                     <?php
                     $result_typy_prac = getTypyPrac();
                     while ($typ_prace = $result_typy_prac->fetch_array()) {
@@ -75,7 +75,7 @@ session_start();
                 </select>
 
                 <div>
-                    <button type="submit" class="tlacidlo-potvrdit tlacidlo-formular">Pridať</button>
+                    <button type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular">Pridať</button>
                 </div>
             </form>
 

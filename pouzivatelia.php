@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include 'databaza.php';
 session_start();
 ?>
 
@@ -53,13 +53,13 @@ session_start();
     </div>
 
     <div class="zaver-praca filter">
-        <form id="filter-prac" class="formular-registracia">
-            <h1 class="stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1
+        <form id="filter-prac" class="formular">
+            <h1 class="stred transform-stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1
             ><div style="display: none;">
                 <div class="stred">
                     <input name="meno-osoby" type="text" placeholder="Meno osoby">
-                    <select name="typ-osoby" class="popis-prace dropdown" form="filter-prac" required>
-                        <option value="0">Typ osoby</option>
+                    <select name="typ-osoby" class="medzery dropdown" form="filter-prac" required>
+                        <option value="">Typ osoby</option>
                         <?php
                         $result_typy_osob = getTypyOsob();
                         while ($typ_osoby = $result_typy_osob->fetch_array()) {
@@ -73,25 +73,25 @@ session_start();
                 </div>
 
                 <div class="stred">
-                    <select name="triedit-podla" class="popis-prace dropdown" form="filter-prac">
+                    <select name="triedit-podla" class="medzery dropdown" form="filter-prac">
                         <option value="0">Triediť podľa</option>
                         <option value="meno">Meno osoby</option>
                         <option value="typ">Typ osoby</option>
                     </select>
-                    <select name="triedit-ako" class="popis-prace dropdown" form="filter-prac" required>
-                        <option value="vzostupne">Vzostupne</option>
+                    <select name="triedit-ako" class="medzery dropdown" form="filter-prac" required>
+                        <option value="">Vzostupne</option>
                         <option value="zostupne">Zostupne</option>
                     </select>
                 </div>
 
                 <div>
-                    <button type="submit" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter">Filtruj</button>
+                    <button type="submit" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter transform-stred">Filtruj</button>
                 </div>
             </div>
         </form>
     </div>
 
-    <div class="kontajner-zoznam-tem">
+    <div class="kontajner-zoznam-tem transform-stred">
         <?php
         $pouzivatelia = getPouzivatelov();
         while ($pouzivatel = $pouzivatelia->fetch_array()) {
@@ -112,8 +112,8 @@ session_start();
                 $viac_info .= '<div><b>Fakulta: </b> ' . $osoba["fakulta"] . '</div>';
             }
 
-            echo '<div id="' . $pouzivatel["os_cislo"] . '" class="zaver-praca">';
-            echo '<div id="meno-pouzivatela" onclick="zobrazViacInfo(this)" class="nazov-prace"><b>' . $pouzivatel["titul_pred"] . " " . $pouzivatel["meno"] . " " . $pouzivatel["titul_za"] . '</b></div>';
+            echo '<div id="' . $pouzivatel["os_cislo"] . '" class="zaver-praca pouzivatelia">';
+            echo '<div onclick="zobrazViacInfo(this)" class="nazov-prace"><b>' . $pouzivatel["titul_pred"] . " " . $pouzivatel["meno"] . " " . $pouzivatel["titul_za"] . '</b></div>';
             echo '<div style="display: none;">';
             echo '<hr class="oddelovac">';
             echo '<div><b>Email: </b> ' . $pouzivatel["email"] . '</div>';
