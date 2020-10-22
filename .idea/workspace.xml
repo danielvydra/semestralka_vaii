@@ -24,15 +24,15 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Zlepšenie responzivity + pridanie tlačidiel pre obľúbené témy">
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Refaktoring + ladenie responzivity + menšie úpravy kódu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autentifikacia.php" beforeDir="false" afterPath="$PROJECT_DIR$/autentifikacia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/databaza.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/databaza.php" beforeDir="false" afterPath="$PROJECT_DIR$/databaza.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/dizajn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/odhlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/odhlasenie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/pouzivatelia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pridavanie_tem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/prihlasenie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registracia.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoznam_prac.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +102,9 @@
       <workItem from="1602749387445" duration="20339000" />
       <workItem from="1602847618236" duration="26569000" />
       <workItem from="1602936819307" duration="15959000" />
-      <workItem from="1603179965848" duration="12098000" />
+      <workItem from="1603179965848" duration="12900000" />
+      <workItem from="1603270915078" duration="12181000" />
+      <workItem from="1603367938962" duration="25729000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -146,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602970357796</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refaktoring + ladenie responzivity + menšie úpravy kódu">
+      <created>1603219569259</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603219569259</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +183,8 @@
     <MESSAGE value="Vytvorenie štruktúry stránky používateľov + ďalšie menšie zmeny na ostatných stránkach" />
     <MESSAGE value="Vytvorenie filtrov v podobe formulárov pre používateľov a záverečné práce, pridanie tooltipov, toggle kariet (skrývanie + odkrývanie), doplnenie databázy test dátami + menšie zmeny v dizajne" />
     <MESSAGE value="Zlepšenie responzivity + pridanie tlačidiel pre obľúbené témy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zlepšenie responzivity + pridanie tlačidiel pre obľúbené témy" />
+    <MESSAGE value="Refaktoring + ladenie responzivity + menšie úpravy kódu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refaktoring + ladenie responzivity + menšie úpravy kódu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -193,27 +203,27 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="800" y="225" width="509" height="590" key="Github.UntrackedFilesDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409928390" />
-    <state x="2714" y="460" key="NewPhpFileDialog" timestamp="1602939351708">
+    <state x="2714" y="460" key="NewPhpFileDialog" timestamp="1603389905779">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602708513408" />
-    <state x="2714" y="460" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602939351708" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603317034596" />
+    <state x="2714" y="460" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603389905779" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1602409868448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1602970359608">
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1603219572204">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602890265362" />
-    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602970359608" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603219572204" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602714242654">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602714242654" />
-    <state x="2587" y="139" width="585" height="801" key="find.popup" timestamp="1603216448749">
+    <state x="2587" y="139" width="585" height="801" key="find.popup" timestamp="1603391888739">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603216448749" />
+    <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603391888739" />
   </component>
 </project>

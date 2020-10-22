@@ -71,6 +71,10 @@ input:focus {
     margin-left: 20px;
 }
 
+p {
+    display: inline;
+}
+
 .input-riadok {
     height: 40px;
     border-width: 2px;
@@ -198,12 +202,15 @@ input:focus {
     border-radius: 30px;
     font-size: 17px;
     background-color: #dddddd;
+    transition: all 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
     box-shadow: 5px 5px 15px 4px rgba(0, 0, 0, 0.4);
     /*background-color: #b8dbffd1;*/
 }
 
 .zaver-praca:hover {
     box-shadow: 10px 10px 16px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: all 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 .pouzivatelia {
@@ -344,13 +351,23 @@ input:focus {
 .tlacidlo-oblubene {
     padding: 5px 30px;
     outline: none;
-    background-color: #9acb43;
     border: 2px solid black;
-    cursor: pointer;
 }
 
 .tlacidlo-oblubene:hover {
     background-color: transparent;
+}
+
+.tlacidlo-oblubene-pridat {
+    background-color: #9acb43;
+    color: black;
+    cursor: pointer;
+}
+
+.tlacidlo-oblubene-odobrat {
+    background-color: #e53935;
+    color: white;
+    cursor: pointer;
 }
 
 .tooltip:hover .tooltiptext {

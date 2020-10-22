@@ -13,12 +13,7 @@ if ($stmt = $GLOBALS['conn']->prepare('select id_osoba, os_cislo, password_hash,
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $os_cislo = "";
-        $password_hash = "";
-        $email = "";
-        $meno = "";
-        $id_osoba = "";
-        $rola = "";
+        $os_cislo = $password_hash = $email = $meno = $id_osoba = $rola = "";
         $stmt->bind_result($id_osoba, $os_cislo, $password_hash, $email, $meno, $rola);
         $stmt->fetch();
         if (password_verify($_POST['heslo'], $password_hash)) {

@@ -4,13 +4,13 @@ $servername = "localhost";
 $username = "root";
 $password = "123456789";
 $dbName = "db_semestralka_vaii";
-$conn = new mysqli($servername, $username, $password, $dbName);
+$conn =  new mysqli($servername, $username, $password, $dbName, 3306);
+
+if ($GLOBALS['conn']->connect_error) {
+    die("Pripojenie zlyhalo: " . $GLOBALS['conn']->connect_error);
+}
 
 function getZaverecnePrace() {
-    if ($GLOBALS['conn']->connect_error) {
-        die("Pripojenie zlyhalo: " . $GLOBALS['conn']->connect_error);
-    }
-
     $sql = "select * from zaver_prace;";
     $vysledok = $GLOBALS['conn']->query($sql);
     return $vysledok;
@@ -88,6 +88,33 @@ function getTypyOsob() {
     $sql = "select id_rola, nazov as nazov_role from role;";
     $result_typy_osob = $GLOBALS['conn']->query($sql);
     return $result_typy_osob;
+}
+
+function pridatTemuMedziOblubene($idTema, $idOsoba) {
+    $sql = "insert into oblubene_temy(id_tema, id_student) values ($idTema, $idOsoba);";
+    $GLOBALS['conn']->query($sql);
+}
+
+function odobratOblubenuTemu($idTema, $idOsoba) {
+    $sql = "delete from oblubene_temy where id_tema = $idTema and id_student = $idOsoba;";
+    $GLOBALS['conn']->query($sql);
+}
+
+function jeOblubenaTemaVDatabaze($idTema, $idOsoba) {
+    $sql = "select * from oblubene_temy where id_tema = $idTema and id_student = $idOsoba;";
+    $vysledok = $GLOBALS['conn']->query($sql);
+    $pocet = mysqli_num_rows($vysledok);
+    return $pocet > 0;
+}
+
+function getMojeOblubeneTemy($idOsoba) {
+    $temy = array();
+    $sql = "select id_tema from oblubene_temy where id_student = $idOsoba;";
+    $vysledok = $GLOBALS['conn']->query($sql);
+    while ($tema = $vysledok->fetch_array()) {
+        array_push($temy, $tema["id_tema"]);
+    }
+    return $temy;
 }
 
 ?>

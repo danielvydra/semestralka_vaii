@@ -42,3 +42,42 @@ function zobrazMenu() {
         }
     });
 }
+
+function filtrovatTemy() {
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: {
+            formular: $("#filter-prac").serialize(),
+            nazovFunkcie: "filtrovatPrace"
+        },
+        success: function(result){
+            $("#zoznam-prac").replaceWith(result);
+        }
+    });
+}
+
+function pridatOblubenuTemu(button) {
+    var idTemy = parseInt(button.parentElement.getAttribute("id"));
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: {
+            nazovFunkcie: "pridatMedziOblubene",
+            id_tema: idTemy
+        },
+        success: function(feedback){
+            if (feedback === "odobrana") {
+                button.classList.remove("tlacidlo-oblubene-odobrat");
+                button.classList.add("tlacidlo-oblubene-pridat");
+                button.lastChild.innerText = "Pridať obľúbenú tému";
+                alert("Téma bola odobraná.");
+            } else if (feedback === "pridana") {
+                button.classList.add("tlacidlo-oblubene-odobrat");
+                button.classList.remove("tlacidlo-oblubene-pridat");
+                button.lastChild.innerText = "Odobrať obľúbenú tému";
+                alert("Téma bola pridaná.");
+            }
+        }
+    });
+}

@@ -4,7 +4,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <title>Zoznam prác</title>
@@ -46,12 +46,13 @@ session_start();
     </div>
 
     <div class="zaver-praca filter">
-        <form id="filter-prac" class="formular">
+        <form id="filter-prac" class="formular" method="post" action="javascript:filtrovatTemy()">
             <h1 class="stred transform-stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1
             ><div style="display: none;">
                 <div class="stred">
-                    <input name="nazov-prace" type="text" placeholder="Vložte názov práce">
-                    <input name="meno-veduceho" type="text" placeholder="Vložte meno vedúceho">
+                    <input name="nazov-prace" type="text" placeholder="Názov práce">
+                    <input name="meno-veduceho" type="text" placeholder="Meno vedúceho">
+                    <input name="meno-studenta" type="text" placeholder="Meno študenta">
                 </div>
 
                 <div class="stred">
@@ -87,14 +88,16 @@ session_start();
                 <div class="stred">
                     <select name="triedit-podla" class="medzery dropdown" form="filter-prac" >
                         <option value="0">Triediť podľa</option>
-                        <option value="nazov">Názov témy</option>
-                        <option value="ucitel">Meno vedúceho</option>
-                        <option value="typ-prace">Typ práce</option>
-                        <option value="katedra">Katedra</option>
+                        <option value="nazov_sk">Názov témy</option>
+                        <option value="uc.meno">Meno vedúceho</option>
+                        <option value="st.meno">Meno študenta</option>
+                        <option value="zp.id_typ">Typ práce</option>
+                        <option value="zp.id_stav">Stav práce</option>
+                        <option value="u.id_katedra">Katedra</option>
                     </select>
                     <select name="triedit-ako" class="medzery dropdown" form="filter-prac" >
-                        <option value="vzostupne">Vzostupne</option>
-                        <option value="zostupne">Zostupne</option>
+                        <option value="0">Vzostupne</option>
+                        <option value="desc">Zostupne</option>
                     </select>
                 </div>
                 <div>
@@ -108,6 +111,11 @@ session_start();
     <div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">
         <?php
         $prace = getZaverecnePrace();
+        $oblubenePrace = array();
+        if ($_SESSION["rola"] == "student") {
+            $oblubenePrace = getMojeOblubeneTemy($_SESSION["id_osoba"]);
+        }
+
         if ($prace != null && mysqli_num_rows($prace) > 0) {
             while ($praca = $prace->fetch_array()) {
                 $typ_prace = getNazovPrace($praca["id_typ"]);
@@ -115,7 +123,7 @@ session_start();
                 $veduci = getVeduci($praca["id_veduci"]);
 
                 echo '<div id="'. $praca["id_tema"] .'" class="zaver-praca">';
-                echo '<div id="nazov-prace" class="nazov-prace"><b>'. $praca["nazov_sk"] .'</b></div>';
+                echo '<div class="nazov-prace"><b>'. $praca["nazov_sk"] .'</b></div>';
                 echo '<hr class="oddelovac">';
                 echo '<div><b>Anglický názov témy: '. $praca["nazov_en"] .'</b></div>';
                 echo '<div><b>Predmet práce: </b>'. $praca["popis"] .'</div>';
@@ -126,7 +134,13 @@ session_start();
                 } else {
                     echo '<div><b>Študent: </b></div>';
                 }
-                echo '<button class="transform-stred tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i>Pridať medzi obľúbené</button>';
+                if ($_SESSION["rola"] == "student") {
+                    if (in_array($praca["id_tema"], $oblubenePrace)) {
+                        echo '<button onclick="pridatOblubenuTemu(this)" class="transform-stred tlacidlo-oblubene-odobrat tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i><p>Odobrať z obľúbených</p></button>';
+                    } else {
+                        echo '<button onclick="pridatOblubenuTemu(this)" class="transform-stred tlacidlo-oblubene-pridat tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i><p>Pridať medzi obľúbené</p></button>';
+                    }
+                }
                 echo '</div>';
             }
         } else {
