@@ -28,7 +28,7 @@ function zobrazViacInfo(element) {
 
 function zobrazMenu() {
     var element = document.getElementById("horne-menu-vpravo");
-    if (element.style.display === "none" || element.style.display == "") {
+    if (element.style.display === "none" || element.style.display === "") {
         element.style.display = "block";
     } else {
         element.style.display = "none";
@@ -46,7 +46,7 @@ function zobrazMenu() {
 function filtrovatTemy() {
     $.ajax({
         type: "POST",
-        url: "ajax.php",
+        url: "../resources/ajax.php",
         data: {
             formular: $("#filter-prac").serialize(),
             nazovFunkcie: "filtrovatPrace"
@@ -61,7 +61,7 @@ function pridatOblubenuTemu(button) {
     var idTemy = parseInt(button.parentElement.getAttribute("id"));
     $.ajax({
         type: "POST",
-        url: "ajax.php",
+        url: "../resources/ajax.php",
         data: {
             nazovFunkcie: "pridatMedziOblubene",
             id_tema: idTemy
@@ -86,9 +86,58 @@ function zobrazitOblubenePrace(button) {
     var idTemy = parseInt(button.parentElement.getAttribute("id"));
     $.ajax({
         type: "POST",
-        url: "ajax.php",
+        url: "../resources/ajax.php",
         data: {
             nazovFunkcie: "zobrazitOblubenePrace",
+            id_tema: idTemy
+        },
+        success: function(result){
+            $("#zoznam-prac").replaceWith(result);
+        }
+    });
+}
+
+function pridatNovuTemu() {
+    $.ajax({
+        type: "POST",
+        url: "../resources/ajax.php",
+        data: {
+            nazovFunkcie: "pridatNovuTemu",
+            formular: $("#nova-tema").serialize()
+        },
+        success: function(result){
+            if (result === "chyba") {
+                alert("Daná téma už existuje.");
+            } else {
+                $("#zoznam-prac").replaceWith(result);
+            }
+            $("#nova-tema")[0].reset();
+        }
+    });
+}
+
+function odobratPracuZoZoznamuPrac(button) {
+    var idTemy = parseInt(button.parentElement.getAttribute("id"));
+    $.ajax({
+        type: "POST",
+        url: "../resources/ajax.php",
+        data: {
+            nazovFunkcie: "odobratPracuZoZoznamuPrac",
+            id_tema: idTemy
+        },
+        success: function(result){
+            $("#zoznam-prac").replaceWith(result);
+        }
+    });
+}
+
+function odobratTemuZPridavaniaTem(button) {
+    var idTemy = parseInt(button.parentElement.getAttribute("id"));
+    $.ajax({
+        type: "POST",
+        url: "../resources/ajax.php",
+        data: {
+            nazovFunkcie: "odobratTemuZPridavaniaTem",
             id_tema: idTemy
         },
         success: function(result){

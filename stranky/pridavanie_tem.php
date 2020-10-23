@@ -1,5 +1,6 @@
 <?php
-include '../resources/databaza.php';
+include_once '../resources/databaza.php';
+include_once '../resources/metody.php';
 session_start();
 ?>
 
@@ -40,10 +41,10 @@ session_start();
         <div id="skrol-indikator" class="skrol-indikator"></div>
     </div>
 
-    <div class="kontajner-zoznam-tem kont-nova-tema transform-stred">
+    <div class="kontajner-zoznam-tem kont-nova-tema transform-stred pridavanie-tem">
         <div id="id-prace" class="zaver-praca nova-tema">
 
-            <form id="nova-tema" class="formular">
+            <form id="nova-tema" class="formular" method="post" action="javascript:pridatNovuTemu()">
                 <h1 class="stred">Pridávanie tém</h1>
                 <p class="stred">Vyplňte prosím nasledujúce údaje pre pridanie témy</p>
 
@@ -60,7 +61,7 @@ session_start();
                 </div>
 
                 <label for="popis-prace" class="stred stitok"><b>Popis práce</b></label>
-                <textarea id="popis-prace" class="medzery" placeholder="Zadajte cieľ práce" rows="4" cols="50" name="popis-prace" form="nova-tema"></textarea>
+                <textarea id="popis-prace" class="medzery" placeholder="Zadajte cieľ práce" rows="4" cols="50" name="popis-prace" form="nova-tema" required></textarea>
 
                 <label for="typ-prace" class="stred stitok"><b>Typ práce</b></label>
                 <select name="typ-prace" class="medzery dropdown transform-stred" id="typ-prace" form="nova-tema">
@@ -78,6 +79,21 @@ session_start();
             </form>
 
         </div>
+    </div>
+
+    <div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">
+        <?php
+        $prace = getMojePridanePrace($_SESSION["id_osoba"]);
+        $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
+
+        if ($prace != null && mysqli_num_rows($prace) > 0) {
+            vypisPrac($prace, $zoznamPrac, "odobratTemuZPridavaniaTem(this)");
+        } else {
+            echo '<div class="zaver-praca">';
+            echo '<div class="stred">Neboli nájdené žiadne pridané práce.</div>';
+            echo '</div>';
+        }
+        ?>
     </div>
 
     <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()"><i class="fa fa-arrow-up ikona-tlacidlo"></i>Hore</button>

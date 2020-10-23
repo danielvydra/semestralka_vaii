@@ -1,6 +1,6 @@
 <?php
 
-function vypisPrac($prace, $oblubenePrace, $onclick = "pridatOblubenuTemu(this)") {
+function vypisPrac($prace, $zoznamPrac, $onclick = "pridatOblubenuTemu(this)") {
     while ($praca = $prace->fetch_array()) {
         $typ_prace = getNazovPrace($praca["id_typ"]);
         $student = getStudent($praca["id_student"]);
@@ -19,10 +19,14 @@ function vypisPrac($prace, $oblubenePrace, $onclick = "pridatOblubenuTemu(this)"
             echo '<div><b>Študent: </b></div>';
         }
         if ($_SESSION["rola"] == "student") {
-            if (in_array($praca["id_tema"], $oblubenePrace)) {
+            if (in_array($praca["id_tema"], $zoznamPrac)) {
                 echo '<button onclick="'. $onclick .'" class="transform-stred tlacidlo-oblubene-odobrat tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i><p>Odobrať z obľúbených</p></button>';
             } else {
                 echo '<button onclick="'. $onclick .'" class="transform-stred tlacidlo-oblubene-pridat tlacidlo-oblubene"><i class="fa fa-star ikona-tlacidlo"></i><p>Pridať medzi obľúbené</p></button>';
+            }
+        } elseif ($_SESSION["rola"] == "ucitel") {
+            if (in_array($praca["id_tema"], $zoznamPrac)) {
+                echo '<button onclick="'. $onclick .'" class="transform-stred tlacidlo-oblubene-odobrat tlacidlo-oblubene"><i class="fa fa-trash-alt ikona-tlacidlo"></i><p>Vymazať tému zo systému</p></button>';
             }
         }
         echo '</div>';

@@ -1,19 +1,37 @@
 <?php
-include "./databaza.php";
-include "./metody.php";
+include_once "./databaza.php";
+include_once "./metody.php";
 session_start();
 
-if(isset($_POST['nazovFunkcie']) && !empty($_POST['nazovFunkcie'])) {
+if (isset($_POST['nazovFunkcie']) && !empty($_POST['nazovFunkcie'])) {
     $nazovFunkcie = $_POST['nazovFunkcie'];
-    switch($nazovFunkcie) {
-        case 'pridatMedziOblubene' : pridatMedziOblubene(); break;
-        case 'filtrovatPrace' : filtrovatPrace(); break;
-        case 'zobrazitOblubenePrace' : zobrazitOblubenePrace(); break;
-        default: echo "chyba"; break;
+    switch ($nazovFunkcie) {
+        case 'pridatMedziOblubene' :
+            pridatMedziOblubene();
+            break;
+        case 'filtrovatPrace' :
+            filtrovatPrace();
+            break;
+        case 'zobrazitOblubenePrace' :
+            zobrazitOblubenePrace();
+            break;
+        case 'pridatNovuTemu' :
+            pridatNovuTemu();
+            break;
+        case 'odobratPracuZoZoznamuPrac' :
+            odobratPracuZoZoznamuPrac();
+            break;
+        case 'odobratTemuZPridavaniaTem' :
+            odobratTemuZPridavaniaTem();
+            break;
+        default:
+            echo "chyba";
+            break;
     }
 }
 
-function pridatMedziOblubene($echoResult = true) {
+function pridatMedziOblubene($echoResult = true)
+{
     $idOsoba = $_SESSION["id_osoba"];
     $idTema = $_POST["id_tema"];
     if (jeOblubenaTemaVDatabaze($idTema, $idOsoba)) {
@@ -27,7 +45,8 @@ function pridatMedziOblubene($echoResult = true) {
         echo $feedback;
 }
 
-function filtrovatPrace() {
+function filtrovatPrace()
+{
     parse_str($_POST["formular"], $formular);
     $nazovPrace = $formular["nazov-prace"];
     $menoVeduceho = $formular["meno-veduceho"];
@@ -84,35 +103,32 @@ function filtrovatPrace() {
     $sql .= ";";
 
     $prace = $GLOBALS['conn']->query($sql);
-    if ($prace != null and mysqli_num_rows($prace) > 0) {
+    if ($prace != null && mysqli_num_rows($prace) > 0) {
+        if ($_SESSION["rola"] == "student") {
+            $zoznamPrac = getZoznamOblubenychTem($_SESSION["id_osoba"]);
+            $onclick = "pridatOblubenuTemu(this)";
+        } elseif ($_SESSION["rola"] == "ucitel") {
+            $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
+            $onclick = "odobratPracuZoZoznamuPrac(this)";
+        }
         echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
-            $oblubenePrace = array();
-            if ($_SESSION["rola"] == "student") {
-                $oblubenePrace = getZoznamOblubenychTem($_SESSION["id_osoba"]);
-            }
-
-            if ($prace != null && mysqli_num_rows($prace) > 0) {
-                vypisPrac($prace, $oblubenePrace);
-            } else {
-                echo '<div class="zaver-praca">';
-                echo '<div class="stred">Neboli nájdené žiadne práce.</div>';
-                echo '</div>';
-            }
+        vypisPrac($prace, $zoznamPrac, $onclick);
         echo '</div>';
     } else {
         echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
-            echo '<div class="zaver-praca">';
-            echo '<div class="stred">Žiadna práca nespĺňa zadaný filer.</div>';
-            echo '</div>';
+        echo '<div class="zaver-praca">';
+        echo '<div class="stred">Žiadna práca nespĺňa zadaný filer.</div>';
+        echo '</div>';
         echo '</div>';
     }
 
 }
 
-function zobrazitOblubenePrace() {
+function zobrazitOblubenePrace()
+{
     pridatMedziOblubene(false);
 
-    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred oblubene-temy">';
+    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
     $prace = getVsetkyMojeOblubeneTemy($_SESSION["id_osoba"]);
     $oblubenePrace = array();
     if ($_SESSION["rola"] == "student") {
@@ -127,6 +143,76 @@ function zobrazitOblubenePrace() {
         echo '</div>';
     }
     echo '</div>';
+}
+
+function pridatNovuTemu() {
+    parse_str($_POST["formular"], $formular);
+    $nazovPraceSK = $formular["nazov-prace"];
+    $nazovPraceEN = $formular["ang-nazov-prace"];
+    $popisPrace = $formular["popis-prace"];
+    $typPrace = $formular["typ-prace"];
+    $idVeduci = $_SESSION["id_osoba"];
+
+    if (jeTemaVDatabaze($nazovPraceSK, $nazovPraceEN)) {
+        echo "chyba";
+    } else {
+        $sql = "insert into zaver_prace(id_veduci, id_typ, nazov_sk, nazov_en, popis, vytvorenie)
+        values ($idVeduci, $typPrace, '$nazovPraceSK', '$nazovPraceEN', '$popisPrace', now());";
+        $GLOBALS["conn"]->query($sql);
+
+        $prace = getMojePridanePrace($_SESSION["id_osoba"]);
+        $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
+        if ($prace != null && mysqli_num_rows($prace) > 0) {
+            echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
+            vypisPrac($prace, $zoznamPrac, "odobratTemuZPridavaniaTem(this)");
+            echo '</div>';
+        } else {
+            echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
+            echo '<div class="zaver-praca">';
+            echo '<div class="stred">Neboli nájdené žiadne pridané práce.</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+    }
+
+}
+
+function odobratPracuZoZoznamuPrac() {
+    vymazatTemuZDatabazy($_POST["id_tema"]);
+
+    $prace = getZaverecnePrace();
+    if ($prace != null && mysqli_num_rows($prace) > 0) {
+        if ($_SESSION["rola"] == "student") {
+            $zoznamPrac = getZoznamOblubenychTem($_SESSION["id_osoba"]);
+            $onclick = "pridatOblubenuTemu(this)";
+        } elseif ($_SESSION["rola"] == "ucitel") {
+            $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
+            $onclick = "odobratPracuZoZoznamuPrac(this)";
+        }
+        vypisPrac($prace, $zoznamPrac, $onclick);
+    } else {
+        echo '<div class="zaver-praca">';
+        echo '<div class="stred">Neboli nájdené žiadne práce.</div>';
+        echo '</div>';
+    }
+}
+
+function odobratTemuZPridavaniaTem() {
+    vymazatTemuZDatabazy($_POST["id_tema"]);
+
+    $prace = getMojePridanePrace($_SESSION["id_osoba"]);
+    $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
+    if ($prace != null && mysqli_num_rows($prace) > 0) {
+        echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
+        vypisPrac($prace, $zoznamPrac, "odobratTemuZPridavaniaTem(this)");
+        echo '</div>';
+    } else {
+        echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
+        echo '<div class="zaver-praca">';
+        echo '<div class="stred">Neboli nájdené žiadne pridané práce.</div>';
+        echo '</div>';
+        echo '</div>';
+    }
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
-include '../resources/databaza.php';
-include '../resources/metody.php';
+include_once '../resources/databaza.php';
+include_once '../resources/metody.php';
 session_start();
 ?>
 

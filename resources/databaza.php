@@ -125,4 +125,39 @@ function getVsetkyMojeOblubeneTemy($idOsoba) {
     return $vysledok;
 }
 
+function getMojePridanePrace($idOsoba) {
+    $sql = "select zp.nazov_sk, zp.nazov_en, uc.meno as meno_veduceho, st.meno as meno_studenta, u.id_katedra, zp.id_stav, zp.id_typ, id_student, id_veduci, id_tema, popis from zaver_prace zp
+        join ucitelia u on u.id_osoba = zp.id_veduci
+        join stavy_prace sp on zp.id_stav = sp.id_stav
+        left join os_udaje st on st.id_osoba = zp.id_student
+        join os_udaje uc on uc.id_osoba = u.id_osoba
+        where zp.id_veduci = $idOsoba;";
+    $vysledok = $GLOBALS['conn']->query($sql);
+    return $vysledok;
+}
+
+function getZoznamMojichPridanychTem($idOsoba) {
+    $temy = array();
+    $sql = "select id_tema from zaver_prace where id_veduci = $idOsoba;";
+    $vysledok = $GLOBALS['conn']->query($sql);
+    while ($tema = $vysledok->fetch_array()) {
+        array_push($temy, $tema["id_tema"]);
+    }
+    return $temy;
+}
+
+function jeTemaVDatabaze($nazovSK, $nazovEN) {
+    $sql = "select * from zaver_prace where nazov_sk like '$nazovSK' or nazov_en like '$nazovEN';";
+    $vysledok = $GLOBALS['conn']->query($sql);
+    $pocet = mysqli_num_rows($vysledok);
+    return $pocet > 0;
+}
+
+function vymazatTemuZDatabazy($idTema) {
+    $sql1 = "delete from oblubene_temy where id_tema = $idTema;";
+    $sql2 = "delete from zaver_prace where id_tema = $idTema;";
+    $vysledok1 = $GLOBALS['conn']->query($sql1);
+    $vysledok2 = $GLOBALS['conn']->query($sql2);
+}
+
 ?>

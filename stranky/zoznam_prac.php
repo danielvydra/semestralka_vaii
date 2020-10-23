@@ -1,6 +1,6 @@
 <?php
-include '../resources/databaza.php';
-include '../resources/metody.php';
+include_once '../resources/databaza.php';
+include_once '../resources/metody.php';
 session_start();
 ?>
 
@@ -110,13 +110,15 @@ session_start();
     <div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">
         <?php
         $prace = getZaverecnePrace();
-        $oblubenePrace = array();
-        if ($_SESSION["rola"] == "student") {
-            $oblubenePrace = getZoznamOblubenychTem($_SESSION["id_osoba"]);
-        }
-
         if ($prace != null && mysqli_num_rows($prace) > 0) {
-            vypisPrac($prace, $oblubenePrace);
+            if ($_SESSION["rola"] == "student") {
+                $zoznamPrac = getZoznamOblubenychTem($_SESSION["id_osoba"]);
+                $onclick = "pridatOblubenuTemu(this)";
+            } elseif ($_SESSION["rola"] == "ucitel") {
+                $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
+                $onclick = "odobratPracuZoZoznamuPrac(this)";
+            }
+            vypisPrac($prace, $zoznamPrac, $onclick);
         } else {
             echo '<div class="zaver-praca">';
             echo '<div class="stred">Neboli nájdené žiadne práce.</div>';
