@@ -25,16 +25,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Dokončený filter prác cez AJAX + stránka obľúbených tém využíva AJAX na zobrazovanie tém">
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Dokončené pridávanie a mazanie nových záverečných prác v sekcii &quot;Pridávanie prác&quot; + odoberanie prác v sekcii &quot;Zoznam prác&quot;, úprava algoritmu pre filtrovanie prác">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oblubene_temy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/autentifikacia.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/autentifikacia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/databaza.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/databaza.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/dizajn.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/metody.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/metody.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/oblubene_temy.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/oblubene_temy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stranky/osobne_udaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/osobne_udaje.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stranky/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/pouzivatelia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stranky/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/pridavanie_tem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stranky/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/zoznam_prac.php" afterDir="false" />
     </list>
@@ -74,19 +72,19 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/SemVAII-main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/stranky" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web projects\semestralka_vaii\assets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\web projects\semestralka_vaii\resources" />
       <recent name="D:\web projects\semestralka_vaii\stranky" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\web projects\semestralka_vaii\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -117,7 +115,9 @@
       <workItem from="1603179965848" duration="12900000" />
       <workItem from="1603270915078" duration="12181000" />
       <workItem from="1603367938962" duration="28696000" />
-      <workItem from="1603441624220" duration="33510000" />
+      <workItem from="1603441624220" duration="33630000" />
+      <workItem from="1603550698101" duration="219000" />
+      <workItem from="1603632817384" duration="20937000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -189,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603457312018</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Dokončené pridávanie a mazanie nových záverečných prác v sekcii &quot;Pridávanie prác&quot; + odoberanie prác v sekcii &quot;Zoznam prác&quot;, úprava algoritmu pre filtrovanie prác">
+      <created>1603491962592</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1603491962592</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +240,8 @@
     <MESSAGE value="Filtrovanie prác a pridávanie/odoberanie obľúbených prác cez jQuery AJAX Post + naštýlovanie tlačidla" />
     <MESSAGE value="(Update last commit) - pridanie php skriptu na AJAX volania" />
     <MESSAGE value="Dokončený filter prác cez AJAX + stránka obľúbených tém využíva AJAX na zobrazovanie tém" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dokončený filter prác cez AJAX + stránka obľúbených tém využíva AJAX na zobrazovanie tém" />
+    <MESSAGE value="Dokončené pridávanie a mazanie nových záverečných prác v sekcii &quot;Pridávanie prác&quot; + odoberanie prác v sekcii &quot;Zoznam prác&quot;, úprava algoritmu pre filtrovanie prác" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dokončené pridávanie a mazanie nových záverečných prác v sekcii &quot;Pridávanie prác&quot; + odoberanie prác v sekcii &quot;Zoznam prác&quot;, úprava algoritmu pre filtrovanie prác" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -252,10 +260,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="336" y="361" key="#SQL_Dialects/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603466564282" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603411764945">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2660" y="286" key="FileChooserDialogImpl" timestamp="1603659400261">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603411764945" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603633202990" />
+    <state x="2660" y="286" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603659400261" />
     <state x="682" y="418" width="764" height="311" key="Github.ShareDialog" timestamp="1602409878059">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -273,21 +282,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1603457352761">
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1603491965628">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603457352761" />
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603491965628" />
     <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603219572204" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603455284253">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="801" y="264" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603411436728" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603455284253" />
-    <state x="667" y="134" width="585" height="772" key="find.popup" timestamp="1603480892570">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2587" y="139" width="585" height="801" key="find.popup" timestamp="1603661061973">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="134" width="585" height="772" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603480892570" />
-    <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603391888739" />
+    <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603661061973" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603476258399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

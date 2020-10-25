@@ -44,7 +44,7 @@ function getStudent($id_student) {
 
 function getVeduci($id_veduci) {
     if ($id_veduci != null) {
-        $sql = "select t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, k.nazov as katedra, ou.vytvorenie, ou.upravenie, u.miestnost, u.volna_kapacita, f.nazov as nazov_fakulty from os_udaje ou
+        $sql = "select t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, k.nazov as katedra, ou.vytvorenie, ou.upravenie, u.miestnost, u.volna_kapacita, f.nazov as fakulta from os_udaje ou
         join ucitelia u on ou.id_osoba = u.id_osoba
         join tituly t on t.id_titul = ou.id_titul_pred
         join katedry k on k.id_katedra = u.id_katedra
@@ -61,6 +61,12 @@ function getTypyPrac() {
     $sql = "select * from typy_prac;";
     $result_typy_prac = $GLOBALS['conn']->query($sql);
     return $result_typy_prac;
+}
+
+function getTituly() {
+    $sql = "select * from tituly order by id_titul;";
+    $result_tituly = $GLOBALS['conn']->query($sql);
+    return $result_tituly;
 }
 
 function getPouzivatelov() {

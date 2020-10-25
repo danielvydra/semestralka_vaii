@@ -145,3 +145,30 @@ function odobratTemuZPridavaniaTem(button) {
         }
     });
 }
+
+function editovatOsobneUdaje(upravit) {
+    var ulozit = document.getElementById("ulozit");
+    var titulPred = document.getElementById("titul-pred");
+    var meno = document.getElementById("meno");
+    var titulZa = document.getElementById("titul-za");
+    var email = document.getElementById("email");
+    var telefon = document.getElementById("telefon");
+
+    if (ulozit.disabled) {
+        ulozit.disabled = false;
+        titulPred.disabled = false;
+        meno.disabled = false;
+        titulZa.disabled = false;
+        email.disabled = false;
+        telefon.disabled = false;
+        upravit.lastChild.innerText = "Zrušiť";
+    } else {
+        ulozit.disabled = true;
+        titulPred.disabled = true;
+        meno.disabled = true;
+        titulZa.disabled = true;
+        email.disabled = true;
+        telefon.disabled = true;
+        upravit.lastChild.innerText = "Upraviť";
+    }
+}

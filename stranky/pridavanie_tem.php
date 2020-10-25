@@ -74,7 +74,7 @@ session_start();
                 </select>
 
                 <div>
-                    <button type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular">Pridať</button>
+                    <button type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular"><i class="fa fa-plus ikona-tlacidlo"></i>Pridať</button>
                 </div>
             </form>
 

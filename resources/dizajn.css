@@ -58,6 +58,24 @@ input {
     padding: 12px;
 }
 
+input:disabled, select:disabled {
+    /*background-color: #B0BEC5;*/
+    background-color: #9E9E9E;
+    color: white;
+    opacity: 0.4;
+    cursor: auto;
+}
+
+button:disabled {
+    background-color: orange;
+    cursor: auto;
+    opacity: 0.4;
+}
+
+button[disabled]:hover {
+    background-color: orange;
+}
+
 ::placeholder {
     color: rgba(0,0,0,0.8);
 }
@@ -237,11 +255,6 @@ p {
     margin-top: 8px;
 }
 
-.medzery {
-    margin-bottom: 5px;
-    margin-top: 8px;
-}
-
 .stitok {
     margin-top: 14px;
     margin-bottom: 3px;
@@ -262,6 +275,8 @@ p {
     min-height: 100px;
     resize: vertical;
     padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 8px;
 }
 
 .kont-nova-tema {
@@ -271,12 +286,27 @@ p {
 
 .nova-tema {
     opacity: 0.9;
+    background-color: #c0d3fbed;
+}
+
+.nova-tema:hover, .nova-tema:active {
+    transform: none;
+    opacity: 1;
 }
 
 .tlacidlo-potvrdit {
     width: 40%;
     background-color: orange;
     margin-top: 30px;
+}
+
+.tlacidlo-upravit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tlacidlo-upravit:hover {
+    color: black;
 }
 
 .tlacidlo-potvrdit:hover {
@@ -309,16 +339,25 @@ p {
     color: #ff382e;
 }
 
-#filter-prac input {
+#filter-prac input, #osobne-udaje input {
     width: auto;
     border: 2px solid black;
     padding: 10px;
 }
 
-#filter-prac h1 {
+#filter-prac h1, #osobne-udaje h1, #nova-tema h1 {
     margin: 5px;
     color: #2b3a64;
     cursor: pointer;
+}
+
+#osobne-udaje h1, #nova-tema h1 {
+    cursor: auto;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #2b3a64;
 }
 
 .filter {
@@ -334,6 +373,24 @@ p {
     margin-top: auto;
     width: 25%;
     padding: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.osobne-udaje {
+    width: 40%;
+    padding: 20px;
+    opacity: 0.9;
+}
+
+.osobne-udaje:hover {
+    transform: none;
+    opacity: 1;
+}
+
+#osobne-udaje input, #osobne-udaje select {
+    margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .tooltip {
@@ -454,8 +511,19 @@ p {
     .dropdown {
         width: 90%;
     }
-    #filter-prac input {
+    #filter-prac input, #osobne-udaje input {
         width: 87%;
         margin: 10px 0px;
+    }
+    .osobne-udaje {
+        width: 80%;
+    }
+    .os-udaje-tlacidlo {
+        display: block;
+        min-width: 150px;
+        margin-top: 20px;
+        transform: translate(-50%);
+        left: 50%;
+        position: relative;
     }
 }

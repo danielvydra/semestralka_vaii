@@ -100,7 +100,7 @@ session_start();
                     </select>
                 </div>
                 <div>
-                    <button id="filtrovat" type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter">Filtruj</button>
+                    <button id="filtrovat" type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter"><i class="fa fa-filter ikona-tlacidlo"></i>Filtruj</button>
                 </div>
             </div>
 

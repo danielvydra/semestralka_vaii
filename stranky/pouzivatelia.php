@@ -83,7 +83,7 @@ session_start();
                 </div>
 
                 <div>
-                    <button type="submit" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter transform-stred">Filtruj</button>
+                    <button type="submit" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter transform-stred"><i class="fa fa-filter ikona-tlacidlo"></i>Filtruj</button>
                 </div>
             </div>
         </form>
@@ -96,7 +96,7 @@ session_start();
             if ($pouzivatel["nazov_role"] == "ucitel") {
                 $osoba = getVeduci($pouzivatel["id_osoba"]);
                 $viac_info = '<div><b>Miestnosť: </b> ' . $osoba["miestnost"] . '</div>';
-                $viac_info .= '<div><b>Fakulta: </b> ' . $osoba["nazov_fakulty"] . '</div>';
+                $viac_info .= '<div><b>Fakulta: </b> ' . $osoba["fakulta"] . '</div>';
                 $viac_info .= '<div><b>Katedra: </b> ' . $osoba["katedra"] . '</div>';
                 if ($osoba["volna_kapacita"]) {
                     $viac_info .= '<div><b>Prijíma témy: </b>áno<div class="fa fa-check info-ikona ok"></div></div>';
