@@ -25,15 +25,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Dokončené pridávanie a mazanie nových záverečných prác v sekcii &quot;Pridávanie prác&quot; + odoberanie prác v sekcii &quot;Zoznam prác&quot;, úprava algoritmu pre filtrovanie prác">
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Vytvorenie responzívnej stránky &quot;osobné údaje&quot; na zobrazenie a úpravu údajov používateľa, použitie JS na povolenie/zablokovanie úprav">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oblubene_temy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/databaza.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/databaza.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ajax.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/dizajn.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stranky/osobne_udaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/osobne_udaje.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stranky/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/pouzivatelia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/pridavanie_tem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stranky/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/stranky/zoznam_prac.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +71,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/stranky" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/VAII-semestralka-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -117,7 +116,9 @@
       <workItem from="1603367938962" duration="28696000" />
       <workItem from="1603441624220" duration="33630000" />
       <workItem from="1603550698101" duration="219000" />
-      <workItem from="1603632817384" duration="20937000" />
+      <workItem from="1603632817384" duration="22052000" />
+      <workItem from="1603893962568" duration="9496000" />
+      <workItem from="1603916413154" duration="6511000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -196,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603491962592</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Vytvorenie responzívnej stránky &quot;osobné údaje&quot; na zobrazenie a úpravu údajov používateľa, použitie JS na povolenie/zablokovanie úprav">
+      <created>1603661939812</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1603661939812</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +249,8 @@
     <MESSAGE value="(Update last commit) - pridanie php skriptu na AJAX volania" />
     <MESSAGE value="Dokončený filter prác cez AJAX + stránka obľúbených tém využíva AJAX na zobrazovanie tém" />
     <MESSAGE value="Dokončené pridávanie a mazanie nových záverečných prác v sekcii &quot;Pridávanie prác&quot; + odoberanie prác v sekcii &quot;Zoznam prác&quot;, úprava algoritmu pre filtrovanie prác" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dokončené pridávanie a mazanie nových záverečných prác v sekcii &quot;Pridávanie prác&quot; + odoberanie prác v sekcii &quot;Zoznam prác&quot;, úprava algoritmu pre filtrovanie prác" />
+    <MESSAGE value="Vytvorenie responzívnej stránky &quot;osobné údaje&quot; na zobrazenie a úpravu údajov používateľa, použitie JS na povolenie/zablokovanie úprav" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vytvorenie responzívnej stránky &quot;osobné údaje&quot; na zobrazenie a úpravu údajov používateľa, použitie JS na povolenie/zablokovanie úprav" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -260,10 +269,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="336" y="361" key="#SQL_Dialects/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603466564282" />
-    <state x="2660" y="286" key="FileChooserDialogImpl" timestamp="1603659400261">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603662061505">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603633202990" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603662061505" />
     <state x="2660" y="286" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603659400261" />
     <state x="682" y="418" width="764" height="311" key="Github.ShareDialog" timestamp="1602409878059">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -282,11 +291,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1603491965628">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1603661942174">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603491965628" />
-    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603219572204" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603661942174" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603455284253">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

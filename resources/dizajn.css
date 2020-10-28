@@ -55,7 +55,7 @@ input {
     display: inline-block;
     background: transparent;
     font-size: 16px;
-    padding: 12px;
+    padding: 0 12px;
 }
 
 input:disabled, select:disabled {
@@ -339,13 +339,13 @@ p {
     color: #ff382e;
 }
 
-#filter-prac input, #osobne-udaje input {
-    width: auto;
+#filter-prac input, #osobne-udaje input, #filter-uzivatelov input {
+    width: 26%;
     border: 2px solid black;
     padding: 10px;
 }
 
-#filter-prac h1, #osobne-udaje h1, #nova-tema h1 {
+#filter-prac h1, #osobne-udaje h1, #nova-tema h1, #filter-uzivatelov h1 {
     margin: 5px;
     color: #2b3a64;
     cursor: pointer;
@@ -373,8 +373,8 @@ h2 {
     margin-top: auto;
     width: 25%;
     padding: 8px;
-    margin-left: 10px;
-    margin-right: 10px;
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
 }
 
 .osobne-udaje {
@@ -391,6 +391,15 @@ h2 {
 #osobne-udaje input, #osobne-udaje select {
     margin-bottom: 25px;
     margin-top: 5px;
+    width: inherit;
+}
+
+#nova-tema input, #nova-tema select, #nova-tema .input-riadok {
+    width: inherit;
+}
+
+#nova-tema .input-riadok input {
+    min-width: 60%;
 }
 
 .tooltip {
@@ -488,8 +497,6 @@ h2 {
     }
     .kontajner-zoznam-tem {
         width: 95%;
-    }
-    .kontajner-zoznam-tem {
         margin-top: 0;
     }
     .horne-menu-vlavo {
@@ -511,9 +518,9 @@ h2 {
     .dropdown {
         width: 90%;
     }
-    #filter-prac input, #osobne-udaje input {
-        width: 87%;
-        margin: 10px 0px;
+    #filter-prac input, #osobne-udaje input, #filter-uzivatelov input {
+        width: 83%;
+        margin: 10px 0;
     }
     .osobne-udaje {
         width: 80%;
@@ -525,5 +532,11 @@ h2 {
         transform: translate(-50%);
         left: 50%;
         position: relative;
+    }
+    .tlacidlo-potvrdit {
+        width: 70%;
+    }
+    .zaver-praca {
+        margin: 20px auto;
     }
 }

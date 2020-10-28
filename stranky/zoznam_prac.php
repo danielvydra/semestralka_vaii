@@ -95,7 +95,7 @@ session_start();
                         <option value="u.id_katedra">Katedra</option>
                     </select>
                     <select name="triedit-ako" class="medzery dropdown" form="filter-prac" >
-                        <option value="0">Vzostupne</option>
+                        <option value="asc">Vzostupne</option>
                         <option value="desc">Zostupne</option>
                     </select>
                 </div>

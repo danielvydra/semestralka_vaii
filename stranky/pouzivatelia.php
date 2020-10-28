@@ -51,12 +51,12 @@ session_start();
     </div>
 
     <div class="zaver-praca filter">
-        <form id="filter-prac" class="formular">
+        <form id="filter-uzivatelov" class="formular" action="javascript:filtrovatPouzivatelov()">
             <h1 class="stred transform-stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1
             ><div style="display: none;">
                 <div class="stred">
                     <input name="meno-osoby" type="text" placeholder="Meno osoby">
-                    <select name="typ-osoby" class="medzery dropdown" form="filter-prac" required>
+                    <select name="typ-osoby" class="medzery dropdown" form="filter-uzivatelov">
                         <option value="">Typ osoby</option>
                         <?php
                         $result_typy_osob = getTypyOsob();
@@ -68,17 +68,14 @@ session_start();
                 </div>
 
                 <div class="stred">
-                </div>
-
-                <div class="stred">
-                    <select name="triedit-podla" class="medzery dropdown" form="filter-prac">
-                        <option value="0">Triediť podľa</option>
+                    <select name="triedit-podla" class="medzery dropdown" form="filter-uzivatelov">
+                        <option value="">Triediť podľa</option>
                         <option value="meno">Meno osoby</option>
-                        <option value="typ">Typ osoby</option>
+                        <option value="id_rola">Typ osoby</option>
                     </select>
-                    <select name="triedit-ako" class="medzery dropdown" form="filter-prac" required>
-                        <option value="">Vzostupne</option>
-                        <option value="zostupne">Zostupne</option>
+                    <select name="triedit-ako" class="medzery dropdown" form="filter-uzivatelov">
+                        <option value="asc">Vzostupne</option>
+                        <option value="desc">Zostupne</option>
                     </select>
                 </div>
 
@@ -89,7 +86,7 @@ session_start();
         </form>
     </div>
 
-    <div class="kontajner-zoznam-tem transform-stred">
+    <div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">
         <?php
         $pouzivatelia = getPouzivatelov();
         while ($pouzivatel = $pouzivatelia->fetch_array()) {

@@ -55,7 +55,7 @@ session_start();
 </div>
 
 <div class="zaver-praca filter osobne-udaje">
-    <form id="osobne-udaje" class="formular" method="post">
+    <form id="osobne-udaje" class="formular" method="post" action="javascript:upravitOsobneUdaje()">
         <h1 class="stred transform-stred tooltip">Osobné údaje</h1>
 
         <?php
@@ -97,7 +97,7 @@ session_start();
 
         echo '<h2 class="stred">Úprava údajov</h2>';
         echo '<label><b>Titul pred menom</b></label>';
-        echo '<select id="titul-pred" name="titul-pred" class="medzery dropdown" form="filter-prac" disabled="disabled">';
+        echo '<select id="titul-pred" name="titul-pred" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
             $result_tituly = getTituly();
             while ($titul = $result_tituly->fetch_array()) {
                 if ($titul["nazov"] == $osoba["titul_pred"]) {
@@ -110,7 +110,7 @@ session_start();
         echo '<label><b>Celé meno</b></label>';
         echo '<input id="meno" name="meno" type="text" placeholder="Celé meno" value="'. $osoba["meno"] .'" disabled="disabled">';
         echo '<label><b>Titul za menom</b></label>';
-        echo '<select id="titul-za" name="titul-za" class="medzery dropdown" form="filter-prac" disabled="disabled">';
+        echo '<select id="titul-za" name="titul-za" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
             $result_tituly = getTituly();
             while ($titul = $result_tituly->fetch_array()) {
                 if ($titul["nazov"] == $osoba["titul_za"]) {

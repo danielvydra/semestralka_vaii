@@ -57,6 +57,21 @@ function filtrovatTemy() {
     });
 }
 
+function filtrovatPouzivatelov() {
+    $.ajax({
+        type: "POST",
+        url: "../resources/ajax.php",
+        data: {
+            formular: $("#filter-uzivatelov").serialize(),
+            nazovFunkcie: "filtrovatUzivatelov"
+        },
+        success: function(result){
+            $("#zoznam-uzivatelov").replaceWith(result);
+            // alert(result);
+        }
+    });
+}
+
 function pridatOblubenuTemu(button) {
     var idTemy = parseInt(button.parentElement.getAttribute("id"));
     $.ajax({
@@ -171,4 +186,18 @@ function editovatOsobneUdaje(upravit) {
         telefon.disabled = true;
         upravit.lastChild.innerText = "Upraviť";
     }
+}
+
+function upravitOsobneUdaje() {
+    $.ajax({
+        type: "POST",
+        url: "../resources/ajax.php",
+        data: {
+            nazovFunkcie: "upravitOsobneUdaje",
+            formular: $("#osobne-udaje").serialize()
+        },
+        success: function (result) {
+            alert(result);
+        }
+    });
 }
