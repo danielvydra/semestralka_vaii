@@ -108,7 +108,7 @@ session_start();
             }
         echo '</select>';
         echo '<label><b>Celé meno</b></label>';
-        echo '<input id="meno" name="meno" type="text" placeholder="Celé meno" value="'. $osoba["meno"] .'" disabled="disabled">';
+        echo '<input pattern="[A-Z+ľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]+(([\',. -][a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ])?[a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]*)*" id="meno" name="meno" type="text" placeholder="Celé meno" value="'. $osoba["meno"] .'" disabled="disabled" required>';
         echo '<label><b>Titul za menom</b></label>';
         echo '<select id="titul-za" name="titul-za" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
             $result_tituly = getTituly();
@@ -121,9 +121,9 @@ session_start();
             }
         echo '</select>';
         echo '<label><b>Email</b></label>';
-        echo '<input id="email" name="email" type="text" placeholder="Email" value="'. $osoba["email"] .'" disabled="disabled">';
+        echo '<input id="email" pattern="[a-zA-Z._]+@([a-zA-z]+\.)+[a-zA-Z]{2,4}" name="email" type="text" placeholder="Email" value="'. $osoba["email"] .'" disabled="disabled" required>';
         echo '<label><b>Telefón</b></label>';
-        echo '<input id="telefon" name="telefon" type="text" placeholder="Telefón" value="0' . $osoba["telefon"] .'" disabled="disabled">';
+        echo '<input id="telefon" pattern="[0]{1}[0-9]{9}" name="telefon" type="text" placeholder="Telefón" value="0' . $osoba["telefon"] .'" disabled="disabled" required>';
 
         ?>
 

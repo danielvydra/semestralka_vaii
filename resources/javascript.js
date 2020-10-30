@@ -122,9 +122,10 @@ function pridatNovuTemu() {
         },
         success: function(result){
             if (result === "chyba") {
-                alert("Daná téma už existuje.");
+                alert("Daná téma už existuje."); //TODO: prerobiť na snackbar
             } else {
                 $("#zoznam-prac").replaceWith(result);
+                zobrazSnackbar("Nová téma bola úspešne pridaná.");
             }
             $("#nova-tema")[0].reset();
         }
@@ -142,6 +143,7 @@ function odobratPracuZoZoznamuPrac(button) {
         },
         success: function(result){
             $("#zoznam-prac").replaceWith(result);
+            zobrazSnackbar("Téma bola úspešne vymazaná.");
         }
     });
 }
@@ -157,6 +159,7 @@ function odobratTemuZPridavaniaTem(button) {
         },
         success: function(result){
             $("#zoznam-prac").replaceWith(result);
+            zobrazSnackbar("Téma bola úspešne vymazaná.");
         }
     });
 }
@@ -200,4 +203,11 @@ function upravitOsobneUdaje() {
             alert(result);
         }
     });
+}
+
+function zobrazSnackbar(text) {
+    let snackbar = document.getElementById("snackbar");
+    snackbar.innerText = text;
+    snackbar.className = "show";
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }

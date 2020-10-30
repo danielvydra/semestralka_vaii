@@ -128,7 +128,7 @@ function filtrovatPrace() {
 function filtrovatUzivatelov() {
     parse_str($_POST["formular"], $formular);
     $menoOsoby = $formular["meno-osoby"];
-    $typOsoby = $formular["typ-osoby"];
+    $typOsoby = intval($formular["typ-osoby"]);
     $trieditPodla = $formular["triedit-podla"];
     $trieditAko = $formular["triedit-ako"];
     $counter = 0;
@@ -152,7 +152,6 @@ function filtrovatUzivatelov() {
     if (!empty($trieditPodla)) {
        $sql .= " order by $trieditPodla $trieditAko; ";
     }
-    $sql .= ";";
 
     $uzivatelia = $GLOBALS['conn']->query($sql);
     if ($uzivatelia != null && mysqli_num_rows($uzivatelia) > 0) {

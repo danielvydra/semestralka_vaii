@@ -71,7 +71,7 @@ session_start();
                     <select name="triedit-podla" class="medzery dropdown" form="filter-uzivatelov">
                         <option value="">Triediť podľa</option>
                         <option value="meno">Meno osoby</option>
-                        <option value="id_rola">Typ osoby</option>
+                        <option value="ou.id_rola">Typ osoby</option>
                     </select>
                     <select name="triedit-ako" class="medzery dropdown" form="filter-uzivatelov">
                         <option value="asc">Vzostupne</option>

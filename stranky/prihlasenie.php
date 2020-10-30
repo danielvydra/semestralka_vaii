@@ -19,13 +19,13 @@
             <label for="os_cislo" class="stred"><b>Osobné číslo</b></label>
             <div class="input-riadok">
                 <div class="fas fa-user ikona"></div>
-                <input id="os_cislo" type="text" placeholder="Vložte osobné čislo" name="os_cislo" required>
+                <input class="login-input" pattern="[0-9]{6,6}" id="os_cislo" type="text" placeholder="Vložte osobné čislo" name="os_cislo" required>
             </div>
 
             <label for="heslo" class="stred"><b>Heslo</b></label>
             <div class="input-riadok">
                 <div class="fas fa-key ikona"></div>
-                <input id="heslo" type="password" placeholder="Vložte heslo" name="heslo" required>
+                <input class="login-input" id="heslo" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,16}" type="password" placeholder="Vložte heslo" name="heslo" required>
             </div>
 
             <div>
