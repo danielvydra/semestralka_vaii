@@ -93,9 +93,6 @@ input:focus {
     margin-left: 20px;
 }
 
-p {
-    display: inline;
-}
 
 .input-riadok {
     height: 40px;
@@ -390,6 +387,10 @@ h2 {
 .osobne-udaje:hover {
     transform: none;
     opacity: 1;
+}
+
+.os-udaje-tlacidlo {
+    margin: 0 10px;
 }
 
 #osobne-udaje input, #osobne-udaje select {

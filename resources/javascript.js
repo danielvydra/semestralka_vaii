@@ -67,7 +67,6 @@ function filtrovatPouzivatelov() {
         },
         success: function(result){
             $("#zoznam-uzivatelov").replaceWith(result);
-            // alert(result);
         }
     });
 }
@@ -86,12 +85,12 @@ function pridatOblubenuTemu(button) {
                 button.classList.remove("tlacidlo-oblubene-odobrat");
                 button.classList.add("tlacidlo-oblubene-pridat");
                 button.lastChild.innerText = "Pridať obľúbenú tému";
-                alert("Téma bola odobraná.");
+                zobrazSnackbar("Téma bola odobraná.");
             } else if (feedback === "pridana") {
                 button.classList.add("tlacidlo-oblubene-odobrat");
                 button.classList.remove("tlacidlo-oblubene-pridat");
                 button.lastChild.innerText = "Odobrať obľúbenú tému";
-                alert("Téma bola pridaná.");
+                zobrazSnackbar("Téma bola pridaná.");
             }
         }
     });
@@ -108,6 +107,7 @@ function zobrazitOblubenePrace(button) {
         },
         success: function(result){
             $("#zoznam-prac").replaceWith(result);
+            zobrazSnackbar("Téma bola odobraná.");
         }
     });
 }
@@ -121,8 +121,8 @@ function pridatNovuTemu() {
             formular: $("#nova-tema").serialize()
         },
         success: function(result){
-            if (result === "chyba") {
-                alert("Daná téma už existuje."); //TODO: prerobiť na snackbar
+            if (result == 1) {
+                zobrazSnackbar("Téma už existuje v databáze.");
             } else {
                 $("#zoznam-prac").replaceWith(result);
                 zobrazSnackbar("Nová téma bola úspešne pridaná.");
@@ -200,7 +200,12 @@ function upravitOsobneUdaje() {
             formular: $("#osobne-udaje").serialize()
         },
         success: function (result) {
-            alert(result);
+            if (result == 1) {
+                zobrazSnackbar("Nastala chyba.");
+            } else {
+                $("#osobne-udaje").replaceWith(result);
+                zobrazSnackbar("Osobné údaje boli upravené.");
+            }
         }
     });
 }

@@ -16,6 +16,7 @@ if ($stmt = $GLOBALS['conn']->prepare('select id_osoba, os_cislo, password_hash,
         $os_cislo = $password_hash = $email = $meno = $id_osoba = $rola = "";
         $stmt->bind_result($id_osoba, $os_cislo, $password_hash, $email, $meno, $rola);
         $stmt->fetch();
+
         if (password_verify($_POST['heslo'], $password_hash)) {
             session_regenerate_id();
             $_SESSION['prihlaseny'] = TRUE;

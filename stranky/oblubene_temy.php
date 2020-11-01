@@ -1,6 +1,7 @@
 <?php
 include_once '../resources/databaza.php';
 include_once '../resources/metody.php';
+include_once '../resources/OOP.php';
 session_start();
 ?>
 
@@ -46,23 +47,12 @@ session_start();
 
 <div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred oblubene-temy">
     <?php
-    $prace = getVsetkyMojeOblubeneTemy($_SESSION["id_osoba"]);
-    $oblubenePrace = array();
-    if ($_SESSION["rola"] == "student") {
-        $oblubenePrace = getZoznamOblubenychTem($_SESSION["id_osoba"]);
-    }
-
-    if ($prace != null && mysqli_num_rows($prace) > 0) {
-        vypisPrac($prace, $oblubenePrace, "zobrazitOblubenePrace(this)");
-    } else {
-        echo '<div class="zaver-praca">';
-        echo '<div class="stred">Neboli nájdené žiadne obľúbené práce.</div>';
-        echo '</div>';
-    }
+    vypisOblubenychPrac();
     ?>
 </div>
 
 <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()"><i class="fa fa-arrow-up ikona-tlacidlo"></i>Hore</button>
+<div id="snackbar">Text</div>
 
 </body>
 </html>

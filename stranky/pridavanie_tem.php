@@ -1,6 +1,7 @@
 <?php
 include_once '../resources/databaza.php';
 include_once '../resources/metody.php';
+include_once '../resources/OOP.php';
 session_start();
 ?>
 
@@ -83,16 +84,7 @@ session_start();
 
     <div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">
         <?php
-        $prace = getMojePridanePrace($_SESSION["id_osoba"]);
-        $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
-
-        if ($prace != null && mysqli_num_rows($prace) > 0) {
-            vypisPrac($prace, $zoznamPrac, "odobratTemuZPridavaniaTem(this)");
-        } else {
-            echo '<div class="zaver-praca">';
-            echo '<div class="stred">Neboli nájdené žiadne pridané práce.</div>';
-            echo '</div>';
-        }
+        vypisMojichVytvorenychPrac();
         ?>
     </div>
 

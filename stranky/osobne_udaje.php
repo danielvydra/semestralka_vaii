@@ -1,6 +1,7 @@
 <?php
 include_once '../resources/databaza.php';
 include_once '../resources/metody.php';
+include_once '../resources/OOP.php';
 session_start();
 ?>
 
@@ -55,91 +56,17 @@ session_start();
 </div>
 
 <div class="zaver-praca filter osobne-udaje">
-    <form id="osobne-udaje" class="formular" method="post" action="javascript:upravitOsobneUdaje()">
-        <h1 class="stred transform-stred tooltip">Osobné údaje</h1>
-
-        <?php
-
-        if ($_SESSION["rola"] == "student") {
-            $osoba = getStudent($_SESSION["id_osoba"]);
-        } elseif ($_SESSION["rola"] == "ucitel") {
-            $osoba = getVeduci($_SESSION["id_osoba"]);
-        }
-
-        echo '<p>';
-            echo '<b>Meno: </b>' . $osoba["titul_pred"] . " " . $osoba["meno"] . " " . $osoba["titul_za"];
-            echo '<br>';
-            echo '<b>Osobné číslo: </b>' . $osoba["os_cislo"];
-            echo '<br>';
-            echo '<b>Email: </b>' . $osoba["email"];
-            echo '<br>';
-            echo '<b>Telefón: </b>0' . $osoba["telefon"];
-            echo '<br>';
-            echo '<b>Upravenie: </b>' . $osoba["upravenie"];
-            echo '<br>';
-            echo '<b>Vytvorenie: </b>' . $osoba["vytvorenie"];
-            echo '<br>';
-            echo '<b>Fakulta: </b>' . $osoba["fakulta"];
-            if ($_SESSION["rola"] == "student") {
-                echo '<br>';
-                echo '<b>Skupina: </b>' . $osoba["skupina"];
-                echo '<br>';
-                echo '<b>Odbor: </b>' . $osoba["odbor"];
-            } elseif ($_SESSION["rola"] == "ucitel") {
-                echo '<br>';
-                echo '<b>Katedra: </b>' . $osoba["katedra"];
-                echo '<br>';
-                echo '<b>Miestnosť: </b>' . $osoba["miestnost"];
-                echo '<br>';
-                echo '<b>Voľná kapacita: </b>' . ($osoba["volna_kapacita"] == 1 ? "áno" : "nie");
-            }
-        echo '</p>';
-
-        echo '<h2 class="stred">Úprava údajov</h2>';
-        echo '<label><b>Titul pred menom</b></label>';
-        echo '<select id="titul-pred" name="titul-pred" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
-            $result_tituly = getTituly();
-            while ($titul = $result_tituly->fetch_array()) {
-                if ($titul["nazov"] == $osoba["titul_pred"]) {
-                    echo '<option value="' . $titul["id_titul"] . '" selected>' . $titul["nazov"] . '</option>';
-                } else {
-                    echo '<option value="' . $titul["id_titul"] . '">' . $titul["nazov"] . '</option>';
-                }
-            }
-        echo '</select>';
-        echo '<label><b>Celé meno</b></label>';
-        echo '<input pattern="[A-Z+ľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]+(([\',. -][a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ])?[a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]*)*" id="meno" name="meno" type="text" placeholder="Celé meno" value="'. $osoba["meno"] .'" disabled="disabled" required>';
-        echo '<label><b>Titul za menom</b></label>';
-        echo '<select id="titul-za" name="titul-za" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
-            $result_tituly = getTituly();
-            while ($titul = $result_tituly->fetch_array()) {
-                if ($titul["nazov"] == $osoba["titul_za"]) {
-                    echo '<option value="' . $titul["id_titul"] . '" selected>' . $titul["nazov"] . '</option>';
-                } else {
-                    echo '<option value="' . $titul["id_titul"] . '">' . $titul["nazov"] . '</option>';
-                }
-            }
-        echo '</select>';
-        echo '<label><b>Email</b></label>';
-        echo '<input id="email" pattern="[a-zA-Z._]+@([a-zA-z]+\.)+[a-zA-Z]{2,4}" name="email" type="text" placeholder="Email" value="'. $osoba["email"] .'" disabled="disabled" required>';
-        echo '<label><b>Telefón</b></label>';
-        echo '<input id="telefon" pattern="[0]{1}[0-9]{9}" name="telefon" type="text" placeholder="Telefón" value="0' . $osoba["telefon"] .'" disabled="disabled" required>';
-
-        ?>
-
-
-        <div class="transform-stred stred">
-            <button id="ulozit" type="submit" class="os-udaje-tlacidlo tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter" disabled="disabled"><i class="fa fa-save ikona-tlacidlo"></i>Uložiť</button>
-            <button id="upravit" type="button" class="os-udaje-tlacidlo tlacidlo-upravit tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter" onclick="editovatOsobneUdaje(this)"><i class="fa fa-edit ikona-tlacidlo"></i><p>Upraviť</p></button>
-        </div>
+    <?php
+    vypisOsobnychUdajov();
+    ?>
 </div>
 
-</form>
-</div>
 
 <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()">
     <i class="fa fa-arrow-up ikona-tlacidlo"></i>Hore
 </button>
+
+<div id="snackbar">Text</div>
 
 </body>
 </html>

@@ -10,51 +10,30 @@ if ($GLOBALS['conn']->connect_error) {
     die("Pripojenie zlyhalo: " . $GLOBALS['conn']->connect_error);
 }
 
-function getZaverecnePrace() {
-    $sql = "select * from zaver_prace;";
+function getZaverecnePrace($where = "") {
+    $sql = "select zp.nazov_sk, zp.nazov_en, uc_t_pred.nazov as uc_t_pred, uc.meno as meno_veduceho, uc_t_za.nazov as uc_t_za, st_t_pred.nazov as st_t_pred,
+       st.meno as meno_studenta, st_t_za.nazov as st_t_za, u.id_katedra, zp.id_stav, zp.id_typ,
+       id_student, id_veduci, id_tema, popis, tp.nazov as nazov_typu_temy from zaver_prace zp
+        join ucitelia u on u.id_osoba = zp.id_veduci
+        join stavy_prace sp on zp.id_stav = sp.id_stav
+        left join os_udaje st on st.id_osoba = zp.id_student
+        join os_udaje uc on uc.id_osoba = u.id_osoba
+        left join tituly st_t_pred on st.id_titul_pred = st_t_pred.id_titul
+        left join tituly st_t_za on st.id_titul_za = st_t_za.id_titul
+        join tituly uc_t_pred on uc_t_pred.id_titul = uc.id_titul_pred
+        join tituly uc_t_za on uc_t_za.id_titul = uc.id_titul_za
+        join typy_prac tp on zp.id_typ = tp.id_typ $where;";
     $vysledok = $GLOBALS['conn']->query($sql);
-    return $vysledok;
-}
 
-function getNazovPrace($id_typ_prace) {
-    if ($id_typ_prace != null) {
-        $sql = "select nazov from typy_prac where id_typ = ". $id_typ_prace .";";
-        $result_typ_prace = $GLOBALS['conn']->query($sql);
-        $riadok = $result_typ_prace->fetch_array();
-        $typ_prace = $riadok["nazov"];
-        return $typ_prace;
-    }
-}
+    $zaverecnePrace = array();
+    while ($tema = $vysledok->fetch_array()) {
+        $zaverPraca = new ZaverecnaPraca($tema["id_tema"], $tema["nazov_sk"], $tema["nazov_en"], $tema["popis"], $tema["nazov_typu_temy"],
+        $tema["uc_t_pred"] . " " . $tema["meno_veduceho"] . " " . $tema["uc_t_za"],
+            $tema["st_t_pred"] . " " . $tema["meno_studenta"] . " " . $tema["st_t_za"]);
 
-function getStudent($id_student) {
-    if ($id_student != null) {
-        $sql = "select t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, ou.vytvorenie, ou.upravenie, s2.nazov as skupina, o.nazov as odbor, f.nazov as fakulta from os_udaje ou
-        join studenti s on ou.id_osoba = s.id_osoba
-        join tituly t on t.id_titul = ou.id_titul_pred
-        join tituly t2 on t2.id_titul = ou.id_titul_za
-        join odbory o on o.id_odbor = s.id_odbor
-        join fakulty f on f.id_fakulta = o.id_fakulta
-        join skupiny s2 on s2.id_skupina = s.id_skupina
-        where ou.id_osoba = ". $id_student ." ;";
-        $result_student = $GLOBALS['conn']->query($sql);
-        $student = $result_student->fetch_array();
-        return $student;
+        array_push($zaverecnePrace, $zaverPraca);
     }
-}
-
-function getVeduci($id_veduci) {
-    if ($id_veduci != null) {
-        $sql = "select t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, k.nazov as katedra, ou.vytvorenie, ou.upravenie, u.miestnost, u.volna_kapacita, f.nazov as fakulta from os_udaje ou
-        join ucitelia u on ou.id_osoba = u.id_osoba
-        join tituly t on t.id_titul = ou.id_titul_pred
-        join katedry k on k.id_katedra = u.id_katedra
-        join fakulty f on f.id_fakulta = k.id_fakulta
-        join tituly t2 on t2.id_titul = ou.id_titul_za
-        where ou.id_osoba = ". $id_veduci ." ;";
-        $result_veduci = $GLOBALS['conn']->query($sql);
-        $veduci = $result_veduci->fetch_array();
-        return $veduci;
-    }
+    return $zaverecnePrace;
 }
 
 function getTypyPrac() {
@@ -69,13 +48,38 @@ function getTituly() {
     return $result_tituly;
 }
 
-function getPouzivatelov() {
-    $sql = "select ou.id_osoba, t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, ou.vytvorenie, ou.upravenie, r.nazov as nazov_role from os_udaje ou
-    join tituly t on t.id_titul = ou.id_titul_pred
-    join role r on r.id_rola = ou.id_rola
-    join tituly t2 on t2.id_titul = ou.id_titul_za;";
+function getPouzivatelov($where = "") {
+    $sql = "select ou.id_osoba, t.nazov as titul_pred, t2.nazov as titul_za, ou.meno, ou.email, ou.os_cislo, ou.telefon, ou.vytvorenie,
+       ou.upravenie, r.nazov as nazov_role, f.nazov as s_nazov_fakulty, o.nazov as nazov_odboru, sk.nazov as skupina, u.miestnost, u.volna_kapacita,
+       k.nazov as nazov_katedry, f2.nazov as u_nazov_fakulty from os_udaje ou
+        join tituly t on t.id_titul = ou.id_titul_pred
+        join role r on r.id_rola = ou.id_rola
+        join tituly t2 on t2.id_titul = ou.id_titul_za
+        left join ucitelia u on ou.id_osoba = u.id_osoba
+        left join studenti s on ou.id_osoba = s.id_osoba
+        left join odbory o on o.id_odbor = s.id_odbor
+        left join fakulty f on f.id_fakulta = o.id_fakulta
+        left join skupiny sk on sk.id_skupina = s.id_skupina
+        left join katedry k on k.id_katedra = u.id_katedra
+        left join fakulty f2 on f2.id_fakulta = k.id_fakulta $where;";
     $result_uzivatelia = $GLOBALS['conn']->query($sql);
-    return $result_uzivatelia;
+
+    $pouzivatelia = array();
+    while ($pouzivatel = $result_uzivatelia->fetch_array()) {
+        if ($pouzivatel["nazov_role"] == "student") {
+            $uzivatel = new Student($pouzivatel["id_osoba"], $pouzivatel["titul_pred"], $pouzivatel["meno"], $pouzivatel["titul_za"],
+                $pouzivatel["email"], $pouzivatel["os_cislo"], "0" . $pouzivatel["telefon"],
+                $pouzivatel["vytvorenie"], $pouzivatel["upravenie"], $pouzivatel["nazov_role"], $pouzivatel["skupina"],
+                $pouzivatel["s_nazov_fakulty"], $pouzivatel["nazov_odboru"]);
+        } elseif ($pouzivatel["nazov_role"] == "ucitel") {
+            $uzivatel = new Ucitel($pouzivatel["id_osoba"], $pouzivatel["titul_pred"], $pouzivatel["meno"], $pouzivatel["titul_za"],
+                $pouzivatel["email"], $pouzivatel["os_cislo"], "0" . $pouzivatel["telefon"],
+                $pouzivatel["vytvorenie"], $pouzivatel["upravenie"], $pouzivatel["nazov_role"], $pouzivatel["u_nazov_fakulty"],
+                $pouzivatel["miestnost"], $pouzivatel["nazov_katedry"], $pouzivatel["volna_kapacita"]);
+        }
+        array_push($pouzivatelia, $uzivatel);
+    }
+    return $pouzivatelia;
 }
 
 function getKatedry() {
@@ -123,25 +127,6 @@ function getZoznamOblubenychTem($idOsoba) {
     return $temy;
 }
 
-function getVsetkyMojeOblubeneTemy($idOsoba) {
-    $sql = "select zp.nazov_sk, zp.nazov_en, uc.meno as meno_veduceho, st.meno as meno_studenta, u.id_katedra, zp.id_stav, zp.id_typ, id_student, id_veduci, id_tema, popis from zaver_prace zp join ucitelia u on u.id_osoba = zp.id_veduci join stavy_prace sp on zp.id_stav = sp.id_stav
-    left join os_udaje st on st.id_osoba = zp.id_student
-    join os_udaje uc on uc.id_osoba = u.id_osoba where id_tema in (select id_tema from oblubene_temy where id_student = $idOsoba);";
-    $vysledok = $GLOBALS['conn']->query($sql);
-    return $vysledok;
-}
-
-function getMojePridanePrace($idOsoba) {
-    $sql = "select zp.nazov_sk, zp.nazov_en, uc.meno as meno_veduceho, st.meno as meno_studenta, u.id_katedra, zp.id_stav, zp.id_typ, id_student, id_veduci, id_tema, popis from zaver_prace zp
-        join ucitelia u on u.id_osoba = zp.id_veduci
-        join stavy_prace sp on zp.id_stav = sp.id_stav
-        left join os_udaje st on st.id_osoba = zp.id_student
-        join os_udaje uc on uc.id_osoba = u.id_osoba
-        where zp.id_veduci = $idOsoba;";
-    $vysledok = $GLOBALS['conn']->query($sql);
-    return $vysledok;
-}
-
 function getZoznamMojichPridanychTem($idOsoba) {
     $temy = array();
     $sql = "select id_tema from zaver_prace where id_veduci = $idOsoba;";
@@ -164,6 +149,18 @@ function vymazatTemuZDatabazy($idTema) {
     $sql2 = "delete from zaver_prace where id_tema = $idTema;";
     $vysledok1 = $GLOBALS['conn']->query($sql1);
     $vysledok2 = $GLOBALS['conn']->query($sql2);
+}
+
+function pridatNovuTemuDoDB($idVeduci, $typPrace, $nazovPraceSK, $nazovPraceEN, $popisPrace) {
+    $sql = "insert into zaver_prace(id_veduci, id_typ, nazov_sk, nazov_en, popis, vytvorenie)
+        values ($idVeduci, $typPrace, '$nazovPraceSK', '$nazovPraceEN', '$popisPrace', now());";
+    $GLOBALS["conn"]->query($sql);
+}
+
+function upravitOsobneUdajeDB($titulPred, $meno, $titulZa, $email, $telefon, $idOsoba) {
+    $sql = "update os_udaje set id_titul_pred = $titulPred, meno = '$meno', id_titul_za = $titulZa, email = '$email', telefon = $telefon, 
+        upravenie = now() where id_osoba = $idOsoba;";
+    return $GLOBALS["conn"]->query($sql);
 }
 
 ?>

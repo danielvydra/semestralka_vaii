@@ -1,5 +1,7 @@
 <?php
-include '../resources/databaza.php';
+include_once '../resources/databaza.php';
+include_once '../resources/metody.php';
+include_once '../resources/OOP.php';
 session_start();
 ?>
 
@@ -89,35 +91,7 @@ session_start();
     <div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">
         <?php
         $pouzivatelia = getPouzivatelov();
-        while ($pouzivatel = $pouzivatelia->fetch_array()) {
-            if ($pouzivatel["nazov_role"] == "ucitel") {
-                $osoba = getVeduci($pouzivatel["id_osoba"]);
-                $viac_info = '<div><b>Miestnosť: </b> ' . $osoba["miestnost"] . '</div>';
-                $viac_info .= '<div><b>Fakulta: </b> ' . $osoba["fakulta"] . '</div>';
-                $viac_info .= '<div><b>Katedra: </b> ' . $osoba["katedra"] . '</div>';
-                if ($osoba["volna_kapacita"]) {
-                    $viac_info .= '<div><b>Prijíma témy: </b>áno<div class="fa fa-check info-ikona ok"></div></div>';
-                } else {
-                    $viac_info .= '<div><b>Prijíma témy: </b>nie<div class="fa fa-times info-ikona not-ok"></div></div>';
-                }
-            } else if ($pouzivatel["nazov_role"] == "student") {
-                $osoba = getStudent($pouzivatel["id_osoba"]);
-                $viac_info = '<div><b>Študijná skupina: </b> ' . $osoba["skupina"] . '</div>';
-                $viac_info .= '<div><b>Odbor: </b> ' . $osoba["odbor"] . '</div>';
-                $viac_info .= '<div><b>Fakulta: </b> ' . $osoba["fakulta"] . '</div>';
-            }
-
-            echo '<div id="' . $pouzivatel["os_cislo"] . '" class="zaver-praca pouzivatelia">';
-            echo '<div onclick="zobrazViacInfo(this)" class="nazov-prace"><b>' . $pouzivatel["titul_pred"] . " " . $pouzivatel["meno"] . " " . $pouzivatel["titul_za"] . '</b></div>';
-            echo '<div style="display: none;">';
-            echo '<hr class="oddelovac">';
-            echo '<div><b>Email: </b> ' . $pouzivatel["email"] . '</div>';
-            echo '<div><b>Osobné číslo: </b>' . $pouzivatel["os_cislo"] . '</div>';
-            echo '<div><b>Telefón: </b>' . "0" . $pouzivatel["telefon"] . '</div>';
-            echo $viac_info;
-            echo '</div>';
-            echo '</div>';
-        }
+        vypisPouzivatelov($pouzivatelia);
         ?>
     </div>
 

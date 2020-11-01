@@ -1,6 +1,7 @@
 <?php
 include_once '../resources/databaza.php';
 include_once '../resources/metody.php';
+include_once '../resources/OOP.php';
 session_start();
 ?>
 
@@ -56,7 +57,7 @@ session_start();
 
                 <div class="stred">
                     <select name="typ-prace" class="medzery dropdown" form="filter-prac">
-                        <option value="0">Typ práce</option>
+                        <option value="">Typ práce</option>
                         <?php
                         $result_typy_prac = getTypyPrac();
                         while ($typ_prace = $result_typy_prac->fetch_array()) {
@@ -65,7 +66,7 @@ session_start();
                         ?>
                     </select>
                     <select name="katedra" class="medzery dropdown" form="filter-prac" >
-                        <option value="0">Katedra</option>
+                        <option value="">Katedra</option>
                         <?php
                         $result_katedry = getKatedry();
                         while ($katedra = $result_katedry->fetch_array()) {
@@ -74,7 +75,7 @@ session_start();
                         ?>
                     </select>
                     <select name="stav-prace" class="medzery dropdown" form="filter-prac" >
-                    <option value="0">Stav práce</option>
+                    <option value="">Stav práce</option>
                     <?php
                     $result_stavy_prace = getStavyPrace();
                     while ($stav = $result_stavy_prace->fetch_array()) {
@@ -109,25 +110,12 @@ session_start();
 
     <div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">
         <?php
-        $prace = getZaverecnePrace();
-        if ($prace != null && mysqli_num_rows($prace) > 0) {
-            if ($_SESSION["rola"] == "student") {
-                $zoznamPrac = getZoznamOblubenychTem($_SESSION["id_osoba"]);
-                $onclick = "pridatOblubenuTemu(this)";
-            } elseif ($_SESSION["rola"] == "ucitel") {
-                $zoznamPrac = getZoznamMojichPridanychTem($_SESSION["id_osoba"]);
-                $onclick = "odobratPracuZoZoznamuPrac(this)";
-            }
-            vypisPrac($prace, $zoznamPrac, $onclick);
-        } else {
-            echo '<div class="zaver-praca">';
-            echo '<div class="stred">Neboli nájdené žiadne práce.</div>';
-            echo '</div>';
-        }
+        vypisZaverecnePrace();
         ?>
     </div>
 
     <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()"><i class="fa fa-arrow-up ikona-tlacidlo"></i>Hore</button>
+    <div id="snackbar">Text</div>
 
 </body>
 </html>
