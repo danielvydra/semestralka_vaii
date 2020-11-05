@@ -25,6 +25,12 @@ body, html {
     width: 9px;
 }
 
+#chyba-prihlasenie {
+    color: #e53935;
+    font-weight: bold;
+    display: none;
+}
+
 .prihl-okno {
     min-width: 550px;
     left: 50%;

@@ -26,6 +26,24 @@ function zobrazViacInfo(element) {
     }
 }
 
+function prihlasit() {
+    element = document.getElementById("chyba-prihlasenie");
+
+    $.ajax({
+        type: "POST",
+        url: "../resources/autentifikacia.php",
+        data: $("#form-prihlasenie").serialize(),
+        success: function (result) {
+            if (result.includes("Chyba")) {
+                element.lastElementChild.innerHTML = result;
+                element.style.display = "block";
+            } else if (result == "login") {
+                window.location.replace('../stranky/zoznam_prac.php');
+            }
+        }
+    });
+}
+
 function zobrazMenu() {
     var element = document.getElementById("horne-menu-vpravo");
     if (element.style.display === "none" || element.style.display === "") {

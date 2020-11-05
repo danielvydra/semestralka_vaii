@@ -4,7 +4,7 @@ include_once './databaza.php';
 session_start();
 
 if (!isset($_POST['os_cislo'], $_POST['heslo'])) {
-    exit('Nevyplnili ste polia');
+    echo 'Chyba - Nesprávne vyplnené polia';
 }
 if ($stmt = $GLOBALS['conn']->prepare('select id_osoba, os_cislo, password_hash, email, meno, r.nazov as rola from os_udaje
     join role r on r.id_rola = os_udaje.id_rola where os_cislo like ?;')) {
@@ -27,14 +27,13 @@ if ($stmt = $GLOBALS['conn']->prepare('select id_osoba, os_cislo, password_hash,
             $_SESSION['rola'] = $rola;
 
             if (isset($_SESSION['prihlaseny'])) {
-                header('Location: ../stranky/zoznam_prac.php');
-                exit;
+                echo "login";
             }
         } else {
-            echo 'Zadané nesprávne údaje';
+            echo 'Chyba - Zadané heslo je nesprávne';
         }
     } else {
-        echo 'Používateľ neexistuje';
+        echo 'Chyba - Používateľ neexistuje';
     }
     $stmt->close();
 }
