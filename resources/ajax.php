@@ -98,9 +98,7 @@ function filtrovatPrace() {
         $where .= " order by $trieditPodla $trieditAko ;";
     }
 
-    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
     vypisFiltrovanePrace($where);
-    echo '</div>';
 }
 
 function filtrovatUzivatelov() {
@@ -129,9 +127,7 @@ function filtrovatUzivatelov() {
 
     $pouzivatelia = getPouzivatelov($sql);
     if (isset($pouzivatelia) and !empty($pouzivatelia)) {
-        echo '<div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">';
         vypisPouzivatelov($pouzivatelia);
-        echo '</div>';
     } else {
         echo '<div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">';
         echo '<div class="zaver-praca pouzivatelia stred">Žiaden používateľ nespĺňa zadaný filer.</div>';
@@ -143,10 +139,7 @@ function filtrovatUzivatelov() {
 function zobrazitOblubenePrace()
 {
     pridatMedziOblubene(false);
-
-    echo "<div id='zoznam-prac' class='kontajner-zoznam-tem transform-stred oblubene-temy'>";
     vypisOblubenychPrac();
-    echo "</div>";
 }
 
 function pridatNovuTemu() {
@@ -161,27 +154,18 @@ function pridatNovuTemu() {
         echo 1;
     } else {
         pridatNovuTemuDoDB($idVeduci, $typPrace, $nazovPraceSK, $nazovPraceEN, $popisPrace);
-
-        echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
         vypisMojichVytvorenychPrac();
-        echo '</div>';
     }
 }
 
 function odobratPracuZoZoznamuPrac() {
     vymazatTemuZDatabazy($_POST["id_tema"]);
-
-    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
     vypisZaverecnePrace();
-    echo '</div>';
 }
 
 function odobratTemuZPridavaniaTem() {
     vymazatTemuZDatabazy($_POST["id_tema"]);
-
-    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
     vypisMojichVytvorenychPrac();
-    echo '</div>';
 }
 
 function upravitOsobneUdaje() {

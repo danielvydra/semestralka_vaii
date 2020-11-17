@@ -1,6 +1,11 @@
 <?php
 include_once "../resources/dependencies.php";
 session_start();
+
+if (!isset($_SESSION["rola"])) {
+    header("Location: ./prihlasenie.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

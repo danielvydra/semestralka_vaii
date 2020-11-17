@@ -25,22 +25,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Prerobenie loginu cez AJAX">
-      <change afterPath="$PROJECT_DIR$/resources/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/dependencies.php" afterDir="false" />
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Refaktoring kódu&#10;Oddelenie prihlas. údajov pre DB do config.php&#10;dependencies.php - obsahuje potrebné include files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/oblubene_temy.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/oblubene_temy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/osobne_udaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/osobne_udaje.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pouzivatelia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pridavanie_tem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/zoznam_prac.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/autentifikacia.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/autentifikacia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/databaza.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/databaza.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/dizajn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/odhlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/odhlasenie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/oblubene_temy.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/oblubene_temy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/osobne_udaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/osobne_udaje.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/pouzivatelia.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pouzivatelia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pridavanie_tem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/prihlasenie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stranky/zoznam_prac.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/zoznam_prac.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/dependencies.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/dependencies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/metody.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/metody.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +124,7 @@
       <workItem from="1604149647596" duration="23908000" />
       <workItem from="1604228411366" duration="21282000" />
       <workItem from="1604580868872" duration="9399000" />
-      <workItem from="1605614623153" duration="6106000" />
+      <workItem from="1605614623153" duration="9418000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -251,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604613659774</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refaktoring kódu&#10;Oddelenie prihlas. údajov pre DB do config.php&#10;dependencies.php - obsahuje potrebné include files">
+      <created>1605621739710</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1605621739710</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +302,8 @@
     <MESSAGE value="Klientská kontrola formulárov, pridanie snackbar správy, bug fix filtra používateľov" />
     <MESSAGE value="Vytvorenie a použitie OOP + refaktoring kódu" />
     <MESSAGE value="Prerobenie loginu cez AJAX" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prerobenie loginu cez AJAX" />
+    <MESSAGE value="Refaktoring kódu&#10;Oddelenie prihlas. údajov pre DB do config.php&#10;dependencies.php - obsahuje potrebné include files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refaktoring kódu&#10;Oddelenie prihlas. údajov pre DB do config.php&#10;dependencies.php - obsahuje potrebné include files" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -346,20 +348,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1604613665435">
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1605621748403">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1604613665435" />
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605621748403" />
     <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604102326231" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603455284253">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="801" y="264" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603411436728" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603455284253" />
-    <state x="667" y="134" width="585" height="772" key="find.popup" timestamp="1605620293039">
+    <state x="667" y="134" width="585" height="772" key="find.popup" timestamp="1605624581372">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="134" width="585" height="772" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605620293039" />
+    <state x="667" y="134" width="585" height="772" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605624581372" />
     <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603661061973" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1604605718003">
       <screen x="0" y="0" width="1920" height="1040" />

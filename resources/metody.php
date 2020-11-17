@@ -13,6 +13,7 @@ function vypisZaverecnePrace($prace = null) {
         $onclick = "odobratPracuZoZoznamuPrac(this)";
     }
 
+    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
     if (isset($prace) and sizeof($prace) > 0) {
         vypisPrac($prace,"$onclick", $zoznamOblubenychPrac);
     } else {
@@ -20,13 +21,16 @@ function vypisZaverecnePrace($prace = null) {
         echo '<div class="stred">Neboli nájdené žiadne práce.</div>';
         echo '</div>';
     }
+    echo '</div>';
 }
 
 function vypisFiltrovanePrace($where) {
     $prace = getZaverecnePrace($where);
     if ($prace == null) {
+        echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
         echo '<div class="zaver-praca">';
         echo '<div class="stred">Filtru nezodpovedajú žiadne práce.</div>';
+        echo '</div>';
         echo '</div>';
     } else {
         vypisZaverecnePrace($prace);
@@ -67,6 +71,7 @@ function vypisOblubenychPrac() {
     $where = "where id_tema in (select id_tema from oblubene_temy where id_student = $mojeId)";
     $prace = getZaverecnePrace($where);
 
+    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred oblubene-temy">';
     if (isset($prace) and sizeof($prace) > 0) {
         vypisPrac($prace, "zobrazitOblubenePrace(this)",null);
     } else {
@@ -74,6 +79,7 @@ function vypisOblubenychPrac() {
         echo '<div class="stred">Neboli nájdené žiadne obľúbené práce.</div>';
         echo '</div>';
     }
+    echo '</div>';
 }
 
 function vypisMojichVytvorenychPrac() {
@@ -81,6 +87,7 @@ function vypisMojichVytvorenychPrac() {
     $where = "where id_veduci = $mojeId";
     $prace = getZaverecnePrace($where);
 
+    echo '<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred">';
     if (isset($prace) and sizeof($prace) > 0) {
         vypisPrac($prace,  "odobratTemuZPridavaniaTem(this)", null);
     } else {
@@ -88,6 +95,7 @@ function vypisMojichVytvorenychPrac() {
         echo '<div class="stred">Neboli nájdené žiadne pridané práce.</div>';
         echo '</div>';
     }
+    echo '</div>';
 }
 
 function vypisOsobnychUdajov() {
@@ -165,33 +173,35 @@ function vypisOsobnychUdajov() {
 }
 
 function vypisPouzivatelov($pouzivatelia) {
-    foreach ($pouzivatelia as $uzivatel) {
-        if ($uzivatel instanceof Ucitel) {
-            $viac_info = "<div><b>Miestnosť: </b>$uzivatel->miestnost</div>";
-            $viac_info .= "<div><b>Fakulta: </b>$uzivatel->fakulta</div>";
-            $viac_info .= "<div><b>Katedra: </b>$uzivatel->katedra</div>";
-            if ($uzivatel->volnaKapacita) {
-                $viac_info .= '<div><b>Prijíma témy: </b>áno<div class="fa fa-check info-ikona ok"></div></div>';
-            } else {
-                $viac_info .= '<div><b>Prijíma témy: </b>nie<div class="fa fa-times info-ikona not-ok"></div></div>';
+    echo '<div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">';
+        foreach ($pouzivatelia as $uzivatel) {
+            if ($uzivatel instanceof Ucitel) {
+                $viac_info = "<div><b>Miestnosť: </b>$uzivatel->miestnost</div>";
+                $viac_info .= "<div><b>Fakulta: </b>$uzivatel->fakulta</div>";
+                $viac_info .= "<div><b>Katedra: </b>$uzivatel->katedra</div>";
+                if ($uzivatel->volnaKapacita) {
+                    $viac_info .= '<div><b>Prijíma témy: </b>áno<div class="fa fa-check info-ikona ok"></div></div>';
+                } else {
+                    $viac_info .= '<div><b>Prijíma témy: </b>nie<div class="fa fa-times info-ikona not-ok"></div></div>';
+                }
+            } else if ($uzivatel instanceof Student) {
+                $viac_info = "<div><b>Študijná skupina: </b>$uzivatel->skupina</div>";
+                $viac_info .= "<div><b>Odbor: </b>$uzivatel->odbor</div>";
+                $viac_info .= "<div><b>Fakulta: </b>$uzivatel->fakulta</div>";
             }
-        } else if ($uzivatel instanceof Student) {
-            $viac_info = "<div><b>Študijná skupina: </b>$uzivatel->skupina</div>";
-            $viac_info .= "<div><b>Odbor: </b>$uzivatel->odbor</div>";
-            $viac_info .= "<div><b>Fakulta: </b>$uzivatel->fakulta</div>";
-        }
 
-        echo "<div id='$uzivatel->osCislo' class='zaver-praca pouzivatelia'>";
-        echo "<div onclick='zobrazViacInfo(this)' class='nazov-prace'><b>" .$uzivatel->getCeleMeno(). "</b></div>";
-        echo '<div style="display: none;">';
-        echo '<hr class="oddelovac">';
-        echo "<div><b>Email: </b>$uzivatel->email</div>";
-        echo "<div><b>Osobné číslo: </b>$uzivatel->osCislo</div>";
-        echo "<div><b>Telefón: </b>$uzivatel->telefon</div>";
-        echo $viac_info;
-        echo '</div>';
-        echo '</div>';
-    }
+            echo "<div id='$uzivatel->osCislo' class='zaver-praca pouzivatelia'>";
+            echo "<div onclick='zobrazViacInfo(this)' class='nazov-prace'><b>" .$uzivatel->getCeleMeno(). "</b></div>";
+            echo '<div style="display: none;">';
+            echo '<hr class="oddelovac">';
+            echo "<div><b>Email: </b>$uzivatel->email</div>";
+            echo "<div><b>Osobné číslo: </b>$uzivatel->osCislo</div>";
+            echo "<div><b>Telefón: </b>$uzivatel->telefon</div>";
+            echo $viac_info;
+            echo '</div>';
+            echo '</div>';
+        }
+    echo '</div>';
 }
 
 ?>

@@ -1,6 +1,11 @@
 <?php
 include_once "../resources/dependencies.php";
 session_start();
+
+if (!isset($_SESSION["rola"])) {
+    header("Location: ./prihlasenie.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,11 +48,9 @@ session_start();
     <div id="skrol-indikator" class="skrol-indikator"></div>
 </div>
 
-<div id="zoznam-prac" class="kontajner-zoznam-tem transform-stred oblubene-temy">
     <?php
     vypisOblubenychPrac();
     ?>
-</div>
 
 <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()"><i class="fa fa-arrow-up ikona-tlacidlo"></i>Hore</button>
 <div id="snackbar">Text</div>

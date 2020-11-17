@@ -86,12 +86,10 @@ session_start();
         </form>
     </div>
 
-    <div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">
         <?php
         $pouzivatelia = getPouzivatelov();
         vypisPouzivatelov($pouzivatelia);
         ?>
-    </div>
 
     <button id="tlacidlo-ist-hore" class="tlacidlo-ist-hore" onclick="istHore()">
         <i class="fa fa-arrow-up ikona-tlacidlo"></i>
