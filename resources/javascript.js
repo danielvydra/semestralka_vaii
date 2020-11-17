@@ -38,7 +38,7 @@ function prihlasit() {
                 element.lastElementChild.innerHTML = result;
                 element.style.display = "block";
             } else if (result == "login") {
-                window.location.replace('../stranky/zoznam_prac.php');
+                window.location.replace('../pages/zoznam_prac.php');
             }
         }
     });

@@ -1,7 +1,5 @@
 <?php
-include_once "./databaza.php";
-include_once "./metody.php";
-include_once "./OOP.php";
+include_once "../resources/dependencies.php";
 session_start();
 
 if (isset($_POST['nazovFunkcie']) && !empty($_POST['nazovFunkcie'])) {
