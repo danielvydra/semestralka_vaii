@@ -1,6 +1,6 @@
 <?php
 
-class Database {
+class Databaza {
 
     private $conn;
     private static $instance = null;
@@ -44,7 +44,7 @@ function getZaverecnePrace($where = "") {
         join tituly uc_t_za on uc_t_za.id_titul = uc.id_titul_za
         join typy_prac tp on zp.id_typ = tp.id_typ $where;";
 
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $vysledok = $conn->query($sql);
 
     $zaverecnePrace = array();
@@ -60,14 +60,14 @@ function getZaverecnePrace($where = "") {
 
 function getTypyPrac() {
     $sql = "select * from typy_prac;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $result_typy_prac = $conn->query($sql);
     return $result_typy_prac;
 }
 
 function getTituly() {
     $sql = "select * from tituly order by id_titul;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $result_tituly = $conn->query($sql);
     return $result_tituly;
 }
@@ -87,7 +87,7 @@ function getPouzivatelov($where = "") {
         left join katedry k on k.id_katedra = u.id_katedra
         left join fakulty f2 on f2.id_fakulta = k.id_fakulta $where;";
 
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $result_uzivatelia = $conn->query($sql);
 
     $pouzivatelia = array();
@@ -110,40 +110,40 @@ function getPouzivatelov($where = "") {
 
 function getKatedry() {
     $sql = "select id_katedra, nazov from katedry;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $result_katedry = $conn->query($sql);
     return $result_katedry;
 }
 
 function getStavyPrace() {
     $sql = "select id_stav, stav from stavy_prace;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $result_stavy_prace = $conn->query($sql);
     return $result_stavy_prace;
 }
 
 function getTypyOsob() {
     $sql = "select id_rola, nazov as nazov_role from role;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $result_typy_osob = $conn->query($sql);
     return $result_typy_osob;
 }
 
 function pridatTemuMedziOblubene($idTema, $idOsoba) {
     $sql = "insert into oblubene_temy(id_tema, id_student) values ($idTema, $idOsoba);";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $conn->query($sql);
 }
 
 function odobratOblubenuTemu($idTema, $idOsoba) {
     $sql = "delete from oblubene_temy where id_tema = $idTema and id_student = $idOsoba;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $conn->query($sql);
 }
 
 function jeOblubenaTemaVDatabaze($idTema, $idOsoba) {
     $sql = "select * from oblubene_temy where id_tema = $idTema and id_student = $idOsoba;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $vysledok = $conn->query($sql);
     $pocet = mysqli_num_rows($vysledok);
     return $pocet > 0;
@@ -152,7 +152,7 @@ function jeOblubenaTemaVDatabaze($idTema, $idOsoba) {
 function getZoznamOblubenychTem($idOsoba) {
     $temy = array();
     $sql = "select id_tema from oblubene_temy where id_student = $idOsoba;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $vysledok = $conn->query($sql);
     while ($tema = $vysledok->fetch_array()) {
         array_push($temy, $tema["id_tema"]);
@@ -163,7 +163,7 @@ function getZoznamOblubenychTem($idOsoba) {
 function getZoznamMojichPridanychTem($idOsoba) {
     $temy = array();
     $sql = "select id_tema from zaver_prace where id_veduci = $idOsoba;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $vysledok = $conn->query($sql);
     while ($tema = $vysledok->fetch_array()) {
         array_push($temy, $tema["id_tema"]);
@@ -173,7 +173,7 @@ function getZoznamMojichPridanychTem($idOsoba) {
 
 function jeTemaVDatabaze($nazovSK, $nazovEN) {
     $sql = "select * from zaver_prace where nazov_sk like '$nazovSK' or nazov_en like '$nazovEN';";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $vysledok = $conn->query($sql);
     $pocet = mysqli_num_rows($vysledok);
     return $pocet > 0;
@@ -182,7 +182,7 @@ function jeTemaVDatabaze($nazovSK, $nazovEN) {
 function vymazatTemuZDatabazy($idTema) {
     $sql1 = "delete from oblubene_temy where id_tema = $idTema;";
     $sql2 = "delete from zaver_prace where id_tema = $idTema;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $vysledok1 = $conn->query($sql1);
     $vysledok2 = $conn->query($sql2);
 }
@@ -190,14 +190,14 @@ function vymazatTemuZDatabazy($idTema) {
 function pridatNovuTemuDoDB($idVeduci, $typPrace, $nazovPraceSK, $nazovPraceEN, $popisPrace) {
     $sql = "insert into zaver_prace(id_veduci, id_typ, nazov_sk, nazov_en, popis, vytvorenie)
         values ($idVeduci, $typPrace, '$nazovPraceSK', '$nazovPraceEN', '$popisPrace', now());";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     $conn->query($sql);
 }
 
 function upravitOsobneUdajeDB($titulPred, $meno, $titulZa, $email, $telefon, $idOsoba) {
     $sql = "update os_udaje set id_titul_pred = $titulPred, meno = '$meno', id_titul_za = $titulZa, email = '$email', telefon = $telefon, 
         upravenie = now() where id_osoba = $idOsoba;";
-    $conn = Database::getInstance()->getConn();
+    $conn = Databaza::getInstance()->getConn();
     return $conn->query($sql);
 }
 

@@ -7,7 +7,7 @@ if (!isset($_POST['os_cislo'], $_POST['heslo'])) {
     echo 'Chyba - Nesprávne vyplnené polia';
 }
 
-$conn = Database::getInstance()->getConn();
+$conn = Databaza::getInstance()->getConn();
 if ($stmt = $conn->prepare('select id_osoba, os_cislo, password_hash, email, meno, r.nazov as rola from os_udaje
     join role r on r.id_rola = os_udaje.id_rola where os_cislo like ?;')) {
     $stmt->bind_param('s', $_POST['os_cislo']);

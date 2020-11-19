@@ -346,6 +346,12 @@ input:focus {
     color: #ff382e;
 }
 
+#filter-prac input, #filter-prac select,
+#filter-uzivatelov input, #filter-uzivatelov select {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 #filter-prac input, #osobne-udaje input, #filter-uzivatelov input {
     width: 26%;
     border: 2px solid black;

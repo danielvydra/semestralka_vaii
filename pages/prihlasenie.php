@@ -5,7 +5,6 @@
     <title>Prihlásenie</title>
     <script src="../resources/javascript.js"></script>
     <script src="../resources/jquery-3.5.1.js"></script>
-    <script src="../jquery-ui/jquery-ui.js"></script>
     <link rel="stylesheet" href="../resources/dizajn.css">
     <link rel="stylesheet" href="../fontawesome/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">

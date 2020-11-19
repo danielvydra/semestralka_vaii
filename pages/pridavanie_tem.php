@@ -8,42 +8,18 @@ if (!isset($_SESSION["rola"])) {
 }
 ?>
 
-    <!DOCTYPE html>
-    <html lang="sk">
-    <head>
-        <meta charset="UTF-8">
-        <title>Pridávanie tém</title>
-        <script src="../resources/javascript.js"></script>
-        <script src="../resources/jquery-3.5.1.js"></script>
-        <link rel="stylesheet" href="../resources/dizajn.css">
-        <link rel="stylesheet" href="../fontawesome/css/all.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body onscroll="skrolovanie()">
+<!DOCTYPE html>
+<html lang="sk">
 
-    <div class="horne-menu">
-        <div class="horne-menu-vlavo">Systém záverečných prác<div onclick="zobrazMenu()" class="fa fa-bars ikona menu-ikona"></div></div>
-        <div id="horne-menu-vpravo" class="horne-menu-vpravo">
-            <a href="zoznam_prac.php"><div class="fa fa-stream ikona-tlacidlo"></div>Zoznam prác</a>
-            <a href="pouzivatelia.php"><div class="fa fa-users ikona-tlacidlo"></div>Používatelia</a>
-            <a href="osobne_udaje.php"><div class="fa fa-address-card ikona-tlacidlo"></div>Osobné údaje</a>
-            <?php
-            if ($_SESSION["rola"] == "ucitel") {
-                echo '<a class="aktivne" href="pridavanie_tem.php"><div class="fa fa-plus ikona-tlacidlo"></div>Pridávanie tém</a>';
+<?php
+vypisHlavicku("Pridávanie tém");
+?>
 
-            } else if ($_SESSION["rola"] == "student") {
-                echo '<a href="oblubene_temy.php"><div class="fa fa-star ikona-tlacidlo"></div>Obľúbené témy</a>';
-            }
-            ?>
-            <a href="../resources/odhlasenie.php"><div class="fa fa-power-off ikona-tlacidlo"></div>Odhlásiť</a>
-        </div>
+<body onscroll="skrolovanie()">
 
-    </div>
-    <div class="skrol-kontajner">
-        <div id="skrol-indikator" class="skrol-indikator"></div>
-    </div>
+    <?php
+    vypisMenu(4);
+    ?>
 
     <div class="kontajner-zoznam-tem kont-nova-tema transform-stred pridavanie-tem">
         <div id="id-prace" class="zaver-praca nova-tema">

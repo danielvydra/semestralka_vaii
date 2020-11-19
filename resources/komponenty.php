@@ -138,27 +138,13 @@ function vypisOsobnychUdajov() {
         echo '<h2 class="stred">Úprava údajov</h2>';
         echo '<label><b>Titul pred menom</b></label>';
         echo '<select id="titul-pred" name="titul-pred" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
-            $result_tituly = getTituly();
-            while ($titul = $result_tituly->fetch_array()) {
-                if ($titul["nazov"] == $osoba->titulPred) {
-                    echo '<option label="'. $titul["nazov"] .' " value="' . $titul["id_titul"] . '" selected>' . $titul["nazov"] . '</option>';
-                } else {
-                    echo '<option label="'. $titul["nazov"] .' " value="' . $titul["id_titul"] . '">' . $titul["nazov"] . '</option>';
-                }
-            }
+                    vypisZoznamTitulov($osoba->titulPred);
         echo '</select>';
         echo '<label><b>Celé meno</b></label>';
         echo "<input pattern='[A-Z+ľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]+(([,. -][a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ])?[a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]*)*' id='meno' name='meno' type='text' placeholder='Celé meno' value='$osoba->meno' disabled='disabled' required>";
         echo '<label><b>Titul za menom</b></label>';
         echo '<select id="titul-za" name="titul-za" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
-            $result_tituly = getTituly();
-            while ($titul = $result_tituly->fetch_array()) {
-                if ($titul["nazov"] == $osoba->titulZa) {
-                    echo '<option  label="'. $titul["nazov"] .' " value="' . $titul["id_titul"] . '" selected>' . $titul["nazov"] . '</option>';
-                } else {
-                    echo '<option  label="'. $titul["nazov"] .' " value="' . $titul["id_titul"] . '">' . $titul["nazov"] . '</option>';
-                }
-            }
+                    vypisZoznamTitulov($osoba->titulZa);
         echo '</select>';
         echo '<label><b>Email</b></label>';
         echo "<input id='email' pattern='[a-zA-Z._]+@([a-zA-z]+\.)+[a-zA-Z]{2,4}' name='email' type='text' placeholder='Email' value='$osoba->email' disabled='disabled' required>";
@@ -170,6 +156,17 @@ function vypisOsobnychUdajov() {
             echo '<button id="upravit" type="button" class="os-udaje-tlacidlo tlacidlo-upravit tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter" onclick="editovatOsobneUdaje(this)"><i class="fa fa-edit ikona-tlacidlo"></i><span>Upraviť</span></button>';
         echo '</div>';
     echo '</form>';
+}
+
+function vypisZoznamTitulov($selected) {
+    $result_tituly = getTituly();
+    while ($titul = $result_tituly->fetch_array()) {
+        if ($titul["nazov"] == $selected) {
+            echo '<option  label="'. $titul["nazov"] .' " value="' . $titul["id_titul"] . '" selected>' . $titul["nazov"] . '</option>';
+        } else {
+            echo '<option  label="'. $titul["nazov"] .' " value="' . $titul["id_titul"] . '">' . $titul["nazov"] . '</option>';
+        }
+    }
 }
 
 function vypisPouzivatelov($pouzivatelia) {
@@ -201,6 +198,139 @@ function vypisPouzivatelov($pouzivatelia) {
             echo '</div>';
             echo '</div>';
         }
+    echo '</div>';
+}
+
+function vypisMenu($aktivne) {
+    $class = 'class="aktivne"';
+    $empty = '';
+
+    echo '<div class="horne-menu">';
+        echo '<div>';
+            echo '<div class="horne-menu-vlavo">Systém záverečných prác<div onclick="zobrazMenu()" class="fa fa-bars ikona menu-ikona"></div></div>';
+        echo '</div>';
+        echo '<div id="horne-menu-vpravo" class="horne-menu-vpravo">';
+            echo '<a href="zoznam_prac.php" ' . ($aktivne == 1 ? $class : $empty) . '><div class="fa fa-stream ikona-tlacidlo"></div>Zoznam prác</a>';
+            echo '<a href="pouzivatelia.php" ' . ($aktivne == 2 ? $class : $empty) . '><div class="fa fa-users ikona-tlacidlo"></div>Používatelia</a>';
+            echo '<a href="osobne_udaje.php"' . ($aktivne == 3 ? $class : $empty) . '><div class="fa fa-address-card ikona-tlacidlo"></div>Osobné údaje</a>';
+            if ($_SESSION["rola"] == "ucitel") {
+                echo '<a href="pridavanie_tem.php"' . ($aktivne == 4 ? $class : $empty) . '><div class="fa fa-plus ikona-tlacidlo"></div>Pridávanie tém</a>';
+
+            } else if ($_SESSION["rola"] == "student") {
+                echo '<a href="oblubene_temy.php"' . ($aktivne == 4 ? $class : $empty) . '><div class="fa fa-star ikona-tlacidlo"></div>Obľúbené témy</a>';
+            }
+            echo '<a href="../resources/odhlasenie.php"><div class="fa fa-power-off ikona-tlacidlo"></div>Odhlásiť</a>';
+        echo '</div>';
+    echo '</div>';
+    echo '<div class="skrol-kontajner">';
+        echo '<div id="skrol-indikator" class="skrol-indikator"></div>';
+    echo '</div>';
+}
+
+function vypisHlavicku($nadpis) {
+    $header = '<head>
+        <meta charset="UTF-8">
+        <title>'. $nadpis .'</title>
+        <script src="../resources/javascript.js"></script>
+        <script src="../resources/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" href="../resources/dizajn.css">
+        <link rel="stylesheet" href="../fontawesome/css/all.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>';
+    echo $header;
+}
+
+function vypisFilterPrac() {
+    echo '<div class="zaver-praca filter">';
+        echo '<form id="filter-prac" class="formular" method="post" action="javascript:filtrovatTemy()">';
+            echo '<h1 class="stred transform-stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1><div style="display: none;">';
+                echo '<div class="stred">';
+                    echo '<input name="nazov-prace" type="text" placeholder="Názov práce">';
+                    echo '<input name="meno-veduceho" type="text" placeholder="Meno vedúceho">';
+                    echo '<input name="meno-studenta" type="text" placeholder="Meno študenta">';
+                echo '</div>';
+
+                echo '<div class="stred">';
+                    echo '<select name="typ-prace" class="medzery dropdown" form="filter-prac">';
+                        echo '<option value="">Typ práce</option>';
+                        $result_typy_prac = getTypyPrac();
+                        while ($typ_prace = $result_typy_prac->fetch_array()) {
+                            echo '<option value="'. $typ_prace["id_typ"] .'">'. $typ_prace["nazov"] .'</option>';
+                        }
+                    echo '</select>';
+                    echo '<select name="katedra" class="medzery dropdown" form="filter-prac" >';
+                        echo '<option value="">Katedra</option>';
+                        $result_katedry = getKatedry();
+                        while ($katedra = $result_katedry->fetch_array()) {
+                            echo '<option value="'. $katedra["id_katedra"] .'">'. $katedra["nazov"] .'</option>';
+                        }
+                    echo '</select>';
+                    echo '<select name="stav-prace" class="medzery dropdown" form="filter-prac" >';
+                    echo '<option value="">Stav práce</option>';
+                    $result_stavy_prace = getStavyPrace();
+                    while ($stav = $result_stavy_prace->fetch_array()) {
+                        echo '<option value="'. $stav["id_stav"] .'">'. $stav["stav"] .'</option>';
+                    }
+                echo '</select>';
+                echo '</div>';
+
+                echo '<div class="stred">';
+                    echo '<select name="triedit-podla" class="medzery dropdown" form="filter-prac" >';
+                        echo '<option value="0">Triediť podľa</option>';
+                        echo '<option value="nazov_sk">Názov témy</option>';
+                        echo '<option value="uc.meno">Meno vedúceho</option>';
+                        echo '<option value="st.meno">Meno študenta</option>';
+                        echo '<option value="zp.id_typ">Typ práce</option>';
+                        echo '<option value="zp.id_stav">Stav práce</option>';
+                        echo '<option value="u.id_katedra">Katedra</option>';
+                    echo '</select>';
+                    echo '<select name="triedit-ako" class="medzery dropdown" form="filter-prac" >';
+                        echo '<option value="asc">Vzostupne</option>';
+                        echo '<option value="desc">Zostupne</option>';
+                    echo '</select>';
+                echo '</div>';
+                echo '<div>';
+                    echo '<button id="filtrovat" type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter"><i class="fa fa-filter ikona-tlacidlo"></i>Filtruj</button>';
+                echo '</div>';
+            echo '</div>';
+        echo '</form>';
+    echo '</div>';
+}
+
+function vypisFilterPouzivatelov() {
+    echo '<div class="zaver-praca filter">';
+        echo '<form id="filter-uzivatelov" class="formular" action="javascript:filtrovatPouzivatelov()">';
+            echo '<h1 class="stred transform-stred tooltip" onclick="zobrazViacInfo(this)">Filter<span class="tooltiptext">Kliknutím zobraziť/skryť filter</span></h1><div style="display: none;">';
+                echo '<div class="stred">';
+                    echo '<input name="meno-osoby" type="text" placeholder="Meno osoby">';
+                    echo '<select name="typ-osoby" class="medzery dropdown" form="filter-uzivatelov">';
+                    echo '<option value="">Typ osoby</option>';
+                        $result_typy_osob = getTypyOsob();
+                        while ($typ_osoby = $result_typy_osob->fetch_array()) {
+                            echo '<option value="' . $typ_osoby["id_rola"] . '">' . $typ_osoby["nazov_role"] . '</option>';
+                        }
+                    echo '</select>';
+                echo '</div>';
+
+                echo '<div class="stred">';
+                    echo '<select name="triedit-podla" class="medzery dropdown" form="filter-uzivatelov">';
+                        echo '<option value="">Triediť podľa</option>';
+                        echo '<option value="meno">Meno osoby</option>';
+                        echo '<option value="ou.id_rola">Typ osoby</option>';
+                    echo '</select>';
+                    echo '<select name="triedit-ako" class="medzery dropdown" form="filter-uzivatelov">';
+                        echo '<option value="asc">Vzostupne</option>';
+                        echo '<option value="desc">Zostupne</option>';
+                    echo '</select>';
+                echo '</div>';
+
+                echo '<div>';
+                    echo '<button type="submit" class="tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter transform-stred"><i class="fa fa-filter ikona-tlacidlo"></i>Filtruj</button>';
+                echo '</div>';
+            echo '</div>';
+        echo '</form>';
     echo '</div>';
 }
 
