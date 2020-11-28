@@ -1,39 +1,13 @@
+<?php include_once "../resources/dependencies.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Prihlásenie</title>
-    <script src="../resources/javascript.js"></script>
-    <script src="../resources/jquery-3.5.1.js"></script>
-    <link rel="stylesheet" href="../resources/dizajn.css">
-    <link rel="stylesheet" href="../fontawesome/css/all.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<?php vypisHlavicku("Prihlásenie"); ?>
+
 </head>
-<body>
-    <div class="nadpis-ramcek">Systém záverečných prác</div>
-    <div class="prihl-okno">
-        <form id="form-prihlasenie" class="formular" action="javascript:prihlasit()" method="post">
-            <h1 class="stred">Prihlásenie</h1>
-            <p class="stred">Vyplňte prosím nasledujúce údaje pre prihlásenie</p>
-            <label for="os_cislo" class="stred"><b>Osobné číslo</b></label>
-            <div class="input-riadok">
-                <div class="fas fa-user ikona"></div>
-                <input maxlength="6" class="login-input" pattern="[0-9]{6,6}" id="os_cislo" type="text" placeholder="Vložte osobné čislo" name="os_cislo" required>
-            </div>
-
-            <label for="heslo" class="stred"><b>Heslo</b></label>
-            <div class="input-riadok">
-                <div class="fas fa-key ikona"></div>
-                <input class="login-input" id="heslo" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,16}" type="password" placeholder="Vložte heslo" name="heslo" required>
-            </div>
-
-            <div id="chyba-prihlasenie" class="stred"><div class="fa fa-exclamation-triangle ikona"></div> <span> Boli zadané nesprávne údaje</span></div>
-            <div>
-                <button type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular">Prihlásiť</button>
-            </div>
-        </form>
-    </div>
-</body>
+    <body>
+        <?php vypisPrihlasenie(); ?>
+    </body>
 </html>

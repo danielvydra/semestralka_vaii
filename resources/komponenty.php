@@ -100,61 +100,62 @@ function vypisMojichVytvorenychPrac() {
 
 function vypisOsobnychUdajov() {
     echo '<form id="osobne-udaje" class="formular" method="post" action="javascript:upravitOsobneUdaje()">';
-        echo '<h1 class="stred transform-stred tooltip">Osobné údaje</h1>';
+    echo '<h1 class="stred transform-stred tooltip">Osobné údaje</h1>';
 
-        $mojeId = $_SESSION["id_osoba"];
-        $where = "where ou.id_osoba = $mojeId";
-        $osoba = getPouzivatelov($where)[0];
+    $mojeId = $_SESSION["id_osoba"];
+    $where = "where ou.id_osoba = $mojeId";
+    $osoba = getPouzivatelov($where)[0];
 
-        echo '<p>';
-            echo '<b>Meno: </b>' . $osoba->getCeleMeno();
-            echo '<br>';
-            echo '<b>Osobné číslo: </b>' . $osoba->osCislo;
-            echo '<br>';
-            echo '<b>Email: </b>' . $osoba->email;
-            echo '<br>';
-            echo '<b>Telefón: </b>' . $osoba->telefon;
-            echo '<br>';
-            echo '<b>Upravenie: </b>' . $osoba->upravenie;
-            echo '<br>';
-            echo '<b>Vytvorenie: </b>' . $osoba->vytvorenie;
-            echo '<br>';
-            echo '<b>Fakulta: </b>' . $osoba->fakulta;
-            if ($_SESSION["rola"] == "student") {
-                echo '<br>';
-                echo '<b>Skupina: </b>' . $osoba->skupina;
-                echo '<br>';
-                echo '<b>Odbor: </b>' . $osoba->odbor;
-            } elseif ($_SESSION["rola"] == "ucitel") {
-                echo '<br>';
-                echo '<b>Katedra: </b>' . $osoba->katedra;
-                echo '<br>';
-                echo '<b>Miestnosť: </b>' . $osoba->miestnost;
-                echo '<br>';
-                echo '<b>Voľná kapacita: </b>' . ($osoba->volnaKapacita == 1 ? "áno" : "nie");
-            }
-        echo '</p>';
+    echo '<p>';
+    echo '<b>Meno: </b>' . $osoba->getCeleMeno();
+    echo '<br>';
+    echo '<b>Osobné číslo: </b>' . $osoba->osCislo;
+    echo '<br>';
+    echo '<b>Email: </b>' . $osoba->email;
+    echo '<br>';
+    echo '<b>Telefón: </b>' . $osoba->telefon;
+    echo '<br>';
+    echo '<b>Upravenie: </b>' . $osoba->upravenie;
+    echo '<br>';
+    echo '<b>Vytvorenie: </b>' . $osoba->vytvorenie;
+    echo '<br>';
+    echo '<b>Fakulta: </b>' . $osoba->fakulta;
+    if ($_SESSION["rola"] == "student") {
+        echo '<br>';
+        echo '<b>Skupina: </b>' . $osoba->skupina;
+        echo '<br>';
+        echo '<b>Odbor: </b>' . $osoba->odbor;
+    } elseif ($_SESSION["rola"] == "ucitel") {
+        echo '<br>';
+        echo '<b>Katedra: </b>' . $osoba->katedra;
+        echo '<br>';
+        echo '<b>Miestnosť: </b>' . $osoba->miestnost;
+        echo '<br>';
+        echo '<b>Voľná kapacita: </b>' . ($osoba->volnaKapacita == 1 ? "áno" : "nie");
+    }
+    echo '</p>';
 
-        echo '<h2 class="stred">Úprava údajov</h2>';
-        echo '<label><b>Titul pred menom</b></label>';
-        echo '<select id="titul-pred" name="titul-pred" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
-                    vypisZoznamTitulov($osoba->titulPred);
-        echo '</select>';
-        echo '<label><b>Celé meno</b></label>';
-        echo "<input pattern='[A-Z+ľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]+(([,. -][a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ])?[a-zA-ZľščťžýáíéôúäňĽŠČŤŽÝÁÍÉÚŇ]*)*' id='meno' name='meno' type='text' placeholder='Celé meno' value='$osoba->meno' disabled='disabled' required>";
-        echo '<label><b>Titul za menom</b></label>';
-        echo '<select id="titul-za" name="titul-za" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
-                    vypisZoznamTitulov($osoba->titulZa);
-        echo '</select>';
-        echo '<label><b>Email</b></label>';
-        echo "<input id='email' pattern='[a-zA-Z._]+@([a-zA-z]+\.)+[a-zA-Z]{2,4}' name='email' type='text' placeholder='Email' value='$osoba->email' disabled='disabled' required>";
-        echo '<label><b>Telefón</b></label>';
-        echo "<input id='telefon' pattern='[0]{1}[0-9]{9}' name='telefon' type='text' placeholder='Telefón' value='$osoba->telefon' disabled='disabled' required>";
+    echo '<h2 class="stred">Úprava údajov</h2>';
+    echo '<label><b>Titul pred menom</b></label>';
+    echo '<select id="titul-pred" name="titul-pred" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
+    vypisZoznamTitulov($osoba->titulPred);
+    echo '</select>';
+    echo '<label><b>Celé meno</b></label>';
+    echo "<input pattern='[A-ZľščťžýáíéďôúäňĽŠČŤŽÝÁĎÍÉÚŇ]+(([,. -][a-zA-ZľščťžýďáíéôúäňĽŠČŤŽĎÝÁÍÉÚŇ])?[a-zA-ZľščťžďýáíéôúäňĽŠČŤŽĎÝÁÍÉÚŇ]*)*' id='meno' name='meno' type='text' placeholder='Celé meno' value='$osoba->meno' disabled='disabled' required>";
+    echo '<label><b>Titul za menom</b></label>';
+    echo '<select id="titul-za" name="titul-za" class="medzery dropdown" form="osobne-udaje" disabled="disabled">';
+    vypisZoznamTitulov($osoba->titulZa);
+    echo '</select>';
+    echo '<label><b>Email</b></label>';
+    echo "<input id='email' pattern='[a-zA-Z._]+@([a-zA-z]+\.)+[a-zA-Z]{2,4}' name='email' type='text' placeholder='Email' value='$osoba->email' disabled='disabled' required>";
+    echo '<label><b>Telefón</b></label>';
+    echo "<input id='telefon' pattern='[0]{1}[0-9]{9}' name='telefon' type='text' placeholder='Telefón' value='$osoba->telefon' disabled='disabled' required>";
 
-        echo '<div class="transform-stred stred">';
-            echo '<button id="ulozit" type="submit" class="os-udaje-tlacidlo tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter" disabled="disabled"><i class="fa fa-save ikona-tlacidlo"></i>Uložiť</button>';
-            echo '<button id="upravit" type="button" class="os-udaje-tlacidlo tlacidlo-upravit tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter" onclick="editovatOsobneUdaje(this)"><i class="fa fa-edit ikona-tlacidlo"></i><span>Upraviť</span></button>';
-        echo '</div>';
+    echo '<div id="chyby-formulara" class="stred"><div class="fa fa-exclamation-triangle ikona"></div> <span> Boli zadané nesprávne údaje</span></div>';
+    echo '<div class="transform-stred stred">';
+    echo '<button id="ulozit" type="submit" class="os-udaje-tlacidlo tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter" disabled="disabled"><i class="fa fa-save ikona-tlacidlo"></i>Uložiť</button>';
+    echo '<button id="upravit" type="button" class="os-udaje-tlacidlo tlacidlo-upravit tlacidlo-potvrdit tlacidlo-formular tlacidlo-filter" onclick="editovatOsobneUdaje(this)"><i class="fa fa-edit ikona-tlacidlo"></i><span>Upraviť</span></button>';
+    echo '</div>';
     echo '</form>';
 }
 
@@ -240,6 +241,79 @@ function vypisHlavicku($nadpis) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         </head>';
     echo $header;
+}
+
+function vypisPrihlasenie() {
+    ?>
+    <div class="nadpis-ramcek">Systém záverečných prác</div>
+    <div class="prihl-okno">
+        <form id="form-prihlasenie" class="formular" action="javascript:prihlasit()" method="post">
+            <h1 class="stred">Prihlásenie</h1>
+            <p class="stred">Vyplňte prosím nasledujúce údaje pre prihlásenie</p>
+            <label for="os_cislo" class="stred"><b>Osobné číslo</b></label>
+            <div class="input-riadok">
+                <div class="fas fa-user ikona"></div>
+                <input maxlength="6" class="login-input" pattern="[0-9]{6,6}" id="os_cislo" type="text" placeholder="Vložte osobné čislo" name="os_cislo" required>
+            </div>
+
+            <label for="heslo" class="stred"><b>Heslo</b></label>
+            <div class="input-riadok">
+                <div class="fas fa-key ikona"></div>
+                <input class="login-input" id="heslo" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,16}" type="password" placeholder="Vložte heslo" name="heslo" required>
+            </div>
+
+            <div id="chyba-prihlasenie" class="stred"><div class="fa fa-exclamation-triangle ikona"></div> <span> Boli zadané nesprávne údaje</span></div>
+            <div>
+                <button type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular">Prihlásiť</button>
+            </div>
+        </form>
+    </div>
+<?php
+}
+
+function vypisPridavaniaTem() {
+    ?>
+        <div class="kontajner-zoznam-tem kont-nova-tema transform-stred pridavanie-tem">
+            <div id="id-prace" class="zaver-praca nova-tema">
+
+                <form id="nova-tema" class="formular" method="post" action="javascript:pridatNovuTemu()">
+                    <h1 class="stred">Pridávanie tém</h1>
+                    <p class="stred">Vyplňte prosím nasledujúce údaje pre pridanie témy</p>
+
+                    <label for="nazov-prace-input" class="stred stitok"><b>Názov práce</b></label>
+                    <div class="input-riadok">
+                        <div class="fas fa-heading ikona"></div>
+                        <input id="nazov-prace-input" type="text" placeholder="Vložte názov práce" name="nazov-prace" minlength="1" maxlength="200" required>
+                    </div>
+
+                    <label for="ang-nazov-prace" class="stred stitok"><b>Anglický názov práce</b></label>
+                    <div class="input-riadok">
+                        <div class="fas fa-language ikona"></div>
+                        <input id="ang-nazov-prace" type="text" placeholder="Vložte anglický názov práce" name="ang-nazov-prace" minlength="1" maxlength="200" required>
+                    </div>
+
+                    <label for="popis-prace" class="stred stitok"><b>Popis práce</b></label>
+                    <textarea id="popis-prace" class="medzery" placeholder="Zadajte cieľ práce" rows="4" cols="50" name="popis-prace" form="nova-tema" minlength="1" maxlength="2000" required></textarea>
+
+                    <label for="typ-prace" class="stred stitok"><b>Typ práce</b></label>
+                    <select name="typ-prace" class="medzery dropdown transform-stred" id="typ-prace" form="nova-tema">
+                        <?php
+                    $result_typy_prac = getTypyPrac();
+                    while ($typ_prace = $result_typy_prac->fetch_array()) {
+                        echo '<option value="'. $typ_prace["id_typ"] .'">'. $typ_prace["nazov"] .'</option>';
+                    }
+                    ?>
+                    </select>
+
+                    <div id="chyby-formulara" class="stred"><div class="fa fa-exclamation-triangle ikona"></div> <span> Boli zadané nesprávne údaje</span></div>
+                    <div>
+                        <button type="submit" class="transform-stred tlacidlo-potvrdit tlacidlo-formular"><i class="fa fa-plus ikona-tlacidlo"></i>Pridať</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+<?php
 }
 
 function vypisFilterPrac() {

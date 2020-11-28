@@ -139,11 +139,18 @@ function pridatNovuTemu() {
             formular: $("#nova-tema").serialize()
         },
         success: function(result){
+            let element = document.getElementById("chyby-formulara");
+
             if (result == 1) {
                 zobrazSnackbar("Téma už existuje v databáze.");
-            } else {
+            } else if (result.includes("zoznam-prac")) {
                 $("#zoznam-prac").replaceWith(result);
                 zobrazSnackbar("Nová téma bola úspešne pridaná.");
+                element.style.display = "none";
+            } else {
+                element.lastElementChild.innerHTML = result;
+                element.style.display = "block";
+                zobrazSnackbar("Nepodarilo sa pridať novú tému.");
             }
             $("#nova-tema")[0].reset();
         }
@@ -218,11 +225,18 @@ function upravitOsobneUdaje() {
             formular: $("#osobne-udaje").serialize()
         },
         success: function (result) {
+            let element = document.getElementById("chyby-formulara");
+
             if (result == 1) {
-                zobrazSnackbar("Nastala chyba.");
-            } else {
+                zobrazSnackbar("Nastala chyba databázy. Osobné údaje neboli upravené.");
+            } else if (result.includes("osobne-udaje")) {
                 $("#osobne-udaje").replaceWith(result);
                 zobrazSnackbar("Osobné údaje boli upravené.");
+                element.style.display = "none";
+            } else {
+                element.lastElementChild.innerHTML = result;
+                element.style.display = "block";
+                zobrazSnackbar("Nepodarilo sa upraviť osobné údaje.");
             }
         }
     });

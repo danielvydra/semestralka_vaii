@@ -150,11 +150,17 @@ function pridatNovuTemu() {
     $typPrace = $formular["typ-prace"];
     $idVeduci = $_SESSION["id_osoba"];
 
-    if (jeTemaVDatabaze($nazovPraceSK, $nazovPraceEN)) {
-        echo 1;
+    $validator = validujPridanieNovejTemy($nazovPraceSK, $nazovPraceEN, $popisPrace, $typPrace);
+
+    if (empty($validator)) {
+        if (jeTemaVDatabaze($nazovPraceSK, $nazovPraceEN)) {
+            echo 1;
+        } else {
+            pridatNovuTemuDoDB($idVeduci, $typPrace, $nazovPraceSK, $nazovPraceEN, $popisPrace);
+            vypisMojichVytvorenychPrac();
+        }
     } else {
-        pridatNovuTemuDoDB($idVeduci, $typPrace, $nazovPraceSK, $nazovPraceEN, $popisPrace);
-        vypisMojichVytvorenychPrac();
+        vypisChyby($validator);
     }
 }
 
@@ -177,11 +183,18 @@ function upravitOsobneUdaje() {
     $telefon = $formular["telefon"];
     $idOsoba = $_SESSION["id_osoba"];
 
-    if(upravitOsobneUdajeDB($titulPred, $meno, $titulZa, $email, $telefon, $idOsoba)) {
-        vypisOsobnychUdajov();
+    $validator = validujOsobneUdaje($meno, $titulZa, $titulPred, $email, $telefon);
+
+    if (empty($validator)) {
+        if (upravitOsobneUdajeDB($titulPred, $meno, $titulZa, $email, $telefon, $idOsoba)) {
+            vypisOsobnychUdajov();
+        } else {
+            echo 1;
+        }
     } else {
-        echo 1;
+        vypisChyby($validator);
     }
+
 }
 
 ?>
