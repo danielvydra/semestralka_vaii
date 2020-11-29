@@ -25,14 +25,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Fixnutý bug - vrátenie do appky po logoute&#10;Doplnený refaktoring pre niektoré funkcie">
-      <change afterPath="$PROJECT_DIR$/resources/validator.php" afterDir="false" />
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Serverovská validácia formulárov dokončená">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pridavanie_tem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/prihlasenie.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/prihlasenie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/dependencies.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/dependencies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/dizajn.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/dizajn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/databaza.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/databaza.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/komponenty.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/komponenty.php" afterDir="false" />
     </list>
@@ -129,6 +125,7 @@
       <workItem from="1605705023151" duration="1278000" />
       <workItem from="1605711213019" duration="3918000" />
       <workItem from="1605787878525" duration="13267000" />
+      <workItem from="1606686381283" duration="4904000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -263,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605625098333</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Serverovská validácia formulárov dokončená">
+      <created>1606602292499</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1606602292499</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +319,8 @@
     <MESSAGE value="Prerobenie loginu cez AJAX" />
     <MESSAGE value="Refaktoring kódu&#10;Oddelenie prihlas. údajov pre DB do config.php&#10;dependencies.php - obsahuje potrebné include files" />
     <MESSAGE value="Fixnutý bug - vrátenie do appky po logoute&#10;Doplnený refaktoring pre niektoré funkcie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixnutý bug - vrátenie do appky po logoute&#10;Doplnený refaktoring pre niektoré funkcie" />
+    <MESSAGE value="Serverovská validácia formulárov dokončená" />
+    <option name="LAST_COMMIT_MESSAGE" value="Serverovská validácia formulárov dokončená" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -360,28 +365,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1605625099868">
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1606602295580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605625099868" />
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1606602295580" />
     <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604102326231" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603455284253">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="801" y="264" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603411436728" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603455284253" />
-    <state x="554" y="33" width="709" height="829" key="find.popup" timestamp="1605801545535">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2587" y="139" width="585" height="801" key="find.popup" timestamp="1606689791516">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="554" y="33" width="709" height="829" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605801545535" />
-    <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603661061973" />
+    <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606689791516" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1604605718003">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1604605718003" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603476258399">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2543" y="234" width="672" height="705" key="search.everywhere.popup" timestamp="1606689654458">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603476258399" />
+    <state x="2543" y="234" width="672" height="705" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606689654458" />
   </component>
 </project>

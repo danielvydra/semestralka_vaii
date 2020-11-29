@@ -99,16 +99,18 @@ function pridatOblubenuTemu(button) {
             id_tema: idTemy
         },
         success: function(feedback){
-            if (feedback === "odobrana") {
+            if (feedback == "odobrana") {
                 button.classList.remove("tlacidlo-oblubene-odobrat");
                 button.classList.add("tlacidlo-oblubene-pridat");
                 button.lastChild.innerText = "Pridať obľúbenú tému";
                 zobrazSnackbar("Téma bola odobraná.");
-            } else if (feedback === "pridana") {
+            } else if (feedback == "pridana") {
                 button.classList.add("tlacidlo-oblubene-odobrat");
                 button.classList.remove("tlacidlo-oblubene-pridat");
-                button.lastChild.innerText = "Odobrať obľúbenú tému";
+                button.lastChild.innerText = "Odobrať z obľúbených";
                 zobrazSnackbar("Téma bola pridaná.");
+            } else {
+                zobrazSnackbar("Nastala chyba s databázou.");
             }
         }
     });
@@ -124,8 +126,12 @@ function zobrazitOblubenePrace(button) {
             id_tema: idTemy
         },
         success: function(result){
-            $("#zoznam-prac").replaceWith(result);
-            zobrazSnackbar("Téma bola odobraná.");
+            if (result == 1) {
+                zobrazSnackbar("Nastala chyba s databázou.");
+            } else {
+                $("#zoznam-prac").replaceWith(result);
+                zobrazSnackbar("Téma bola odobraná.");
+            }
         }
     });
 }

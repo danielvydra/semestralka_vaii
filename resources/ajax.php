@@ -38,16 +38,24 @@ if (isset($_POST['nazovFunkcie']) && !empty($_POST['nazovFunkcie'])) {
 function pridatMedziOblubene($echoResult = true)
 {
     $idOsoba = $_SESSION["id_osoba"];
-    $idTema = $_POST["id_tema"];
+    $idTema = intval($_POST["id_tema"]);
     if (jeOblubenaTemaVDatabaze($idTema, $idOsoba)) {
-        odobratOblubenuTemu($idTema, $idOsoba);
-        $feedback = "odobrana";
+        if (odobratOblubenuTemu($idTema, $idOsoba)) {
+            $feedback = "odobrana";
+        } else {
+            $feedback = 1;
+        }
     } else {
-        pridatTemuMedziOblubene($idTema, $idOsoba);
-        $feedback = "pridana";
+        if (pridatTemuMedziOblubene($idTema, $idOsoba)) {
+            $feedback = "pridana";
+        } else {
+            $feedback = 1;
+        }
     }
     if ($echoResult)
         echo $feedback;
+    else
+        return $feedback;
 }
 
 function filtrovatPrace() {
@@ -129,17 +137,18 @@ function filtrovatUzivatelov() {
     if (isset($pouzivatelia) and !empty($pouzivatelia)) {
         vypisPouzivatelov($pouzivatelia);
     } else {
-        echo '<div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">';
-        echo '<div class="zaver-praca pouzivatelia stred">Žiaden používateľ nespĺňa zadaný filer.</div>';
-        echo '</div>';
+        vypisNenajdenyPouzivatel();
     }
 
 }
 
 function zobrazitOblubenePrace()
 {
-    pridatMedziOblubene(false);
-    vypisOblubenychPrac();
+    if (pridatMedziOblubene(false) != 1) {
+        vypisOblubenychPrac();
+    } else {
+        echo 1;
+    }
 }
 
 function pridatNovuTemu() {

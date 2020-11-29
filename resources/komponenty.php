@@ -373,6 +373,13 @@ function vypisFilterPrac() {
     echo '</div>';
 }
 
+function vypisNenajdenyPouzivatel() { ?>
+    <div id="zoznam-uzivatelov" class="kontajner-zoznam-tem transform-stred">
+    <div class="zaver-praca pouzivatelia stred">Žiaden používateľ nespĺňa zadaný filer.</div>
+    </div>
+<?php
+}
+
 function vypisFilterPouzivatelov() {
     echo '<div class="zaver-praca filter">';
         echo '<form id="filter-uzivatelov" class="formular" action="javascript:filtrovatPouzivatelov()">';

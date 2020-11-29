@@ -43,9 +43,10 @@ function getZaverecnePrace($where = "") {
         join tituly uc_t_pred on uc_t_pred.id_titul = uc.id_titul_pred
         join tituly uc_t_za on uc_t_za.id_titul = uc.id_titul_za
         join typy_prac tp on zp.id_typ = tp.id_typ $where;";
-
     $conn = Databaza::getInstance()->getConn();
-    $vysledok = $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $vysledok = $stmt->get_result();
 
     $zaverecnePrace = array();
     while ($tema = $vysledok->fetch_array()) {
@@ -86,9 +87,10 @@ function getPouzivatelov($where = "") {
         left join skupiny sk on sk.id_skupina = s.id_skupina
         left join katedry k on k.id_katedra = u.id_katedra
         left join fakulty f2 on f2.id_fakulta = k.id_fakulta $where;";
-
     $conn = Databaza::getInstance()->getConn();
-    $result_uzivatelia = $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result_uzivatelia = $stmt->get_result();
 
     $pouzivatelia = array();
     while ($pouzivatel = $result_uzivatelia->fetch_array()) {
@@ -130,30 +132,38 @@ function getTypyOsob() {
 }
 
 function pridatTemuMedziOblubene($idTema, $idOsoba) {
-    $sql = "insert into oblubene_temy(id_tema, id_student) values ($idTema, $idOsoba);";
+    $sql = "insert into oblubene_temy(id_tema, id_student) values (?, ?);";
     $conn = Databaza::getInstance()->getConn();
-    $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $idTema, $idOsoba);
+    return $stmt->execute();
 }
 
 function odobratOblubenuTemu($idTema, $idOsoba) {
-    $sql = "delete from oblubene_temy where id_tema = $idTema and id_student = $idOsoba;";
+    $sql = "delete from oblubene_temy where id_tema = ? and id_student = ?;";
     $conn = Databaza::getInstance()->getConn();
-    $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $idTema, $idOsoba);
+    return $stmt->execute();
 }
 
 function jeOblubenaTemaVDatabaze($idTema, $idOsoba) {
-    $sql = "select * from oblubene_temy where id_tema = $idTema and id_student = $idOsoba;";
+    $sql = "select * from oblubene_temy where id_tema = ? and id_student = ?;";
     $conn = Databaza::getInstance()->getConn();
-    $vysledok = $conn->query($sql);
-    $pocet = mysqli_num_rows($vysledok);
-    return $pocet > 0;
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $idTema, $idOsoba);
+    $stmt->execute();
+    return $stmt->get_result()->num_rows > 0;
 }
 
 function getZoznamOblubenychTem($idOsoba) {
     $temy = array();
-    $sql = "select id_tema from oblubene_temy where id_student = $idOsoba;";
+    $sql = "select id_tema from oblubene_temy where id_student = ?;";
     $conn = Databaza::getInstance()->getConn();
-    $vysledok = $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $idOsoba);
+    $stmt->execute();
+    $vysledok = $stmt->get_result();
     while ($tema = $vysledok->fetch_array()) {
         array_push($temy, $tema["id_tema"]);
     }
@@ -162,9 +172,12 @@ function getZoznamOblubenychTem($idOsoba) {
 
 function getZoznamMojichPridanychTem($idOsoba) {
     $temy = array();
-    $sql = "select id_tema from zaver_prace where id_veduci = $idOsoba;";
+    $sql = "select id_tema from zaver_prace where id_veduci = ?;";
     $conn = Databaza::getInstance()->getConn();
-    $vysledok = $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $idOsoba);
+    $stmt->execute();
+    $vysledok = $stmt->get_result();
     while ($tema = $vysledok->fetch_array()) {
         array_push($temy, $tema["id_tema"]);
     }
@@ -172,33 +185,40 @@ function getZoznamMojichPridanychTem($idOsoba) {
 }
 
 function jeTemaVDatabaze($nazovSK, $nazovEN) {
-    $sql = "select * from zaver_prace where nazov_sk like '$nazovSK' or nazov_en like '$nazovEN';";
+    $sql = "select * from zaver_prace where nazov_sk like ? or nazov_en like ?;";
     $conn = Databaza::getInstance()->getConn();
-    $vysledok = $conn->query($sql);
-    $pocet = mysqli_num_rows($vysledok);
-    return $pocet > 0;
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $nazovSK, $nazovEN);
+    $stmt->execute();
+    return $stmt->get_result()->num_rows > 0;
 }
 
 function vymazatTemuZDatabazy($idTema) {
-    $sql1 = "delete from oblubene_temy where id_tema = $idTema;";
-    $sql2 = "delete from zaver_prace where id_tema = $idTema;";
+    $sql1 = "delete from oblubene_temy where id_tema = ?;";
+    $sql2 = "delete from zaver_prace where id_tema = ?;";
     $conn = Databaza::getInstance()->getConn();
-    $vysledok1 = $conn->query($sql1);
-    $vysledok2 = $conn->query($sql2);
+    $stmt1 = $conn->prepare($sql1);
+    $stmt2 = $conn->prepare($sql2);
+    $stmt1->bind_param("i", $idTema);
+    $stmt2->bind_param("i", $idTema);
+    $stmt1->execute();
+    $stmt2->execute();
 }
 
 function pridatNovuTemuDoDB($idVeduci, $typPrace, $nazovPraceSK, $nazovPraceEN, $popisPrace) {
-    $sql = "insert into zaver_prace(id_veduci, id_typ, nazov_sk, nazov_en, popis, vytvorenie)
-        values ($idVeduci, $typPrace, '$nazovPraceSK', '$nazovPraceEN', '$popisPrace', now());";
+    $sql = "insert into zaver_prace(id_veduci, id_typ, nazov_sk, nazov_en, popis, vytvorenie) values (?,?,?,?,?,now());";
     $conn = Databaza::getInstance()->getConn();
-    $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iisss", $idVeduci, $typPrace, $nazovPraceSK, $nazovPraceEN, $popisPrace);
+    $stmt->execute();
 }
 
 function upravitOsobneUdajeDB($titulPred, $meno, $titulZa, $email, $telefon, $idOsoba) {
-    $sql = "update os_udaje set id_titul_pred = $titulPred, meno = '$meno', id_titul_za = $titulZa, email = '$email', telefon = $telefon, 
-        upravenie = now() where id_osoba = $idOsoba;";
+    $sql = "update os_udaje set id_titul_pred = ?, meno = ?, id_titul_za = ?, email = ?, telefon = ?, upravenie = now() where id_osoba = ?";
     $conn = Databaza::getInstance()->getConn();
-    return $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("isisii", $titulPred, $meno, $titulZa, $email, $telefon, $idOsoba);
+    return $stmt->execute();
 }
 
 ?>
