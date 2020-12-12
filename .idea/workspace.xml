@@ -25,11 +25,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Serverovská validácia formulárov dokončená">
+    <list default="true" id="3274c0ba-e539-4837-bf3a-72e4d02ec1b8" name="Default Changelist" comment="Práca s DB cez prepared statement">
+      <change afterPath="$PROJECT_DIR$/pages/nepovoleny_pristup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/databaza.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/databaza.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/javascript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/oblubene_temy.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/oblubene_temy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/pridavanie_tem.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pridavanie_tem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/komponenty.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/komponenty.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,19 +69,20 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/VAII-semestralka-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web projects\semestralka_vaii\pages" />
+      <recent name="D:\web projects\semestralka_vaii\assets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\web projects\semestralka_vaii\resources" />
       <recent name="D:\web projects\semestralka_vaii\stranky" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\web projects\semestralka_vaii\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -125,7 +126,8 @@
       <workItem from="1605705023151" duration="1278000" />
       <workItem from="1605711213019" duration="3918000" />
       <workItem from="1605787878525" duration="13267000" />
-      <workItem from="1606686381283" duration="4904000" />
+      <workItem from="1606686381283" duration="5281000" />
+      <workItem from="1607769283813" duration="2885000" />
     </task>
     <task id="LOCAL-00001" summary="Prvotná verzia štruktúry a dizajnu registrácie a prihlásenia">
       <created>1602429124251</created>
@@ -267,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606602292499</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Práca s DB cez prepared statement">
+      <created>1606691447650</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1606691447651</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +297,12 @@
                       </list>
                     </value>
                   </entry>
+                </map>
+              </option>
+              <option name="COLUMN_WIDTH">
+                <map>
+                  <entry key="2" value="91" />
+                  <entry key="3" value="90" />
                 </map>
               </option>
             </State>
@@ -320,7 +335,8 @@
     <MESSAGE value="Refaktoring kódu&#10;Oddelenie prihlas. údajov pre DB do config.php&#10;dependencies.php - obsahuje potrebné include files" />
     <MESSAGE value="Fixnutý bug - vrátenie do appky po logoute&#10;Doplnený refaktoring pre niektoré funkcie" />
     <MESSAGE value="Serverovská validácia formulárov dokončená" />
-    <option name="LAST_COMMIT_MESSAGE" value="Serverovská validácia formulárov dokončená" />
+    <MESSAGE value="Práca s DB cez prepared statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Práca s DB cez prepared statement" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="175" key="#CLI_Interpreters" timestamp="1602407275856">
@@ -365,20 +381,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602409868448" />
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1606602295580">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2" timestamp="1606691449792">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1606602295580" />
-    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604102326231" />
+    <state x="2472" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606691449792" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603455284253">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="801" y="264" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603411436728" />
     <state x="2721" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603455284253" />
-    <state x="2587" y="139" width="585" height="801" key="find.popup" timestamp="1606689791516">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="554" y="33" width="709" height="829" key="find.popup" timestamp="1607771627521">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="554" y="33" width="709" height="829" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1605801545535" />
+    <state x="554" y="33" width="709" height="829" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1607771627521" />
     <state x="2587" y="139" width="585" height="801" key="find.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606689791516" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1604605718003">
       <screen x="0" y="0" width="1920" height="1040" />

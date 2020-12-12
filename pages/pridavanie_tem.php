@@ -6,6 +6,10 @@ if (!isset($_SESSION["rola"])) {
     header("Location: ./prihlasenie.php");
     exit();
 }
+if ($_SESSION["rola"] != "ucitel") {
+    header("Location: ./nepovoleny_pristup.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

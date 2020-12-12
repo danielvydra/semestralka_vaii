@@ -271,6 +271,14 @@ function vypisPrihlasenie() {
 <?php
 }
 
+function vypisChybnejStranky() { ?>
+    <div class="nadpis-ramcek">Systém záverečných prác</div>
+    <div class="prihl-okno" style="padding: 10px 40px; border-radius: 20px; color: #e53935;">
+        <h1 class="stred">Nastala chyba - nepovolený prístup</h1>
+    </div>
+<?php
+}
+
 function vypisPridavaniaTem() {
     ?>
         <div class="kontajner-zoznam-tem kont-nova-tema transform-stred pridavanie-tem">
