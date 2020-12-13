@@ -51,11 +51,10 @@ function zobrazMenu() {
     } else {
         element.style.display = "none";
     }
-    $(window).resize(function(){
-        if($(this).width() >= 1280){
+    $(window).resize(function () {
+        if ($(this).width() >= 1280) {
             $('.horne-menu-vpravo').show();
-        }
-        else{
+        } else {
             $('.horne-menu-vpravo').hide();
         }
     });
@@ -69,7 +68,7 @@ function filtrovatTemy() {
             formular: $("#filter-prac").serialize(),
             nazovFunkcie: "filtrovatPrace"
         },
-        success: function(result){
+        success: function (result) {
             $("#zoznam-prac").replaceWith(result);
         }
     });
@@ -83,7 +82,7 @@ function filtrovatPouzivatelov() {
             formular: $("#filter-uzivatelov").serialize(),
             nazovFunkcie: "filtrovatUzivatelov"
         },
-        success: function(result){
+        success: function (result) {
             $("#zoznam-uzivatelov").replaceWith(result);
         }
     });
@@ -98,7 +97,7 @@ function pridatOblubenuTemu(button) {
             nazovFunkcie: "pridatMedziOblubene",
             id_tema: idTemy
         },
-        success: function(feedback){
+        success: function (feedback) {
             if (feedback == "odobrana") {
                 button.classList.remove("tlacidlo-oblubene-odobrat");
                 button.classList.add("tlacidlo-oblubene-pridat");
@@ -125,7 +124,7 @@ function zobrazitOblubenePrace(button) {
             nazovFunkcie: "zobrazitOblubenePrace",
             id_tema: idTemy
         },
-        success: function(result){
+        success: function (result) {
             if (result == 1) {
                 zobrazSnackbar("Nastala chyba s databázou.");
             } else {
@@ -144,7 +143,7 @@ function pridatNovuTemu() {
             nazovFunkcie: "pridatNovuTemu",
             formular: $("#nova-tema").serialize()
         },
-        success: function(result){
+        success: function (result) {
             let element = document.getElementById("chyby-formulara");
 
             if (result == 1) {
@@ -165,34 +164,38 @@ function pridatNovuTemu() {
 
 function odobratPracuZoZoznamuPrac(button) {
     var idTemy = parseInt(button.parentElement.getAttribute("id"));
-    $.ajax({
-        type: "POST",
-        url: "../resources/ajax.php",
-        data: {
-            nazovFunkcie: "odobratPracuZoZoznamuPrac",
-            id_tema: idTemy
-        },
-        success: function(result){
-            $("#zoznam-prac").replaceWith(result);
-            zobrazSnackbar("Téma bola úspešne vymazaná.");
-        }
-    });
+    if (confirm("Naozaj vymazať?")) {
+        $.ajax({
+            type: "POST",
+            url: "../resources/ajax.php",
+            data: {
+                nazovFunkcie: "odobratPracuZoZoznamuPrac",
+                id_tema: idTemy
+            },
+            success: function (result) {
+                $("#zoznam-prac").replaceWith(result);
+                zobrazSnackbar("Téma bola úspešne vymazaná.");
+            }
+        });
+    }
 }
 
 function odobratTemuZPridavaniaTem(button) {
     var idTemy = parseInt(button.parentElement.getAttribute("id"));
-    $.ajax({
-        type: "POST",
-        url: "../resources/ajax.php",
-        data: {
-            nazovFunkcie: "odobratTemuZPridavaniaTem",
-            id_tema: idTemy
-        },
-        success: function(result){
-            $("#zoznam-prac").replaceWith(result);
-            zobrazSnackbar("Téma bola úspešne vymazaná.");
-        }
-    });
+    if (confirm("Naozaj vymazať?")) {
+        $.ajax({
+            type: "POST",
+            url: "../resources/ajax.php",
+            data: {
+                nazovFunkcie: "odobratTemuZPridavaniaTem",
+                id_tema: idTemy
+            },
+            success: function (result) {
+                $("#zoznam-prac").replaceWith(result);
+                zobrazSnackbar("Téma bola úspešne vymazaná.");
+            }
+        });
+    }
 }
 
 function editovatOsobneUdaje(upravit) {
@@ -223,34 +226,40 @@ function editovatOsobneUdaje(upravit) {
 }
 
 function upravitOsobneUdaje() {
-    $.ajax({
-        type: "POST",
-        url: "../resources/ajax.php",
-        data: {
-            nazovFunkcie: "upravitOsobneUdaje",
-            formular: $("#osobne-udaje").serialize()
-        },
-        success: function (result) {
-            let element = document.getElementById("chyby-formulara");
+    if (confirm("Naozaj upraviť osobné údaje?")) {
+        $.ajax({
+            type: "POST",
+            url: "../resources/ajax.php",
+            data: {
+                nazovFunkcie: "upravitOsobneUdaje",
+                formular: $("#osobne-udaje").serialize()
+            },
+            success: function (result) {
+                let element = document.getElementById("chyby-formulara");
 
-            if (result == 1) {
-                zobrazSnackbar("Nastala chyba databázy. Osobné údaje neboli upravené.");
-            } else if (result.includes("osobne-udaje")) {
-                $("#osobne-udaje").replaceWith(result);
-                zobrazSnackbar("Osobné údaje boli upravené.");
-                element.style.display = "none";
-            } else {
-                element.lastElementChild.innerHTML = result;
-                element.style.display = "block";
-                zobrazSnackbar("Nepodarilo sa upraviť osobné údaje.");
+                if (result == 1) {
+                    zobrazSnackbar("Nastala chyba databázy. Osobné údaje neboli upravené.");
+                } else if (result.includes("osobne-udaje")) {
+                    $("#osobne-udaje").replaceWith(result);
+                    zobrazSnackbar("Osobné údaje boli upravené.");
+                    element.style.display = "none";
+                } else {
+                    element.lastElementChild.innerHTML = result;
+                    element.style.display = "block";
+                    zobrazSnackbar("Nepodarilo sa upraviť osobné údaje.");
+                }
             }
-        }
-    });
+        });
+    } else {
+        location.reload();
+    }
 }
 
 function zobrazSnackbar(text) {
     let snackbar = document.getElementById("snackbar");
     snackbar.innerText = text;
     snackbar.className = "show";
-    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+    setTimeout(function () {
+        snackbar.className = snackbar.className.replace("show", "");
+    }, 3000);
 }
